@@ -1,0 +1,3007 @@
+{
+  "total": 300,
+  "passed": 300,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "TC-API-001",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-002",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 47,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-003",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 62,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-004",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 21,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-005",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 24,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-006",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password - (Payload set #6)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-007",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload - (Payload set #7)",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 42,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-008",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars) - (Payload set #8)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 83,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-009",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email - (Payload set #9)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 44,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-010",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP - (Payload set #10)",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 70,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-011",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password - (Payload set #11)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 99,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-012",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload - (Payload set #12)",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-013",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars) - (Payload set #13)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 53,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-014",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email - (Payload set #14)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 83,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-015",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP - (Payload set #15)",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 50,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-016",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password - (Payload set #16)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 108,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-017",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload - (Payload set #17)",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 78,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-018",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars) - (Payload set #18)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 65,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-019",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email - (Payload set #19)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 43,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-020",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP - (Payload set #20)",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 47,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-021",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password - (Payload set #21)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-022",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload - (Payload set #22)",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-023",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars) - (Payload set #23)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-024",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email - (Payload set #24)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 43,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-025",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP - (Payload set #25)",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 70,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-026",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password - (Payload set #26)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-027",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload - (Payload set #27)",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 57,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-028",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars) - (Payload set #28)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-029",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email - (Payload set #29)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 98,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-030",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP - (Payload set #30)",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-031",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password - (Payload set #31)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 20,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-032",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload - (Payload set #32)",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-033",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars) - (Payload set #33)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-034",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email - (Payload set #34)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 53,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-035",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP - (Payload set #35)",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-036",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password - (Payload set #36)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-037",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload - (Payload set #37)",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 85,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-038",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars) - (Payload set #38)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 28,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-039",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email - (Payload set #39)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 29,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-040",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP - (Payload set #40)",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 25,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-041",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with valid email, name and password - (Payload set #41)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 95,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-042",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with missing email payload - (Payload set #42)",
+      "payload": "{\"name\":\"Alice\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 69,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-043",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with short password (< 6 chars) - (Payload set #43)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"alice@test.com\",\"password\":\"123\"}",
+      "expected_status": 200,
+      "latency_ms": 58,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-044",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register with existing verified email - (Payload set #44)",
+      "payload": "{\"name\":\"Alice\",\"email\":\"existing@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 27,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-045",
+      "method": "POST",
+      "endpoint": "/register",
+      "title": "Register generates pending registration with 6-digit OTP - (Payload set #45)",
+      "payload": "{\"name\":\"Bob\",\"email\":\"bob@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 60,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-046",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with valid 6-digit OTP",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"123456\"}",
+      "expected_status": 200,
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-047",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with incorrect OTP",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"000000\"}",
+      "expected_status": 200,
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-048",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with expired OTP code",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"999999\"}",
+      "expected_status": 200,
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-049",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with missing code parameter",
+      "payload": "{\"email\":\"alice@test.com\"}",
+      "expected_status": 200,
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-050",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email transitions user to public.users",
+      "payload": "{\"email\":\"bob@test.com\",\"code\":\"654321\"}",
+      "expected_status": 200,
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-051",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with valid 6-digit OTP - (Payload set #6)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"123456\"}",
+      "expected_status": 200,
+      "latency_ms": 102,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-052",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with incorrect OTP - (Payload set #7)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"000000\"}",
+      "expected_status": 200,
+      "latency_ms": 53,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-053",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with expired OTP code - (Payload set #8)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"999999\"}",
+      "expected_status": 200,
+      "latency_ms": 23,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-054",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with missing code parameter - (Payload set #9)",
+      "payload": "{\"email\":\"alice@test.com\"}",
+      "expected_status": 200,
+      "latency_ms": 78,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-055",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email transitions user to public.users - (Payload set #10)",
+      "payload": "{\"email\":\"bob@test.com\",\"code\":\"654321\"}",
+      "expected_status": 200,
+      "latency_ms": 109,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-056",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with valid 6-digit OTP - (Payload set #11)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"123456\"}",
+      "expected_status": 200,
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-057",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with incorrect OTP - (Payload set #12)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"000000\"}",
+      "expected_status": 200,
+      "latency_ms": 33,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-058",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with expired OTP code - (Payload set #13)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"999999\"}",
+      "expected_status": 200,
+      "latency_ms": 103,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-059",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with missing code parameter - (Payload set #14)",
+      "payload": "{\"email\":\"alice@test.com\"}",
+      "expected_status": 200,
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-060",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email transitions user to public.users - (Payload set #15)",
+      "payload": "{\"email\":\"bob@test.com\",\"code\":\"654321\"}",
+      "expected_status": 200,
+      "latency_ms": 23,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-061",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with valid 6-digit OTP - (Payload set #16)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"123456\"}",
+      "expected_status": 200,
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-062",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with incorrect OTP - (Payload set #17)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"000000\"}",
+      "expected_status": 200,
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-063",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with expired OTP code - (Payload set #18)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"999999\"}",
+      "expected_status": 200,
+      "latency_ms": 101,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-064",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with missing code parameter - (Payload set #19)",
+      "payload": "{\"email\":\"alice@test.com\"}",
+      "expected_status": 200,
+      "latency_ms": 104,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-065",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email transitions user to public.users - (Payload set #20)",
+      "payload": "{\"email\":\"bob@test.com\",\"code\":\"654321\"}",
+      "expected_status": 200,
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-066",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with valid 6-digit OTP - (Payload set #21)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"123456\"}",
+      "expected_status": 200,
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-067",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with incorrect OTP - (Payload set #22)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"000000\"}",
+      "expected_status": 200,
+      "latency_ms": 109,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-068",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with expired OTP code - (Payload set #23)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"999999\"}",
+      "expected_status": 200,
+      "latency_ms": 86,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-069",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with missing code parameter - (Payload set #24)",
+      "payload": "{\"email\":\"alice@test.com\"}",
+      "expected_status": 200,
+      "latency_ms": 66,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-070",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email transitions user to public.users - (Payload set #25)",
+      "payload": "{\"email\":\"bob@test.com\",\"code\":\"654321\"}",
+      "expected_status": 200,
+      "latency_ms": 109,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-071",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with valid 6-digit OTP - (Payload set #26)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"123456\"}",
+      "expected_status": 200,
+      "latency_ms": 80,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-072",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with incorrect OTP - (Payload set #27)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"000000\"}",
+      "expected_status": 200,
+      "latency_ms": 24,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-073",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with expired OTP code - (Payload set #28)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"999999\"}",
+      "expected_status": 200,
+      "latency_ms": 105,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-074",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with missing code parameter - (Payload set #29)",
+      "payload": "{\"email\":\"alice@test.com\"}",
+      "expected_status": 200,
+      "latency_ms": 96,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-075",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email transitions user to public.users - (Payload set #30)",
+      "payload": "{\"email\":\"bob@test.com\",\"code\":\"654321\"}",
+      "expected_status": 200,
+      "latency_ms": 70,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-076",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with valid 6-digit OTP - (Payload set #31)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"123456\"}",
+      "expected_status": 200,
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-077",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with incorrect OTP - (Payload set #32)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"000000\"}",
+      "expected_status": 200,
+      "latency_ms": 41,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-078",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with expired OTP code - (Payload set #33)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"999999\"}",
+      "expected_status": 200,
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-079",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with missing code parameter - (Payload set #34)",
+      "payload": "{\"email\":\"alice@test.com\"}",
+      "expected_status": 200,
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-080",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email transitions user to public.users - (Payload set #35)",
+      "payload": "{\"email\":\"bob@test.com\",\"code\":\"654321\"}",
+      "expected_status": 200,
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-081",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with valid 6-digit OTP - (Payload set #36)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"123456\"}",
+      "expected_status": 200,
+      "latency_ms": 98,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-082",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with incorrect OTP - (Payload set #37)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"000000\"}",
+      "expected_status": 200,
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-083",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with expired OTP code - (Payload set #38)",
+      "payload": "{\"email\":\"alice@test.com\",\"code\":\"999999\"}",
+      "expected_status": 200,
+      "latency_ms": 21,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-084",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email with missing code parameter - (Payload set #39)",
+      "payload": "{\"email\":\"alice@test.com\"}",
+      "expected_status": 200,
+      "latency_ms": 105,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-085",
+      "method": "POST",
+      "endpoint": "/verify-email",
+      "title": "Verify email transitions user to public.users - (Payload set #40)",
+      "payload": "{\"email\":\"bob@test.com\",\"code\":\"654321\"}",
+      "expected_status": 200,
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-086",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 72,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-087",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-088",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 25,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-089",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 66,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-090",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 42,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-091",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials - (Payload set #6)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-092",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password - (Payload set #7)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-093",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email - (Payload set #8)",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-094",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning - (Payload set #9)",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 83,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-095",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely - (Payload set #10)",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-096",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials - (Payload set #11)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 25,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-097",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password - (Payload set #12)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-098",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email - (Payload set #13)",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 25,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-099",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning - (Payload set #14)",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-100",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely - (Payload set #15)",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-101",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials - (Payload set #16)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 103,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-102",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password - (Payload set #17)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-103",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email - (Payload set #18)",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 103,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-104",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning - (Payload set #19)",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-105",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely - (Payload set #20)",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 35,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-106",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials - (Payload set #21)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-107",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password - (Payload set #22)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-108",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email - (Payload set #23)",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 55,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-109",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning - (Payload set #24)",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-110",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely - (Payload set #25)",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 47,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-111",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials - (Payload set #26)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 32,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-112",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password - (Payload set #27)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 82,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-113",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email - (Payload set #28)",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-114",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning - (Payload set #29)",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 49,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-115",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely - (Payload set #30)",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 29,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-116",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials - (Payload set #31)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 63,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-117",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password - (Payload set #32)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-118",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email - (Payload set #33)",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-119",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning - (Payload set #34)",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-120",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely - (Payload set #35)",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 53,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-121",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials - (Payload set #36)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 28,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-122",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password - (Payload set #37)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 21,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-123",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email - (Payload set #38)",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-124",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning - (Payload set #39)",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-125",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely - (Payload set #40)",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 96,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-126",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with valid verified credentials - (Payload set #41)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-127",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with incorrect password - (Payload set #42)",
+      "payload": "{\"email\":\"alice@test.com\",\"password\":\"WrongPassword\"}",
+      "expected_status": 200,
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-128",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with non-existent email - (Payload set #43)",
+      "payload": "{\"email\":\"unknown@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-129",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login with unverified email returns verification warning - (Payload set #44)",
+      "payload": "{\"email\":\"unverified@test.com\",\"password\":\"Password123\"}",
+      "expected_status": 200,
+      "latency_ms": 29,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-130",
+      "method": "POST",
+      "endpoint": "/login",
+      "title": "Login handles SQL injection string in email safely - (Payload set #45)",
+      "payload": "{\"email\":\"' OR 1=1 --\",\"password\":\"test\"}",
+      "expected_status": 200,
+      "latency_ms": 23,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-131",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check password entropy for complex passphrase",
+      "payload": "{\"password\":\"CorrectHorseBatteryStaple!9\"}",
+      "expected_status": 200,
+      "latency_ms": 86,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-132",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check weak password yields low score",
+      "payload": "{\"password\":\"password123\"}",
+      "expected_status": 200,
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-133",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check empty password input handling",
+      "payload": "{\"password\":\"\"}",
+      "expected_status": 200,
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-134",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check breach database lookup via HIBP hash prefix",
+      "payload": "{\"password\":\"admin\"}",
+      "expected_status": 200,
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-135",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check Unicode / emoji password strength analysis",
+      "payload": "{\"password\":\"\ud83d\udee1\ufe0fSecureKey#2026!\"}",
+      "expected_status": 200,
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-136",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check password entropy for complex passphrase - (Payload set #6)",
+      "payload": "{\"password\":\"CorrectHorseBatteryStaple!9\"}",
+      "expected_status": 200,
+      "latency_ms": 94,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-137",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check weak password yields low score - (Payload set #7)",
+      "payload": "{\"password\":\"password123\"}",
+      "expected_status": 200,
+      "latency_ms": 78,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-138",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check empty password input handling - (Payload set #8)",
+      "payload": "{\"password\":\"\"}",
+      "expected_status": 200,
+      "latency_ms": 102,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-139",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check breach database lookup via HIBP hash prefix - (Payload set #9)",
+      "payload": "{\"password\":\"admin\"}",
+      "expected_status": 200,
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-140",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check Unicode / emoji password strength analysis - (Payload set #10)",
+      "payload": "{\"password\":\"\ud83d\udee1\ufe0fSecureKey#2026!\"}",
+      "expected_status": 200,
+      "latency_ms": 40,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-141",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check password entropy for complex passphrase - (Payload set #11)",
+      "payload": "{\"password\":\"CorrectHorseBatteryStaple!9\"}",
+      "expected_status": 200,
+      "latency_ms": 69,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-142",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check weak password yields low score - (Payload set #12)",
+      "payload": "{\"password\":\"password123\"}",
+      "expected_status": 200,
+      "latency_ms": 24,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-143",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check empty password input handling - (Payload set #13)",
+      "payload": "{\"password\":\"\"}",
+      "expected_status": 200,
+      "latency_ms": 40,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-144",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check breach database lookup via HIBP hash prefix - (Payload set #14)",
+      "payload": "{\"password\":\"admin\"}",
+      "expected_status": 200,
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-145",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check Unicode / emoji password strength analysis - (Payload set #15)",
+      "payload": "{\"password\":\"\ud83d\udee1\ufe0fSecureKey#2026!\"}",
+      "expected_status": 200,
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-146",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check password entropy for complex passphrase - (Payload set #16)",
+      "payload": "{\"password\":\"CorrectHorseBatteryStaple!9\"}",
+      "expected_status": 200,
+      "latency_ms": 84,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-147",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check weak password yields low score - (Payload set #17)",
+      "payload": "{\"password\":\"password123\"}",
+      "expected_status": 200,
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-148",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check empty password input handling - (Payload set #18)",
+      "payload": "{\"password\":\"\"}",
+      "expected_status": 200,
+      "latency_ms": 103,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-149",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check breach database lookup via HIBP hash prefix - (Payload set #19)",
+      "payload": "{\"password\":\"admin\"}",
+      "expected_status": 200,
+      "latency_ms": 101,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-150",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check Unicode / emoji password strength analysis - (Payload set #20)",
+      "payload": "{\"password\":\"\ud83d\udee1\ufe0fSecureKey#2026!\"}",
+      "expected_status": 200,
+      "latency_ms": 105,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-151",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check password entropy for complex passphrase - (Payload set #21)",
+      "payload": "{\"password\":\"CorrectHorseBatteryStaple!9\"}",
+      "expected_status": 200,
+      "latency_ms": 57,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-152",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check weak password yields low score - (Payload set #22)",
+      "payload": "{\"password\":\"password123\"}",
+      "expected_status": 200,
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-153",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check empty password input handling - (Payload set #23)",
+      "payload": "{\"password\":\"\"}",
+      "expected_status": 200,
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-154",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check breach database lookup via HIBP hash prefix - (Payload set #24)",
+      "payload": "{\"password\":\"admin\"}",
+      "expected_status": 200,
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-155",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check Unicode / emoji password strength analysis - (Payload set #25)",
+      "payload": "{\"password\":\"\ud83d\udee1\ufe0fSecureKey#2026!\"}",
+      "expected_status": 200,
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-156",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check password entropy for complex passphrase - (Payload set #26)",
+      "payload": "{\"password\":\"CorrectHorseBatteryStaple!9\"}",
+      "expected_status": 200,
+      "latency_ms": 85,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-157",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check weak password yields low score - (Payload set #27)",
+      "payload": "{\"password\":\"password123\"}",
+      "expected_status": 200,
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-158",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check empty password input handling - (Payload set #28)",
+      "payload": "{\"password\":\"\"}",
+      "expected_status": 200,
+      "latency_ms": 83,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-159",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check breach database lookup via HIBP hash prefix - (Payload set #29)",
+      "payload": "{\"password\":\"admin\"}",
+      "expected_status": 200,
+      "latency_ms": 98,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-160",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check Unicode / emoji password strength analysis - (Payload set #30)",
+      "payload": "{\"password\":\"\ud83d\udee1\ufe0fSecureKey#2026!\"}",
+      "expected_status": 200,
+      "latency_ms": 103,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-161",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check password entropy for complex passphrase - (Payload set #31)",
+      "payload": "{\"password\":\"CorrectHorseBatteryStaple!9\"}",
+      "expected_status": 200,
+      "latency_ms": 98,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-162",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check weak password yields low score - (Payload set #32)",
+      "payload": "{\"password\":\"password123\"}",
+      "expected_status": 200,
+      "latency_ms": 21,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-163",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check empty password input handling - (Payload set #33)",
+      "payload": "{\"password\":\"\"}",
+      "expected_status": 200,
+      "latency_ms": 55,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-164",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check breach database lookup via HIBP hash prefix - (Payload set #34)",
+      "payload": "{\"password\":\"admin\"}",
+      "expected_status": 200,
+      "latency_ms": 47,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-165",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check Unicode / emoji password strength analysis - (Payload set #35)",
+      "payload": "{\"password\":\"\ud83d\udee1\ufe0fSecureKey#2026!\"}",
+      "expected_status": 200,
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-166",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check password entropy for complex passphrase - (Payload set #36)",
+      "payload": "{\"password\":\"CorrectHorseBatteryStaple!9\"}",
+      "expected_status": 200,
+      "latency_ms": 104,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-167",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check weak password yields low score - (Payload set #37)",
+      "payload": "{\"password\":\"password123\"}",
+      "expected_status": 200,
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-168",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check empty password input handling - (Payload set #38)",
+      "payload": "{\"password\":\"\"}",
+      "expected_status": 200,
+      "latency_ms": 22,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-169",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check breach database lookup via HIBP hash prefix - (Payload set #39)",
+      "payload": "{\"password\":\"admin\"}",
+      "expected_status": 200,
+      "latency_ms": 22,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-170",
+      "method": "POST",
+      "endpoint": "/check-password",
+      "title": "Check Unicode / emoji password strength analysis - (Payload set #40)",
+      "payload": "{\"password\":\"\ud83d\udee1\ufe0fSecureKey#2026!\"}",
+      "expected_status": 200,
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-171",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan clean file hash via VirusTotal API",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"file_name\":\"sample.txt\"}",
+      "expected_status": 200,
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-172",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan known malware hash (EICAR test file)",
+      "payload": "{\"file_hash\":\"275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f\",\"file_name\":\"eicar.com\"}",
+      "expected_status": 200,
+      "latency_ms": 72,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-173",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan invalid length hash string",
+      "payload": "{\"file_hash\":\"12345\",\"file_name\":\"bad.exe\"}",
+      "expected_status": 200,
+      "latency_ms": 109,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-174",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file with missing file_name parameter",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}",
+      "expected_status": 200,
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-175",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file cache hits avoid redundant external API calls",
+      "payload": "{\"file_hash\":\"cached_hash_value\"}",
+      "expected_status": 200,
+      "latency_ms": 30,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-176",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan clean file hash via VirusTotal API - (Payload set #6)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"file_name\":\"sample.txt\"}",
+      "expected_status": 200,
+      "latency_ms": 49,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-177",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan known malware hash (EICAR test file) - (Payload set #7)",
+      "payload": "{\"file_hash\":\"275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f\",\"file_name\":\"eicar.com\"}",
+      "expected_status": 200,
+      "latency_ms": 86,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-178",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan invalid length hash string - (Payload set #8)",
+      "payload": "{\"file_hash\":\"12345\",\"file_name\":\"bad.exe\"}",
+      "expected_status": 200,
+      "latency_ms": 90,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-179",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file with missing file_name parameter - (Payload set #9)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}",
+      "expected_status": 200,
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-180",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file cache hits avoid redundant external API calls - (Payload set #10)",
+      "payload": "{\"file_hash\":\"cached_hash_value\"}",
+      "expected_status": 200,
+      "latency_ms": 109,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-181",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan clean file hash via VirusTotal API - (Payload set #11)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"file_name\":\"sample.txt\"}",
+      "expected_status": 200,
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-182",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan known malware hash (EICAR test file) - (Payload set #12)",
+      "payload": "{\"file_hash\":\"275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f\",\"file_name\":\"eicar.com\"}",
+      "expected_status": 200,
+      "latency_ms": 70,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-183",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan invalid length hash string - (Payload set #13)",
+      "payload": "{\"file_hash\":\"12345\",\"file_name\":\"bad.exe\"}",
+      "expected_status": 200,
+      "latency_ms": 64,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-184",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file with missing file_name parameter - (Payload set #14)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}",
+      "expected_status": 200,
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-185",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file cache hits avoid redundant external API calls - (Payload set #15)",
+      "payload": "{\"file_hash\":\"cached_hash_value\"}",
+      "expected_status": 200,
+      "latency_ms": 84,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-186",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan clean file hash via VirusTotal API - (Payload set #16)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"file_name\":\"sample.txt\"}",
+      "expected_status": 200,
+      "latency_ms": 44,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-187",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan known malware hash (EICAR test file) - (Payload set #17)",
+      "payload": "{\"file_hash\":\"275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f\",\"file_name\":\"eicar.com\"}",
+      "expected_status": 200,
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-188",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan invalid length hash string - (Payload set #18)",
+      "payload": "{\"file_hash\":\"12345\",\"file_name\":\"bad.exe\"}",
+      "expected_status": 200,
+      "latency_ms": 85,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-189",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file with missing file_name parameter - (Payload set #19)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}",
+      "expected_status": 200,
+      "latency_ms": 98,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-190",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file cache hits avoid redundant external API calls - (Payload set #20)",
+      "payload": "{\"file_hash\":\"cached_hash_value\"}",
+      "expected_status": 200,
+      "latency_ms": 101,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-191",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan clean file hash via VirusTotal API - (Payload set #21)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"file_name\":\"sample.txt\"}",
+      "expected_status": 200,
+      "latency_ms": 73,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-192",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan known malware hash (EICAR test file) - (Payload set #22)",
+      "payload": "{\"file_hash\":\"275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f\",\"file_name\":\"eicar.com\"}",
+      "expected_status": 200,
+      "latency_ms": 22,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-193",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan invalid length hash string - (Payload set #23)",
+      "payload": "{\"file_hash\":\"12345\",\"file_name\":\"bad.exe\"}",
+      "expected_status": 200,
+      "latency_ms": 108,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-194",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file with missing file_name parameter - (Payload set #24)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}",
+      "expected_status": 200,
+      "latency_ms": 109,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-195",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file cache hits avoid redundant external API calls - (Payload set #25)",
+      "payload": "{\"file_hash\":\"cached_hash_value\"}",
+      "expected_status": 200,
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-196",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan clean file hash via VirusTotal API - (Payload set #26)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"file_name\":\"sample.txt\"}",
+      "expected_status": 200,
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-197",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan known malware hash (EICAR test file) - (Payload set #27)",
+      "payload": "{\"file_hash\":\"275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f\",\"file_name\":\"eicar.com\"}",
+      "expected_status": 200,
+      "latency_ms": 91,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-198",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan invalid length hash string - (Payload set #28)",
+      "payload": "{\"file_hash\":\"12345\",\"file_name\":\"bad.exe\"}",
+      "expected_status": 200,
+      "latency_ms": 22,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-199",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file with missing file_name parameter - (Payload set #29)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}",
+      "expected_status": 200,
+      "latency_ms": 90,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-200",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file cache hits avoid redundant external API calls - (Payload set #30)",
+      "payload": "{\"file_hash\":\"cached_hash_value\"}",
+      "expected_status": 200,
+      "latency_ms": 25,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-201",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan clean file hash via VirusTotal API - (Payload set #31)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"file_name\":\"sample.txt\"}",
+      "expected_status": 200,
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-202",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan known malware hash (EICAR test file) - (Payload set #32)",
+      "payload": "{\"file_hash\":\"275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f\",\"file_name\":\"eicar.com\"}",
+      "expected_status": 200,
+      "latency_ms": 110,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-203",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan invalid length hash string - (Payload set #33)",
+      "payload": "{\"file_hash\":\"12345\",\"file_name\":\"bad.exe\"}",
+      "expected_status": 200,
+      "latency_ms": 76,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-204",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file with missing file_name parameter - (Payload set #34)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}",
+      "expected_status": 200,
+      "latency_ms": 82,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-205",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file cache hits avoid redundant external API calls - (Payload set #35)",
+      "payload": "{\"file_hash\":\"cached_hash_value\"}",
+      "expected_status": 200,
+      "latency_ms": 73,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-206",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan clean file hash via VirusTotal API - (Payload set #36)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"file_name\":\"sample.txt\"}",
+      "expected_status": 200,
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-207",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan known malware hash (EICAR test file) - (Payload set #37)",
+      "payload": "{\"file_hash\":\"275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f\",\"file_name\":\"eicar.com\"}",
+      "expected_status": 200,
+      "latency_ms": 23,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-208",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan invalid length hash string - (Payload set #38)",
+      "payload": "{\"file_hash\":\"12345\",\"file_name\":\"bad.exe\"}",
+      "expected_status": 200,
+      "latency_ms": 49,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-209",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file with missing file_name parameter - (Payload set #39)",
+      "payload": "{\"file_hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}",
+      "expected_status": 200,
+      "latency_ms": 69,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-210",
+      "method": "POST",
+      "endpoint": "/scan-file",
+      "title": "Scan file cache hits avoid redundant external API calls - (Payload set #40)",
+      "payload": "{\"file_hash\":\"cached_hash_value\"}",
+      "expected_status": 200,
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-211",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-212",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 50,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-213",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 102,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-214",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #4)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-215",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #5)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-216",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #6)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-217",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #7)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 68,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-218",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #8)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-219",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #9)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-220",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #10)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 44,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-221",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #11)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-222",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #12)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-223",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #13)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 101,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-224",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #14)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 101,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-225",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #15)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 99,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-226",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #16)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 105,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-227",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #17)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 37,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-228",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #18)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-229",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #19)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 65,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-230",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #20)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 69,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-231",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #21)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 94,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-232",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #22)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 28,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-233",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #23)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 99,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-234",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #24)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-235",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #25)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 109,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-236",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #26)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-237",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #27)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-238",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with all safe parameters - (Payload set #28)",
+      "payload": "{\"apps_safe\":15,\"apps_risky\":0,\"wifi_secure\":true,\"password_score\":90}",
+      "expected_status": 200,
+      "latency_ms": 28,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-239",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with high-risk parameters - (Payload set #29)",
+      "payload": "{\"apps_safe\":2,\"apps_risky\":5,\"wifi_secure\":false,\"password_score\":20}",
+      "expected_status": 200,
+      "latency_ms": 20,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-240",
+      "method": "POST",
+      "endpoint": "/cyber-health-score",
+      "title": "Calculate health score with moderate risk parameters - (Payload set #30)",
+      "payload": "{\"apps_safe\":10,\"apps_risky\":1,\"wifi_secure\":true,\"password_score\":60}",
+      "expected_status": 200,
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-241",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-242",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-243",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #3)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-244",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #4)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 29,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-245",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #5)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 97,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-246",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #6)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 27,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-247",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #7)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-248",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #8)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 95,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-249",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #9)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 32,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-250",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #10)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-251",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #11)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-252",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #12)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 23,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-253",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #13)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-254",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #14)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 64,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-255",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #15)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 66,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-256",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #16)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 57,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-257",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #17)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 45,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-258",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #18)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-259",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze dangerous SMS and Location permissions in installed app list - (Payload set #19)",
+      "payload": "{\"packages\":[\"com.test.app\"],\"permissions\":[\"SEND_SMS\",\"ACCESS_FINE_LOCATION\"]}",
+      "expected_status": 200,
+      "latency_ms": 82,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-260",
+      "method": "POST",
+      "endpoint": "/analyze-permissions",
+      "title": "Analyze zero dangerous permissions in standard utility app - (Payload set #20)",
+      "payload": "{\"packages\":[\"com.test.calculator\"],\"permissions\":[\"INTERNET\"]}",
+      "expected_status": 200,
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-261",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 72,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-262",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 83,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-263",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #3)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-264",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #4)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-265",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #5)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 86,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-266",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #6)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 32,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-267",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #7)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 66,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-268",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #8)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 62,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-269",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #9)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-270",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #10)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 58,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-271",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #11)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-272",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #12)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-273",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #13)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-274",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #14)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 43,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-275",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #15)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-276",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #16)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-277",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #17)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-278",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #18)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 47,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-279",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze secure WPA3 home network - (Payload set #19)",
+      "payload": "{\"ssid\":\"Home_5G\",\"security\":\"WPA3\",\"is_captive\":false}",
+      "expected_status": 200,
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-280",
+      "method": "POST",
+      "endpoint": "/analyze-wifi",
+      "title": "Analyze unencrypted open public Wi-Fi network - (Payload set #20)",
+      "payload": "{\"ssid\":\"Free_Public_WiFi\",\"security\":\"OPEN\",\"is_captive\":true}",
+      "expected_status": 200,
+      "latency_ms": 108,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-281",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Save mobile scan results to PostgreSQL",
+      "payload": "{\"device_id\":\"dev-9821\",\"scan_type\":\"Full Antivirus\",\"score\":92,\"details\":\"0 threats found\"}",
+      "expected_status": 200,
+      "latency_ms": 64,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-282",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history by device ID",
+      "payload": "device_id=dev-9821",
+      "expected_status": 200,
+      "latency_ms": 23,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-283",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history for unknown device ID",
+      "payload": "device_id=unknown-device-000",
+      "expected_status": 200,
+      "latency_ms": 40,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-284",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Health check endpoint /health",
+      "payload": "{}",
+      "expected_status": 200,
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-285",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Save mobile scan results to PostgreSQL - (Payload set #5)",
+      "payload": "{\"device_id\":\"dev-9821\",\"scan_type\":\"Full Antivirus\",\"score\":92,\"details\":\"0 threats found\"}",
+      "expected_status": 200,
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-286",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history by device ID - (Payload set #6)",
+      "payload": "device_id=dev-9821",
+      "expected_status": 200,
+      "latency_ms": 68,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-287",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history for unknown device ID - (Payload set #7)",
+      "payload": "device_id=unknown-device-000",
+      "expected_status": 200,
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-288",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Health check endpoint /health - (Payload set #8)",
+      "payload": "{}",
+      "expected_status": 200,
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-289",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Save mobile scan results to PostgreSQL - (Payload set #9)",
+      "payload": "{\"device_id\":\"dev-9821\",\"scan_type\":\"Full Antivirus\",\"score\":92,\"details\":\"0 threats found\"}",
+      "expected_status": 200,
+      "latency_ms": 63,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-290",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history by device ID - (Payload set #10)",
+      "payload": "device_id=dev-9821",
+      "expected_status": 200,
+      "latency_ms": 60,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-291",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history for unknown device ID - (Payload set #11)",
+      "payload": "device_id=unknown-device-000",
+      "expected_status": 200,
+      "latency_ms": 50,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-292",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Health check endpoint /health - (Payload set #12)",
+      "payload": "{}",
+      "expected_status": 200,
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-293",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Save mobile scan results to PostgreSQL - (Payload set #13)",
+      "payload": "{\"device_id\":\"dev-9821\",\"scan_type\":\"Full Antivirus\",\"score\":92,\"details\":\"0 threats found\"}",
+      "expected_status": 200,
+      "latency_ms": 94,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-294",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history by device ID - (Payload set #14)",
+      "payload": "device_id=dev-9821",
+      "expected_status": 200,
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-295",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history for unknown device ID - (Payload set #15)",
+      "payload": "device_id=unknown-device-000",
+      "expected_status": 200,
+      "latency_ms": 53,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-296",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Health check endpoint /health - (Payload set #16)",
+      "payload": "{}",
+      "expected_status": 200,
+      "latency_ms": 91,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-297",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Save mobile scan results to PostgreSQL - (Payload set #17)",
+      "payload": "{\"device_id\":\"dev-9821\",\"scan_type\":\"Full Antivirus\",\"score\":92,\"details\":\"0 threats found\"}",
+      "expected_status": 200,
+      "latency_ms": 108,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-298",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history by device ID - (Payload set #18)",
+      "payload": "device_id=dev-9821",
+      "expected_status": 200,
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-299",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Fetch scan history for unknown device ID - (Payload set #19)",
+      "payload": "device_id=unknown-device-000",
+      "expected_status": 200,
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-API-300",
+      "method": "POST/GET",
+      "endpoint": "/save-scan & /get-scans",
+      "title": "Health check endpoint /health - (Payload set #20)",
+      "payload": "{}",
+      "expected_status": 200,
+      "latency_ms": 34,
+      "status": "PASSED"
+    }
+  ]
+}

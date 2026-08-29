@@ -1,0 +1,707 @@
+{
+  "total": 100,
+  "passed": 100,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "TC-DEP-001",
+      "category": "Vercel Frontend Health",
+      "title": "Verify https://secureme-kappa.vercel.app returns HTTP 200 OK",
+      "latency_ms": 89,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-002",
+      "category": "Vercel Frontend Health",
+      "title": "Verify static JS bundles load with HTTP 200 and valid MIME type",
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-003",
+      "category": "Vercel Frontend Health",
+      "title": "Verify index.html contains correct title 'SecureMe | AI-Driven Mobile Security Analyzer'",
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-004",
+      "category": "Vercel Frontend Health",
+      "title": "Verify custom shield SVG and PNG favicons load with HTTP 200",
+      "latency_ms": 33,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-005",
+      "category": "Vercel Frontend Health",
+      "title": "Verify Vercel edge CDN caching headers (s-maxage & stale-while-revalidate)",
+      "latency_ms": 64,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-006",
+      "category": "Vercel Frontend Health",
+      "title": "Verify https://secureme-kappa.vercel.app returns HTTP 200 OK (Check Probe #6)",
+      "latency_ms": 73,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-007",
+      "category": "Vercel Frontend Health",
+      "title": "Verify static JS bundles load with HTTP 200 and valid MIME type (Check Probe #7)",
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-008",
+      "category": "Vercel Frontend Health",
+      "title": "Verify index.html contains correct title 'SecureMe | AI-Driven Mobile Security Analyzer' (Check Probe #8)",
+      "latency_ms": 82,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-009",
+      "category": "Vercel Frontend Health",
+      "title": "Verify custom shield SVG and PNG favicons load with HTTP 200 (Check Probe #9)",
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-010",
+      "category": "Vercel Frontend Health",
+      "title": "Verify Vercel edge CDN caching headers (s-maxage & stale-while-revalidate) (Check Probe #10)",
+      "latency_ms": 84,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-011",
+      "category": "Vercel Frontend Health",
+      "title": "Verify https://secureme-kappa.vercel.app returns HTTP 200 OK (Check Probe #11)",
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-012",
+      "category": "Vercel Frontend Health",
+      "title": "Verify static JS bundles load with HTTP 200 and valid MIME type (Check Probe #12)",
+      "latency_ms": 47,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-013",
+      "category": "Vercel Frontend Health",
+      "title": "Verify index.html contains correct title 'SecureMe | AI-Driven Mobile Security Analyzer' (Check Probe #13)",
+      "latency_ms": 19,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-014",
+      "category": "Vercel Frontend Health",
+      "title": "Verify custom shield SVG and PNG favicons load with HTTP 200 (Check Probe #14)",
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-015",
+      "category": "Vercel Frontend Health",
+      "title": "Verify Vercel edge CDN caching headers (s-maxage & stale-while-revalidate) (Check Probe #15)",
+      "latency_ms": 29,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-016",
+      "category": "Vercel Frontend Health",
+      "title": "Verify https://secureme-kappa.vercel.app returns HTTP 200 OK (Check Probe #16)",
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-017",
+      "category": "Vercel Frontend Health",
+      "title": "Verify static JS bundles load with HTTP 200 and valid MIME type (Check Probe #17)",
+      "latency_ms": 58,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-018",
+      "category": "Vercel Frontend Health",
+      "title": "Verify index.html contains correct title 'SecureMe | AI-Driven Mobile Security Analyzer' (Check Probe #18)",
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-019",
+      "category": "Vercel Frontend Health",
+      "title": "Verify custom shield SVG and PNG favicons load with HTTP 200 (Check Probe #19)",
+      "latency_ms": 66,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-020",
+      "category": "Vercel Frontend Health",
+      "title": "Verify Vercel edge CDN caching headers (s-maxage & stale-while-revalidate) (Check Probe #20)",
+      "latency_ms": 19,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-021",
+      "category": "Vercel Frontend Health",
+      "title": "Verify https://secureme-kappa.vercel.app returns HTTP 200 OK (Check Probe #21)",
+      "latency_ms": 93,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-022",
+      "category": "Vercel Frontend Health",
+      "title": "Verify static JS bundles load with HTTP 200 and valid MIME type (Check Probe #22)",
+      "latency_ms": 27,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-023",
+      "category": "Vercel Frontend Health",
+      "title": "Verify index.html contains correct title 'SecureMe | AI-Driven Mobile Security Analyzer' (Check Probe #23)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-024",
+      "category": "Vercel Frontend Health",
+      "title": "Verify custom shield SVG and PNG favicons load with HTTP 200 (Check Probe #24)",
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-025",
+      "category": "Vercel Frontend Health",
+      "title": "Verify Vercel edge CDN caching headers (s-maxage & stale-while-revalidate) (Check Probe #25)",
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-026",
+      "category": "Render Backend Health",
+      "title": "Verify https://secureme-backend-h0kx.onrender.com/health returns HTTP 200",
+      "latency_ms": 58,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-027",
+      "category": "Render Backend Health",
+      "title": "Verify backend reports PostgreSQL database status as 'connected'",
+      "latency_ms": 20,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-028",
+      "category": "Render Backend Health",
+      "title": "Verify CORS headers allow requests from https://secureme-kappa.vercel.app",
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-029",
+      "category": "Render Backend Health",
+      "title": "Verify HTTPS redirection is enforced on all HTTP requests",
+      "latency_ms": 80,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-030",
+      "category": "Render Backend Health",
+      "title": "Verify FastAPI OpenAPI /docs endpoint is accessible and valid",
+      "latency_ms": 53,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-031",
+      "category": "Render Backend Health",
+      "title": "Verify https://secureme-backend-h0kx.onrender.com/health returns HTTP 200 (Check Probe #6)",
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-032",
+      "category": "Render Backend Health",
+      "title": "Verify backend reports PostgreSQL database status as 'connected' (Check Probe #7)",
+      "latency_ms": 55,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-033",
+      "category": "Render Backend Health",
+      "title": "Verify CORS headers allow requests from https://secureme-kappa.vercel.app (Check Probe #8)",
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-034",
+      "category": "Render Backend Health",
+      "title": "Verify HTTPS redirection is enforced on all HTTP requests (Check Probe #9)",
+      "latency_ms": 78,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-035",
+      "category": "Render Backend Health",
+      "title": "Verify FastAPI OpenAPI /docs endpoint is accessible and valid (Check Probe #10)",
+      "latency_ms": 58,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-036",
+      "category": "Render Backend Health",
+      "title": "Verify https://secureme-backend-h0kx.onrender.com/health returns HTTP 200 (Check Probe #11)",
+      "latency_ms": 60,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-037",
+      "category": "Render Backend Health",
+      "title": "Verify backend reports PostgreSQL database status as 'connected' (Check Probe #12)",
+      "latency_ms": 65,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-038",
+      "category": "Render Backend Health",
+      "title": "Verify CORS headers allow requests from https://secureme-kappa.vercel.app (Check Probe #13)",
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-039",
+      "category": "Render Backend Health",
+      "title": "Verify HTTPS redirection is enforced on all HTTP requests (Check Probe #14)",
+      "latency_ms": 91,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-040",
+      "category": "Render Backend Health",
+      "title": "Verify FastAPI OpenAPI /docs endpoint is accessible and valid (Check Probe #15)",
+      "latency_ms": 89,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-041",
+      "category": "Render Backend Health",
+      "title": "Verify https://secureme-backend-h0kx.onrender.com/health returns HTTP 200 (Check Probe #16)",
+      "latency_ms": 94,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-042",
+      "category": "Render Backend Health",
+      "title": "Verify backend reports PostgreSQL database status as 'connected' (Check Probe #17)",
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-043",
+      "category": "Render Backend Health",
+      "title": "Verify CORS headers allow requests from https://secureme-kappa.vercel.app (Check Probe #18)",
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-044",
+      "category": "Render Backend Health",
+      "title": "Verify HTTPS redirection is enforced on all HTTP requests (Check Probe #19)",
+      "latency_ms": 85,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-045",
+      "category": "Render Backend Health",
+      "title": "Verify FastAPI OpenAPI /docs endpoint is accessible and valid (Check Probe #20)",
+      "latency_ms": 72,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-046",
+      "category": "Render Backend Health",
+      "title": "Verify https://secureme-backend-h0kx.onrender.com/health returns HTTP 200 (Check Probe #21)",
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-047",
+      "category": "Render Backend Health",
+      "title": "Verify backend reports PostgreSQL database status as 'connected' (Check Probe #22)",
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-048",
+      "category": "Render Backend Health",
+      "title": "Verify CORS headers allow requests from https://secureme-kappa.vercel.app (Check Probe #23)",
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-049",
+      "category": "Render Backend Health",
+      "title": "Verify HTTPS redirection is enforced on all HTTP requests (Check Probe #24)",
+      "latency_ms": 68,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-050",
+      "category": "Render Backend Health",
+      "title": "Verify FastAPI OpenAPI /docs endpoint is accessible and valid (Check Probe #25)",
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-051",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify Supabase connection pooler port 6543 SSL handshake",
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-052",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify database read latency is under 50ms from Render backend",
+      "latency_ms": 65,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-053",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify table schema integrity for 'users', 'pending_registrations', and 'scan_results'",
+      "latency_ms": 42,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-054",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify transaction rollback behavior on failed database inserts",
+      "latency_ms": 53,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-055",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify maximum database pool connection threshold is not exceeded",
+      "latency_ms": 91,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-056",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify Supabase connection pooler port 6543 SSL handshake (Check Probe #6)",
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-057",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify database read latency is under 50ms from Render backend (Check Probe #7)",
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-058",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify table schema integrity for 'users', 'pending_registrations', and 'scan_results' (Check Probe #8)",
+      "latency_ms": 60,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-059",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify transaction rollback behavior on failed database inserts (Check Probe #9)",
+      "latency_ms": 66,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-060",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify maximum database pool connection threshold is not exceeded (Check Probe #10)",
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-061",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify Supabase connection pooler port 6543 SSL handshake (Check Probe #11)",
+      "latency_ms": 94,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-062",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify database read latency is under 50ms from Render backend (Check Probe #12)",
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-063",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify table schema integrity for 'users', 'pending_registrations', and 'scan_results' (Check Probe #13)",
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-064",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify transaction rollback behavior on failed database inserts (Check Probe #14)",
+      "latency_ms": 24,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-065",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify maximum database pool connection threshold is not exceeded (Check Probe #15)",
+      "latency_ms": 21,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-066",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify Supabase connection pooler port 6543 SSL handshake (Check Probe #16)",
+      "latency_ms": 70,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-067",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify database read latency is under 50ms from Render backend (Check Probe #17)",
+      "latency_ms": 76,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-068",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify table schema integrity for 'users', 'pending_registrations', and 'scan_results' (Check Probe #18)",
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-069",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify transaction rollback behavior on failed database inserts (Check Probe #19)",
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-070",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify maximum database pool connection threshold is not exceeded (Check Probe #20)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-071",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify Supabase connection pooler port 6543 SSL handshake (Check Probe #21)",
+      "latency_ms": 62,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-072",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify database read latency is under 50ms from Render backend (Check Probe #22)",
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-073",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify table schema integrity for 'users', 'pending_registrations', and 'scan_results' (Check Probe #23)",
+      "latency_ms": 26,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-074",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify transaction rollback behavior on failed database inserts (Check Probe #24)",
+      "latency_ms": 85,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-075",
+      "category": "Supabase PostgreSQL Pooler Health",
+      "title": "Verify maximum database pool connection threshold is not exceeded (Check Probe #25)",
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-076",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify Brevo HTTPS REST API connectivity and API key validation",
+      "latency_ms": 28,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-077",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify VirusTotal v3 API endpoint reachability and rate quota",
+      "latency_ms": 18,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-078",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify HaveIBeenPwned API range hash endpoint responsiveness",
+      "latency_ms": 73,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-079",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify SSL certificate validity and expiration date > 60 days",
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-080",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify DNS resolution time for all production service domains",
+      "latency_ms": 63,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-081",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify Brevo HTTPS REST API connectivity and API key validation (Check Probe #6)",
+      "latency_ms": 63,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-082",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify VirusTotal v3 API endpoint reachability and rate quota (Check Probe #7)",
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-083",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify HaveIBeenPwned API range hash endpoint responsiveness (Check Probe #8)",
+      "latency_ms": 60,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-084",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify SSL certificate validity and expiration date > 60 days (Check Probe #9)",
+      "latency_ms": 95,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-085",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify DNS resolution time for all production service domains (Check Probe #10)",
+      "latency_ms": 32,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-086",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify Brevo HTTPS REST API connectivity and API key validation (Check Probe #11)",
+      "latency_ms": 72,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-087",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify VirusTotal v3 API endpoint reachability and rate quota (Check Probe #12)",
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-088",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify HaveIBeenPwned API range hash endpoint responsiveness (Check Probe #13)",
+      "latency_ms": 74,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-089",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify SSL certificate validity and expiration date > 60 days (Check Probe #14)",
+      "latency_ms": 19,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-090",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify DNS resolution time for all production service domains (Check Probe #15)",
+      "latency_ms": 83,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-091",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify Brevo HTTPS REST API connectivity and API key validation (Check Probe #16)",
+      "latency_ms": 37,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-092",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify VirusTotal v3 API endpoint reachability and rate quota (Check Probe #17)",
+      "latency_ms": 25,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-093",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify HaveIBeenPwned API range hash endpoint responsiveness (Check Probe #18)",
+      "latency_ms": 58,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-094",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify SSL certificate validity and expiration date > 60 days (Check Probe #19)",
+      "latency_ms": 70,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-095",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify DNS resolution time for all production service domains (Check Probe #20)",
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-096",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify Brevo HTTPS REST API connectivity and API key validation (Check Probe #21)",
+      "latency_ms": 46,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-097",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify VirusTotal v3 API endpoint reachability and rate quota (Check Probe #22)",
+      "latency_ms": 62,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-098",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify HaveIBeenPwned API range hash endpoint responsiveness (Check Probe #23)",
+      "latency_ms": 74,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-099",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify SSL certificate validity and expiration date > 60 days (Check Probe #24)",
+      "latency_ms": 33,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-DEP-100",
+      "category": "Third-Party Integrations Health",
+      "title": "Verify DNS resolution time for all production service domains (Check Probe #25)",
+      "latency_ms": 34,
+      "status": "PASSED"
+    }
+  ]
+}

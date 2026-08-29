@@ -1,0 +1,20 @@
+{
+  "name": "secureme-appium-tests",
+  "version": "1.0.0",
+  "description": "Appium Mobile E2E Automation Testing Suite for SecureMe Android/iOS App",
+  "main": "tests/appium-login-tests.js",
+  "scripts": {
+    "test:android": "mocha tests/**/*.js --timeout 120000",
+    "test:ios": "PLATFORM_NAME=iOS mocha tests/**/*.js --timeout 120000",
+    "generate-report": "python generate_appium_report.py"
+  },
+  "dependencies": {
+    "webdriverio": "^8.36.0",
+    "@wdio/appium-service": "^8.36.0",
+    "appium": "^2.5.4",
+    "appium-uiautomator2-driver": "^3.5.3",
+    "appium-xcuitest-driver": "^7.1.0",
+    "mocha": "^10.4.0",
+    "chai": "^4.3.10"
+  }
+}

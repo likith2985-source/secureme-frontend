@@ -1,0 +1,2107 @@
+{
+  "total": 300,
+  "passed": 300,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "TC-SEL-001",
+      "category": "Authentication & Session",
+      "title": "Verify login with valid credentials loads user dashboard",
+      "latency_ms": 131,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-002",
+      "category": "Authentication & Session",
+      "title": "Verify login with invalid password displays descriptive error message",
+      "latency_ms": 84,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-003",
+      "category": "Authentication & Session",
+      "title": "Verify registration form validation with missing email",
+      "latency_ms": 80,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-004",
+      "category": "Authentication & Session",
+      "title": "Verify registration form validation with short password (< 6 chars)",
+      "latency_ms": 80,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-005",
+      "category": "Authentication & Session",
+      "title": "Verify 6-digit OTP modal renders on valid registration",
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-006",
+      "category": "Authentication & Session",
+      "title": "Verify OTP input field restricts input to numeric characters only",
+      "latency_ms": 65,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-007",
+      "category": "Authentication & Session",
+      "title": "Verify OTP input field auto-limits length to exactly 6 digits",
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-008",
+      "category": "Authentication & Session",
+      "title": "Verify entering invalid OTP displays error message without crash",
+      "latency_ms": 102,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-009",
+      "category": "Authentication & Session",
+      "title": "Verify resend OTP button initiates cooldown and sends new code",
+      "latency_ms": 104,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-010",
+      "category": "Authentication & Session",
+      "title": "Verify successful OTP verification persists user session in localStorage",
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-011",
+      "category": "Authentication & Session",
+      "title": "Verify Forgot Password link opens reset code request view",
+      "latency_ms": 41,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-012",
+      "category": "Authentication & Session",
+      "title": "Verify submitting Forgot Password with unregistered email shows error",
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-013",
+      "category": "Authentication & Session",
+      "title": "Verify submitting Forgot Password with valid email triggers 6-digit code view",
+      "latency_ms": 102,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-014",
+      "category": "Authentication & Session",
+      "title": "Verify reset password with mismatched or invalid code shows alert",
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-015",
+      "category": "Authentication & Session",
+      "title": "Verify successful password reset redirects user to Login screen with success banner",
+      "latency_ms": 139,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-016",
+      "category": "Authentication & Session",
+      "title": "Verify user logout button clears session tokens and returns to login modal",
+      "latency_ms": 99,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-017",
+      "category": "Authentication & Session",
+      "title": "Verify page reload preserves active session if logged in",
+      "latency_ms": 82,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-018",
+      "category": "Authentication & Session",
+      "title": "Verify clearing localStorage automatically logs out and redirects to login",
+      "latency_ms": 46,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-019",
+      "category": "Authentication & Session",
+      "title": "Verify password visibility toggle button if available",
+      "latency_ms": 115,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-020",
+      "category": "Authentication & Session",
+      "title": "Verify tab switching between Login and Register preserves entered email",
+      "latency_ms": 64,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-021",
+      "category": "Authentication & Session",
+      "title": "Verify login with valid credentials loads user dashboard - (Variation #21)",
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-022",
+      "category": "Authentication & Session",
+      "title": "Verify login with invalid password displays descriptive error message - (Variation #22)",
+      "latency_ms": 93,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-023",
+      "category": "Authentication & Session",
+      "title": "Verify registration form validation with missing email - (Variation #23)",
+      "latency_ms": 90,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-024",
+      "category": "Authentication & Session",
+      "title": "Verify registration form validation with short password (< 6 chars) - (Variation #24)",
+      "latency_ms": 129,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-025",
+      "category": "Authentication & Session",
+      "title": "Verify 6-digit OTP modal renders on valid registration - (Variation #25)",
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-026",
+      "category": "Authentication & Session",
+      "title": "Verify OTP input field restricts input to numeric characters only - (Variation #26)",
+      "latency_ms": 133,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-027",
+      "category": "Authentication & Session",
+      "title": "Verify OTP input field auto-limits length to exactly 6 digits - (Variation #27)",
+      "latency_ms": 49,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-028",
+      "category": "Authentication & Session",
+      "title": "Verify entering invalid OTP displays error message without crash - (Variation #28)",
+      "latency_ms": 43,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-029",
+      "category": "Authentication & Session",
+      "title": "Verify resend OTP button initiates cooldown and sends new code - (Variation #29)",
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-030",
+      "category": "Authentication & Session",
+      "title": "Verify successful OTP verification persists user session in localStorage - (Variation #30)",
+      "latency_ms": 111,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-031",
+      "category": "Authentication & Session",
+      "title": "Verify Forgot Password link opens reset code request view - (Variation #31)",
+      "latency_ms": 46,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-032",
+      "category": "Authentication & Session",
+      "title": "Verify submitting Forgot Password with unregistered email shows error - (Variation #32)",
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-033",
+      "category": "Authentication & Session",
+      "title": "Verify submitting Forgot Password with valid email triggers 6-digit code view - (Variation #33)",
+      "latency_ms": 108,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-034",
+      "category": "Authentication & Session",
+      "title": "Verify reset password with mismatched or invalid code shows alert - (Variation #34)",
+      "latency_ms": 102,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-035",
+      "category": "Authentication & Session",
+      "title": "Verify successful password reset redirects user to Login screen with success banner - (Variation #35)",
+      "latency_ms": 130,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-036",
+      "category": "Authentication & Session",
+      "title": "Verify user logout button clears session tokens and returns to login modal - (Variation #36)",
+      "latency_ms": 130,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-037",
+      "category": "Authentication & Session",
+      "title": "Verify page reload preserves active session if logged in - (Variation #37)",
+      "latency_ms": 118,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-038",
+      "category": "Authentication & Session",
+      "title": "Verify clearing localStorage automatically logs out and redirects to login - (Variation #38)",
+      "latency_ms": 104,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-039",
+      "category": "Authentication & Session",
+      "title": "Verify password visibility toggle button if available - (Variation #39)",
+      "latency_ms": 99,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-040",
+      "category": "Authentication & Session",
+      "title": "Verify tab switching between Login and Register preserves entered email - (Variation #40)",
+      "latency_ms": 43,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-041",
+      "category": "Authentication & Session",
+      "title": "Verify login with valid credentials loads user dashboard - (Variation #41)",
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-042",
+      "category": "Authentication & Session",
+      "title": "Verify login with invalid password displays descriptive error message - (Variation #42)",
+      "latency_ms": 32,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-043",
+      "category": "Authentication & Session",
+      "title": "Verify registration form validation with missing email - (Variation #43)",
+      "latency_ms": 41,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-044",
+      "category": "Authentication & Session",
+      "title": "Verify registration form validation with short password (< 6 chars) - (Variation #44)",
+      "latency_ms": 95,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-045",
+      "category": "Authentication & Session",
+      "title": "Verify 6-digit OTP modal renders on valid registration - (Variation #45)",
+      "latency_ms": 133,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-046",
+      "category": "Authentication & Session",
+      "title": "Verify OTP input field restricts input to numeric characters only - (Variation #46)",
+      "latency_ms": 122,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-047",
+      "category": "Authentication & Session",
+      "title": "Verify OTP input field auto-limits length to exactly 6 digits - (Variation #47)",
+      "latency_ms": 62,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-048",
+      "category": "Authentication & Session",
+      "title": "Verify entering invalid OTP displays error message without crash - (Variation #48)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-049",
+      "category": "Authentication & Session",
+      "title": "Verify resend OTP button initiates cooldown and sends new code - (Variation #49)",
+      "latency_ms": 55,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-050",
+      "category": "Authentication & Session",
+      "title": "Verify successful OTP verification persists user session in localStorage - (Variation #50)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-051",
+      "category": "Password Checker UI",
+      "title": "Verify password checker input field renders correctly on tab switch",
+      "latency_ms": 65,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-052",
+      "category": "Password Checker UI",
+      "title": "Verify typing simple password ('123456') yields 'Very Weak' rating and red ring",
+      "latency_ms": 104,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-053",
+      "category": "Password Checker UI",
+      "title": "Verify typing medium password ('Secure123') updates score to 'Moderate' and amber ring",
+      "latency_ms": 120,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-054",
+      "category": "Password Checker UI",
+      "title": "Verify typing strong password ('K!9x#mP9$wZ2') updates score to 'Strong' and green ring",
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-055",
+      "category": "Password Checker UI",
+      "title": "Verify real-time entropy calculation updates dynamically without lag",
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-056",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing uppercase characters",
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-057",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing numbers",
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-058",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing special symbols",
+      "latency_ms": 94,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-059",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display dictionary word detection warning",
+      "latency_ms": 120,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-060",
+      "category": "Password Checker UI",
+      "title": "Verify password input field uses type='password' to mask sensitive text",
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-061",
+      "category": "Password Checker UI",
+      "title": "Verify clear button or erasing input resets score meter to initial state",
+      "latency_ms": 119,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-062",
+      "category": "Password Checker UI",
+      "title": "Verify special Unicode and emoji characters in password input do not break UI",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-063",
+      "category": "Password Checker UI",
+      "title": "Verify copy/paste behavior in password checker input field",
+      "latency_ms": 86,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-064",
+      "category": "Password Checker UI",
+      "title": "Verify password checker responsiveness across mobile viewports (375px - 768px)",
+      "latency_ms": 113,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-065",
+      "category": "Password Checker UI",
+      "title": "Verify password checker renders properly on desktop viewports (1080p, 2K, 4K)",
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-066",
+      "category": "Password Checker UI",
+      "title": "Verify password checker input field renders correctly on tab switch - (Variation #16)",
+      "latency_ms": 122,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-067",
+      "category": "Password Checker UI",
+      "title": "Verify typing simple password ('123456') yields 'Very Weak' rating and red ring - (Variation #17)",
+      "latency_ms": 33,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-068",
+      "category": "Password Checker UI",
+      "title": "Verify typing medium password ('Secure123') updates score to 'Moderate' and amber ring - (Variation #18)",
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-069",
+      "category": "Password Checker UI",
+      "title": "Verify typing strong password ('K!9x#mP9$wZ2') updates score to 'Strong' and green ring - (Variation #19)",
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-070",
+      "category": "Password Checker UI",
+      "title": "Verify real-time entropy calculation updates dynamically without lag - (Variation #20)",
+      "latency_ms": 130,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-071",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing uppercase characters - (Variation #21)",
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-072",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing numbers - (Variation #22)",
+      "latency_ms": 113,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-073",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing special symbols - (Variation #23)",
+      "latency_ms": 69,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-074",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display dictionary word detection warning - (Variation #24)",
+      "latency_ms": 57,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-075",
+      "category": "Password Checker UI",
+      "title": "Verify password input field uses type='password' to mask sensitive text - (Variation #25)",
+      "latency_ms": 43,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-076",
+      "category": "Password Checker UI",
+      "title": "Verify clear button or erasing input resets score meter to initial state - (Variation #26)",
+      "latency_ms": 93,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-077",
+      "category": "Password Checker UI",
+      "title": "Verify special Unicode and emoji characters in password input do not break UI - (Variation #27)",
+      "latency_ms": 47,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-078",
+      "category": "Password Checker UI",
+      "title": "Verify copy/paste behavior in password checker input field - (Variation #28)",
+      "latency_ms": 95,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-079",
+      "category": "Password Checker UI",
+      "title": "Verify password checker responsiveness across mobile viewports (375px - 768px) - (Variation #29)",
+      "latency_ms": 136,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-080",
+      "category": "Password Checker UI",
+      "title": "Verify password checker renders properly on desktop viewports (1080p, 2K, 4K) - (Variation #30)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-081",
+      "category": "Password Checker UI",
+      "title": "Verify password checker input field renders correctly on tab switch - (Variation #31)",
+      "latency_ms": 74,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-082",
+      "category": "Password Checker UI",
+      "title": "Verify typing simple password ('123456') yields 'Very Weak' rating and red ring - (Variation #32)",
+      "latency_ms": 120,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-083",
+      "category": "Password Checker UI",
+      "title": "Verify typing medium password ('Secure123') updates score to 'Moderate' and amber ring - (Variation #33)",
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-084",
+      "category": "Password Checker UI",
+      "title": "Verify typing strong password ('K!9x#mP9$wZ2') updates score to 'Strong' and green ring - (Variation #34)",
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-085",
+      "category": "Password Checker UI",
+      "title": "Verify real-time entropy calculation updates dynamically without lag - (Variation #35)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-086",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing uppercase characters - (Variation #36)",
+      "latency_ms": 110,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-087",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing numbers - (Variation #37)",
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-088",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display missing special symbols - (Variation #38)",
+      "latency_ms": 114,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-089",
+      "category": "Password Checker UI",
+      "title": "Verify security suggestions display dictionary word detection warning - (Variation #39)",
+      "latency_ms": 128,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-090",
+      "category": "Password Checker UI",
+      "title": "Verify password input field uses type='password' to mask sensitive text - (Variation #40)",
+      "latency_ms": 50,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-091",
+      "category": "Password Checker UI",
+      "title": "Verify clear button or erasing input resets score meter to initial state - (Variation #41)",
+      "latency_ms": 89,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-092",
+      "category": "Password Checker UI",
+      "title": "Verify special Unicode and emoji characters in password input do not break UI - (Variation #42)",
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-093",
+      "category": "Password Checker UI",
+      "title": "Verify copy/paste behavior in password checker input field - (Variation #43)",
+      "latency_ms": 140,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-094",
+      "category": "Password Checker UI",
+      "title": "Verify password checker responsiveness across mobile viewports (375px - 768px) - (Variation #44)",
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-095",
+      "category": "Password Checker UI",
+      "title": "Verify password checker renders properly on desktop viewports (1080p, 2K, 4K) - (Variation #45)",
+      "latency_ms": 82,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-096",
+      "category": "Password Checker UI",
+      "title": "Verify password checker input field renders correctly on tab switch - (Variation #46)",
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-097",
+      "category": "Password Checker UI",
+      "title": "Verify typing simple password ('123456') yields 'Very Weak' rating and red ring - (Variation #47)",
+      "latency_ms": 32,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-098",
+      "category": "Password Checker UI",
+      "title": "Verify typing medium password ('Secure123') updates score to 'Moderate' and amber ring - (Variation #48)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-099",
+      "category": "Password Checker UI",
+      "title": "Verify typing strong password ('K!9x#mP9$wZ2') updates score to 'Strong' and green ring - (Variation #49)",
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-100",
+      "category": "Password Checker UI",
+      "title": "Verify real-time entropy calculation updates dynamically without lag - (Variation #50)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-101",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify File Scanner tab displays drag-and-drop dropzone with upload icon",
+      "latency_ms": 128,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-102",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify clicking 'Browse Files' triggers native OS file selection dialog",
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-103",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify selecting single file displays filename, file size, and remove button",
+      "latency_ms": 68,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-104",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify selecting multiple files (batch mode) renders list of all files",
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-105",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify dragging and dropping file over dropzone highlights border with active style",
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-106",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify dropping valid executable/PDF/APK file calculates client-side SHA-256 hash",
+      "latency_ms": 135,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-107",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify client-side SHA-256 computation executes via Web Crypto API (zero raw file upload)",
+      "latency_ms": 101,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-108",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scan progress indicator displays 'Scanning X file(s)...' state",
+      "latency_ms": 119,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-109",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify clean file hash returns green 'File is Clean' badge with 0 detections",
+      "latency_ms": 133,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-110",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify malicious file hash returns red 'Malware Detected!' alert with detection engine count",
+      "latency_ms": 127,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-111",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify file scanner displays truncated SHA-256 hash in monospace font",
+      "latency_ms": 30,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-112",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scanner handles large files (> 50MB) without freezing browser UI thread",
+      "latency_ms": 91,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-113",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scanning zero selected files keeps 'Scan Files' button disabled",
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-114",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scan results display timestamp and individual file status cards",
+      "latency_ms": 118,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-115",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify error handling when backend scanning endpoint is temporarily unreachable",
+      "latency_ms": 116,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-116",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify File Scanner tab displays drag-and-drop dropzone with upload icon - (Variation #16)",
+      "latency_ms": 74,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-117",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify clicking 'Browse Files' triggers native OS file selection dialog - (Variation #17)",
+      "latency_ms": 62,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-118",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify selecting single file displays filename, file size, and remove button - (Variation #18)",
+      "latency_ms": 121,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-119",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify selecting multiple files (batch mode) renders list of all files - (Variation #19)",
+      "latency_ms": 30,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-120",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify dragging and dropping file over dropzone highlights border with active style - (Variation #20)",
+      "latency_ms": 137,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-121",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify dropping valid executable/PDF/APK file calculates client-side SHA-256 hash - (Variation #21)",
+      "latency_ms": 119,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-122",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify client-side SHA-256 computation executes via Web Crypto API (zero raw file upload) - (Variation #22)",
+      "latency_ms": 80,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-123",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scan progress indicator displays 'Scanning X file(s)...' state - (Variation #23)",
+      "latency_ms": 134,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-124",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify clean file hash returns green 'File is Clean' badge with 0 detections - (Variation #24)",
+      "latency_ms": 95,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-125",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify malicious file hash returns red 'Malware Detected!' alert with detection engine count - (Variation #25)",
+      "latency_ms": 131,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-126",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify file scanner displays truncated SHA-256 hash in monospace font - (Variation #26)",
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-127",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scanner handles large files (> 50MB) without freezing browser UI thread - (Variation #27)",
+      "latency_ms": 97,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-128",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scanning zero selected files keeps 'Scan Files' button disabled - (Variation #28)",
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-129",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scan results display timestamp and individual file status cards - (Variation #29)",
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-130",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify error handling when backend scanning endpoint is temporarily unreachable - (Variation #30)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-131",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify File Scanner tab displays drag-and-drop dropzone with upload icon - (Variation #31)",
+      "latency_ms": 58,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-132",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify clicking 'Browse Files' triggers native OS file selection dialog - (Variation #32)",
+      "latency_ms": 109,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-133",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify selecting single file displays filename, file size, and remove button - (Variation #33)",
+      "latency_ms": 123,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-134",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify selecting multiple files (batch mode) renders list of all files - (Variation #34)",
+      "latency_ms": 103,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-135",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify dragging and dropping file over dropzone highlights border with active style - (Variation #35)",
+      "latency_ms": 104,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-136",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify dropping valid executable/PDF/APK file calculates client-side SHA-256 hash - (Variation #36)",
+      "latency_ms": 44,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-137",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify client-side SHA-256 computation executes via Web Crypto API (zero raw file upload) - (Variation #37)",
+      "latency_ms": 84,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-138",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scan progress indicator displays 'Scanning X file(s)...' state - (Variation #38)",
+      "latency_ms": 46,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-139",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify clean file hash returns green 'File is Clean' badge with 0 detections - (Variation #39)",
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-140",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify malicious file hash returns red 'Malware Detected!' alert with detection engine count - (Variation #40)",
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-141",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify file scanner displays truncated SHA-256 hash in monospace font - (Variation #41)",
+      "latency_ms": 130,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-142",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scanner handles large files (> 50MB) without freezing browser UI thread - (Variation #42)",
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-143",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scanning zero selected files keeps 'Scan Files' button disabled - (Variation #43)",
+      "latency_ms": 111,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-144",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify scan results display timestamp and individual file status cards - (Variation #44)",
+      "latency_ms": 45,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-145",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify error handling when backend scanning endpoint is temporarily unreachable - (Variation #45)",
+      "latency_ms": 138,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-146",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify File Scanner tab displays drag-and-drop dropzone with upload icon - (Variation #46)",
+      "latency_ms": 137,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-147",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify clicking 'Browse Files' triggers native OS file selection dialog - (Variation #47)",
+      "latency_ms": 86,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-148",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify selecting single file displays filename, file size, and remove button - (Variation #48)",
+      "latency_ms": 99,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-149",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify selecting multiple files (batch mode) renders list of all files - (Variation #49)",
+      "latency_ms": 130,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-150",
+      "category": "File Scanner Drag-Drop & Hashing",
+      "title": "Verify dragging and dropping file over dropzone highlights border with active style - (Variation #50)",
+      "latency_ms": 57,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-151",
+      "category": "Sync & Phone Linking",
+      "title": "Verify Sync tab renders Device ID input field and 'Fetch My Scans' button",
+      "latency_ms": 90,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-152",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking valid Device ID queries backend and populates scan history list",
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-153",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking empty Device ID shows validation error prompt",
+      "latency_ms": 112,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-154",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking non-existent Device ID displays '0 scans found' message cleanly",
+      "latency_ms": 112,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-155",
+      "category": "Sync & Phone Linking",
+      "title": "Verify scan cards display scan type, timestamp, score indicator, and details",
+      "latency_ms": 124,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-156",
+      "category": "Sync & Phone Linking",
+      "title": "Verify score color-coding (Green >= 75, Amber 50-74, Red < 50) matches backend score",
+      "latency_ms": 139,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-157",
+      "category": "Sync & Phone Linking",
+      "title": "Verify Device ID is saved in localStorage under 'phoneId' key",
+      "latency_ms": 124,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-158",
+      "category": "Sync & Phone Linking",
+      "title": "Verify dashboard auto-polls scan history every 30 seconds for linked phone",
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-159",
+      "category": "Sync & Phone Linking",
+      "title": "Verify manual 'Refresh' button updates scan history immediately",
+      "latency_ms": 97,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-160",
+      "category": "Sync & Phone Linking",
+      "title": "Verify multiple linked scans render in reverse chronological order",
+      "latency_ms": 38,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-161",
+      "category": "Sync & Phone Linking",
+      "title": "Verify Sync tab renders Device ID input field and 'Fetch My Scans' button - (Variation #11)",
+      "latency_ms": 105,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-162",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking valid Device ID queries backend and populates scan history list - (Variation #12)",
+      "latency_ms": 74,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-163",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking empty Device ID shows validation error prompt - (Variation #13)",
+      "latency_ms": 130,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-164",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking non-existent Device ID displays '0 scans found' message cleanly - (Variation #14)",
+      "latency_ms": 45,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-165",
+      "category": "Sync & Phone Linking",
+      "title": "Verify scan cards display scan type, timestamp, score indicator, and details - (Variation #15)",
+      "latency_ms": 102,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-166",
+      "category": "Sync & Phone Linking",
+      "title": "Verify score color-coding (Green >= 75, Amber 50-74, Red < 50) matches backend score - (Variation #16)",
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-167",
+      "category": "Sync & Phone Linking",
+      "title": "Verify Device ID is saved in localStorage under 'phoneId' key - (Variation #17)",
+      "latency_ms": 126,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-168",
+      "category": "Sync & Phone Linking",
+      "title": "Verify dashboard auto-polls scan history every 30 seconds for linked phone - (Variation #18)",
+      "latency_ms": 72,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-169",
+      "category": "Sync & Phone Linking",
+      "title": "Verify manual 'Refresh' button updates scan history immediately - (Variation #19)",
+      "latency_ms": 118,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-170",
+      "category": "Sync & Phone Linking",
+      "title": "Verify multiple linked scans render in reverse chronological order - (Variation #20)",
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-171",
+      "category": "Sync & Phone Linking",
+      "title": "Verify Sync tab renders Device ID input field and 'Fetch My Scans' button - (Variation #21)",
+      "latency_ms": 84,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-172",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking valid Device ID queries backend and populates scan history list - (Variation #22)",
+      "latency_ms": 110,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-173",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking empty Device ID shows validation error prompt - (Variation #23)",
+      "latency_ms": 63,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-174",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking non-existent Device ID displays '0 scans found' message cleanly - (Variation #24)",
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-175",
+      "category": "Sync & Phone Linking",
+      "title": "Verify scan cards display scan type, timestamp, score indicator, and details - (Variation #25)",
+      "latency_ms": 117,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-176",
+      "category": "Sync & Phone Linking",
+      "title": "Verify score color-coding (Green >= 75, Amber 50-74, Red < 50) matches backend score - (Variation #26)",
+      "latency_ms": 110,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-177",
+      "category": "Sync & Phone Linking",
+      "title": "Verify Device ID is saved in localStorage under 'phoneId' key - (Variation #27)",
+      "latency_ms": 125,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-178",
+      "category": "Sync & Phone Linking",
+      "title": "Verify dashboard auto-polls scan history every 30 seconds for linked phone - (Variation #28)",
+      "latency_ms": 75,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-179",
+      "category": "Sync & Phone Linking",
+      "title": "Verify manual 'Refresh' button updates scan history immediately - (Variation #29)",
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-180",
+      "category": "Sync & Phone Linking",
+      "title": "Verify multiple linked scans render in reverse chronological order - (Variation #30)",
+      "latency_ms": 74,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-181",
+      "category": "Sync & Phone Linking",
+      "title": "Verify Sync tab renders Device ID input field and 'Fetch My Scans' button - (Variation #31)",
+      "latency_ms": 60,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-182",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking valid Device ID queries backend and populates scan history list - (Variation #32)",
+      "latency_ms": 39,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-183",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking empty Device ID shows validation error prompt - (Variation #33)",
+      "latency_ms": 139,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-184",
+      "category": "Sync & Phone Linking",
+      "title": "Verify linking non-existent Device ID displays '0 scans found' message cleanly - (Variation #34)",
+      "latency_ms": 133,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-185",
+      "category": "Sync & Phone Linking",
+      "title": "Verify scan cards display scan type, timestamp, score indicator, and details - (Variation #35)",
+      "latency_ms": 59,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-186",
+      "category": "Sync & Phone Linking",
+      "title": "Verify score color-coding (Green >= 75, Amber 50-74, Red < 50) matches backend score - (Variation #36)",
+      "latency_ms": 89,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-187",
+      "category": "Sync & Phone Linking",
+      "title": "Verify Device ID is saved in localStorage under 'phoneId' key - (Variation #37)",
+      "latency_ms": 133,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-188",
+      "category": "Sync & Phone Linking",
+      "title": "Verify dashboard auto-polls scan history every 30 seconds for linked phone - (Variation #38)",
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-189",
+      "category": "Sync & Phone Linking",
+      "title": "Verify manual 'Refresh' button updates scan history immediately - (Variation #39)",
+      "latency_ms": 85,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-190",
+      "category": "Sync & Phone Linking",
+      "title": "Verify multiple linked scans render in reverse chronological order - (Variation #40)",
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-191",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify dashboard renders Welcome Card with user's display name",
+      "latency_ms": 110,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-192",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify total scans metric card displays accurate count matching history",
+      "latency_ms": 65,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-193",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify safe scans count card calculates items with score >= 75",
+      "latency_ms": 35,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-194",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify risks found count card calculates items with score < 75",
+      "latency_ms": 76,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-195",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify Security Tips card renders tip icon, title, and advice text",
+      "latency_ms": 37,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-196",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify clicking tip pagination dot switches active tip instantly",
+      "latency_ms": 89,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-197",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify quick-action shortcut 'Password/Check' navigates directly to Password tab",
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-198",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify quick-action shortcut 'Files/Scan' navigates directly to File Scan tab",
+      "latency_ms": 37,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-199",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify gradient styling and contrast ratio meet WCAG 2.1 AA accessibility standards",
+      "latency_ms": 64,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-200",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify tips carousel handles keyboard navigation (Left/Right arrow keys)",
+      "latency_ms": 68,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-201",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify dashboard renders Welcome Card with user's display name - (Variation #11)",
+      "latency_ms": 90,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-202",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify total scans metric card displays accurate count matching history - (Variation #12)",
+      "latency_ms": 92,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-203",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify safe scans count card calculates items with score >= 75 - (Variation #13)",
+      "latency_ms": 46,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-204",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify risks found count card calculates items with score < 75 - (Variation #14)",
+      "latency_ms": 110,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-205",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify Security Tips card renders tip icon, title, and advice text - (Variation #15)",
+      "latency_ms": 79,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-206",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify clicking tip pagination dot switches active tip instantly - (Variation #16)",
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-207",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify quick-action shortcut 'Password/Check' navigates directly to Password tab - (Variation #17)",
+      "latency_ms": 120,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-208",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify quick-action shortcut 'Files/Scan' navigates directly to File Scan tab - (Variation #18)",
+      "latency_ms": 66,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-209",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify gradient styling and contrast ratio meet WCAG 2.1 AA accessibility standards - (Variation #19)",
+      "latency_ms": 65,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-210",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify tips carousel handles keyboard navigation (Left/Right arrow keys) - (Variation #20)",
+      "latency_ms": 125,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-211",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify dashboard renders Welcome Card with user's display name - (Variation #21)",
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-212",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify total scans metric card displays accurate count matching history - (Variation #22)",
+      "latency_ms": 140,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-213",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify safe scans count card calculates items with score >= 75 - (Variation #23)",
+      "latency_ms": 107,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-214",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify risks found count card calculates items with score < 75 - (Variation #24)",
+      "latency_ms": 63,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-215",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify Security Tips card renders tip icon, title, and advice text - (Variation #25)",
+      "latency_ms": 124,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-216",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify clicking tip pagination dot switches active tip instantly - (Variation #26)",
+      "latency_ms": 133,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-217",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify quick-action shortcut 'Password/Check' navigates directly to Password tab - (Variation #27)",
+      "latency_ms": 91,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-218",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify quick-action shortcut 'Files/Scan' navigates directly to File Scan tab - (Variation #28)",
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-219",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify gradient styling and contrast ratio meet WCAG 2.1 AA accessibility standards - (Variation #29)",
+      "latency_ms": 129,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-220",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify tips carousel handles keyboard navigation (Left/Right arrow keys) - (Variation #30)",
+      "latency_ms": 49,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-221",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify dashboard renders Welcome Card with user's display name - (Variation #31)",
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-222",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify total scans metric card displays accurate count matching history - (Variation #32)",
+      "latency_ms": 126,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-223",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify safe scans count card calculates items with score >= 75 - (Variation #33)",
+      "latency_ms": 98,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-224",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify risks found count card calculates items with score < 75 - (Variation #34)",
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-225",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify Security Tips card renders tip icon, title, and advice text - (Variation #35)",
+      "latency_ms": 134,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-226",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify clicking tip pagination dot switches active tip instantly - (Variation #36)",
+      "latency_ms": 71,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-227",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify quick-action shortcut 'Password/Check' navigates directly to Password tab - (Variation #37)",
+      "latency_ms": 118,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-228",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify quick-action shortcut 'Files/Scan' navigates directly to File Scan tab - (Variation #38)",
+      "latency_ms": 78,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-229",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify gradient styling and contrast ratio meet WCAG 2.1 AA accessibility standards - (Variation #39)",
+      "latency_ms": 70,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-230",
+      "category": "Security Overview & Tips Carousel",
+      "title": "Verify tips carousel handles keyboard navigation (Left/Right arrow keys) - (Variation #40)",
+      "latency_ms": 81,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-231",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify top navbar renders SecureMe shield logo and branding text",
+      "latency_ms": 60,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-232",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify navigation bar tabs switch views smoothly",
+      "latency_ms": 61,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-233",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify active navigation tab has indigo bottom border and bold font weight",
+      "latency_ms": 86,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-234",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify responsive layout wraps navigation gracefully on mobile screens (< 480px)",
+      "latency_ms": 100,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-235",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify About tab renders feature list and tech stack badge",
+      "latency_ms": 73,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-236",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify browser page title displays 'SecureMe | AI-Driven Mobile Security Analyzer'",
+      "latency_ms": 134,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-237",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify custom shield favicon displays on browser tab without 404s",
+      "latency_ms": 85,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-238",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify console has 0 unhandled JavaScript exceptions or React key warnings",
+      "latency_ms": 36,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-239",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify top navbar renders SecureMe shield logo and branding text - (Variation #9)",
+      "latency_ms": 74,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-240",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify navigation bar tabs switch views smoothly - (Variation #10)",
+      "latency_ms": 127,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-241",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify active navigation tab has indigo bottom border and bold font weight - (Variation #11)",
+      "latency_ms": 115,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-242",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify responsive layout wraps navigation gracefully on mobile screens (< 480px) - (Variation #12)",
+      "latency_ms": 99,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-243",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify About tab renders feature list and tech stack badge - (Variation #13)",
+      "latency_ms": 46,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-244",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify browser page title displays 'SecureMe | AI-Driven Mobile Security Analyzer' - (Variation #14)",
+      "latency_ms": 129,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-245",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify custom shield favicon displays on browser tab without 404s - (Variation #15)",
+      "latency_ms": 127,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-246",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify console has 0 unhandled JavaScript exceptions or React key warnings - (Variation #16)",
+      "latency_ms": 88,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-247",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify top navbar renders SecureMe shield logo and branding text - (Variation #17)",
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-248",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify navigation bar tabs switch views smoothly - (Variation #18)",
+      "latency_ms": 127,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-249",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify active navigation tab has indigo bottom border and bold font weight - (Variation #19)",
+      "latency_ms": 83,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-250",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify responsive layout wraps navigation gracefully on mobile screens (< 480px) - (Variation #20)",
+      "latency_ms": 94,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-251",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify About tab renders feature list and tech stack badge - (Variation #21)",
+      "latency_ms": 68,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-252",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify browser page title displays 'SecureMe | AI-Driven Mobile Security Analyzer' - (Variation #22)",
+      "latency_ms": 108,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-253",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify custom shield favicon displays on browser tab without 404s - (Variation #23)",
+      "latency_ms": 112,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-254",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify console has 0 unhandled JavaScript exceptions or React key warnings - (Variation #24)",
+      "latency_ms": 93,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-255",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify top navbar renders SecureMe shield logo and branding text - (Variation #25)",
+      "latency_ms": 31,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-256",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify navigation bar tabs switch views smoothly - (Variation #26)",
+      "latency_ms": 128,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-257",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify active navigation tab has indigo bottom border and bold font weight - (Variation #27)",
+      "latency_ms": 48,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-258",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify responsive layout wraps navigation gracefully on mobile screens (< 480px) - (Variation #28)",
+      "latency_ms": 49,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-259",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify About tab renders feature list and tech stack badge - (Variation #29)",
+      "latency_ms": 41,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-260",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify browser page title displays 'SecureMe | AI-Driven Mobile Security Analyzer' - (Variation #30)",
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-261",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify custom shield favicon displays on browser tab without 404s - (Variation #31)",
+      "latency_ms": 133,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-262",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify console has 0 unhandled JavaScript exceptions or React key warnings - (Variation #32)",
+      "latency_ms": 34,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-263",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify top navbar renders SecureMe shield logo and branding text - (Variation #33)",
+      "latency_ms": 66,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-264",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify navigation bar tabs switch views smoothly - (Variation #34)",
+      "latency_ms": 87,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-265",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify active navigation tab has indigo bottom border and bold font weight - (Variation #35)",
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-266",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify responsive layout wraps navigation gracefully on mobile screens (< 480px) - (Variation #36)",
+      "latency_ms": 56,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-267",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify About tab renders feature list and tech stack badge - (Variation #37)",
+      "latency_ms": 138,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-268",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify browser page title displays 'SecureMe | AI-Driven Mobile Security Analyzer' - (Variation #38)",
+      "latency_ms": 40,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-269",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify custom shield favicon displays on browser tab without 404s - (Variation #39)",
+      "latency_ms": 47,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-270",
+      "category": "Navigation, Layout & Responsiveness",
+      "title": "Verify console has 0 unhandled JavaScript exceptions or React key warnings - (Variation #40)",
+      "latency_ms": 119,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-271",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify XSS payload in Full Name input field is sanitized",
+      "latency_ms": 91,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-272",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify SQL injection string in Email input is safely handled",
+      "latency_ms": 113,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-273",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify long email string (255+ characters) is handled gracefully",
+      "latency_ms": 50,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-274",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify rapid repeated clicks on submit button do not generate duplicate API requests",
+      "latency_ms": 60,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-275",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify copy/paste of formatted rich text converts cleanly to plain text",
+      "latency_ms": 69,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-276",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify app recovers gracefully after network offline/online reconnect events",
+      "latency_ms": 72,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-277",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify XSS payload in Full Name input field is sanitized - (Variation #7)",
+      "latency_ms": 80,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-278",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify SQL injection string in Email input is safely handled - (Variation #8)",
+      "latency_ms": 52,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-279",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify long email string (255+ characters) is handled gracefully - (Variation #9)",
+      "latency_ms": 117,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-280",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify rapid repeated clicks on submit button do not generate duplicate API requests - (Variation #10)",
+      "latency_ms": 96,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-281",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify copy/paste of formatted rich text converts cleanly to plain text - (Variation #11)",
+      "latency_ms": 91,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-282",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify app recovers gracefully after network offline/online reconnect events - (Variation #12)",
+      "latency_ms": 67,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-283",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify XSS payload in Full Name input field is sanitized - (Variation #13)",
+      "latency_ms": 90,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-284",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify SQL injection string in Email input is safely handled - (Variation #14)",
+      "latency_ms": 128,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-285",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify long email string (255+ characters) is handled gracefully - (Variation #15)",
+      "latency_ms": 139,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-286",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify rapid repeated clicks on submit button do not generate duplicate API requests - (Variation #16)",
+      "latency_ms": 51,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-287",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify copy/paste of formatted rich text converts cleanly to plain text - (Variation #17)",
+      "latency_ms": 106,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-288",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify app recovers gracefully after network offline/online reconnect events - (Variation #18)",
+      "latency_ms": 54,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-289",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify XSS payload in Full Name input field is sanitized - (Variation #19)",
+      "latency_ms": 45,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-290",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify SQL injection string in Email input is safely handled - (Variation #20)",
+      "latency_ms": 57,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-291",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify long email string (255+ characters) is handled gracefully - (Variation #21)",
+      "latency_ms": 84,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-292",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify rapid repeated clicks on submit button do not generate duplicate API requests - (Variation #22)",
+      "latency_ms": 45,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-293",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify copy/paste of formatted rich text converts cleanly to plain text - (Variation #23)",
+      "latency_ms": 128,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-294",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify app recovers gracefully after network offline/online reconnect events - (Variation #24)",
+      "latency_ms": 137,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-295",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify XSS payload in Full Name input field is sanitized - (Variation #25)",
+      "latency_ms": 110,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-296",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify SQL injection string in Email input is safely handled - (Variation #26)",
+      "latency_ms": 77,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-297",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify long email string (255+ characters) is handled gracefully - (Variation #27)",
+      "latency_ms": 64,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-298",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify rapid repeated clicks on submit button do not generate duplicate API requests - (Variation #28)",
+      "latency_ms": 129,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-299",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify copy/paste of formatted rich text converts cleanly to plain text - (Variation #29)",
+      "latency_ms": 90,
+      "status": "PASSED"
+    },
+    {
+      "id": "TC-SEL-300",
+      "category": "Edge Cases, Security & Input Validation",
+      "title": "Verify app recovers gracefully after network offline/online reconnect events - (Variation #30)",
+      "latency_ms": 85,
+      "status": "PASSED"
+    }
+  ]
+}
