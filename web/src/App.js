@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // ── Backend API Configuration ────────────────────────────────────────────────
-const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+const API = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   ? 'http://localhost:8000'
   : 'https://secureme-backend-h0kx.onrender.com';
 
@@ -62,8 +62,11 @@ export default function App() {
   const [tab, setTab] = useState('home');
   const [user, setUser] = useState(() => {
     try {
-      const savedUser = localStorage.getItem('secureme_user');
-      return savedUser ? JSON.parse(savedUser) : null;
+      if (typeof localStorage !== 'undefined') {
+        const savedUser = localStorage.getItem('secureme_user');
+        return savedUser ? JSON.parse(savedUser) : null;
+      }
+      return null;
     } catch {
       return null;
     }
@@ -131,16 +134,18 @@ export default function App() {
   ];
 
   useEffect(() => {
-    const savedPhoneId = localStorage.getItem('phoneId');
-    if (savedPhoneId) {
-      setPhoneId(savedPhoneId);
-      fetchPhoneHistory(savedPhoneId);
+    if (typeof localStorage !== 'undefined') {
+      const savedPhoneId = localStorage.getItem('phoneId');
+      if (savedPhoneId) {
+        setPhoneId(savedPhoneId);
+        fetchPhoneHistory(savedPhoneId);
+      }
+      const interval = setInterval(() => {
+        const id = localStorage.getItem('phoneId');
+        if (id) fetchPhoneHistory(id);
+      }, 30000);
+      return () => clearInterval(interval);
     }
-    const interval = setInterval(() => {
-      const id = localStorage.getItem('phoneId');
-      if (id) fetchPhoneHistory(id);
-    }, 30000);
-    return () => clearInterval(interval);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const clearAuthMessages = () => {
@@ -166,7 +171,9 @@ export default function App() {
           setAuthError(data.error);
         }
       } else {
-        localStorage.setItem('secureme_user', JSON.stringify(data));
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('secureme_user', JSON.stringify(data));
+        }
         setUser(data);
       }
     } catch (e) {
@@ -212,7 +219,9 @@ export default function App() {
       if (data.error) {
         setAuthError(data.error);
       } else {
-        localStorage.setItem('secureme_user', JSON.stringify(data.user));
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('secureme_user', JSON.stringify(data.user));
+        }
         setUser(data.user);
       }
     } catch (e) {
@@ -287,8 +296,10 @@ export default function App() {
   };
 
   const logout = () => {
-    localStorage.removeItem('secureme_user');
-    localStorage.removeItem('phoneId');
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem('secureme_user');
+      localStorage.removeItem('phoneId');
+    }
     setUser(null);
     setPhoneHistory([]);
     setPhoneId('');
@@ -314,7 +325,7 @@ export default function App() {
       setCyberRecommendations(data.recommendations || []);
 
       // If phone linked, save scan record
-      const linked = phoneId || localStorage.getItem('phoneId');
+      const linked = phoneId || (typeof localStorage !== 'undefined' ? localStorage.getItem('phoneId') : '');
       if (linked) {
         await fetch(`${API}/save-scan`, {
           method: 'POST',
@@ -349,7 +360,6 @@ export default function App() {
       });
       setPwResult(await res.json());
     } catch (e) {
-      // Local fallback calculation if offline
       let s = 0;
       const sugg = [];
       if (pwInput.length >= 8) s += 25; else sugg.push('Use at least 8 characters');
@@ -480,9 +490,11 @@ export default function App() {
   const scoreColor = (s) => s >= 75 ? '#10B981' : s >= 50 ? '#F59E0B' : '#EF4444';
 
   const copyToClipboard = (text) => {
-    navigator.clipboard?.writeText(text);
-    setCopiedHash(text);
-    setTimeout(() => setCopiedHash(''), 2500);
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      setCopiedHash(text);
+      setTimeout(() => setCopiedHash(''), 2500);
+    }
   };
 
   // ── AUTHENTICATION SCREEN ──────────────────────────────────────────────────
@@ -1095,7 +1107,9 @@ export default function App() {
                     />
                     <button
                       onClick={() => {
-                        localStorage.setItem('phoneId', phoneId);
+                        if (typeof localStorage !== 'undefined') {
+                          localStorage.setItem('phoneId', phoneId);
+                        }
                         fetchPhoneHistory(phoneId);
                       }}
                       style={{ padding: '10px 20px', background: '#4B4FD9', color: '#FFFFFF', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', fontSize: 13 }}
