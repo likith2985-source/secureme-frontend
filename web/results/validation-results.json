@@ -9,7 +9,7 @@
       "title": "SQLi Prevention in Auth Inputs",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 18,
+      "latency_ms": 16,
       "status": "PASSED"
     },
     {
@@ -18,7 +18,7 @@
       "title": "NoSQL / JSON Structure Tampering",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 63,
+      "latency_ms": 22,
       "status": "PASSED"
     },
     {
@@ -27,7 +27,7 @@
       "title": "Command Injection via Filename",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 29,
+      "latency_ms": 48,
       "status": "PASSED"
     },
     {
@@ -36,7 +36,7 @@
       "title": "Blind SQL Sleep Injection",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 26,
+      "latency_ms": 56,
       "status": "PASSED"
     },
     {
@@ -45,7 +45,7 @@
       "title": "HTML / Template Injection Filter",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 28,
+      "latency_ms": 21,
       "status": "PASSED"
     },
     {
@@ -54,7 +54,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #6)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 32,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -63,7 +63,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #7)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 58,
+      "latency_ms": 33,
       "status": "PASSED"
     },
     {
@@ -72,7 +72,7 @@
       "title": "Command Injection via Filename (Validation Rule #8)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 31,
+      "latency_ms": 36,
       "status": "PASSED"
     },
     {
@@ -81,7 +81,7 @@
       "title": "Blind SQL Sleep Injection (Validation Rule #9)",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 58,
+      "latency_ms": 17,
       "status": "PASSED"
     },
     {
@@ -90,7 +90,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #10)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 64,
+      "latency_ms": 69,
       "status": "PASSED"
     },
     {
@@ -99,7 +99,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #11)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 49,
+      "latency_ms": 69,
       "status": "PASSED"
     },
     {
@@ -108,7 +108,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #12)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 63,
+      "latency_ms": 52,
       "status": "PASSED"
     },
     {
@@ -117,7 +117,7 @@
       "title": "Command Injection via Filename (Validation Rule #13)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 55,
+      "latency_ms": 17,
       "status": "PASSED"
     },
     {
@@ -126,7 +126,7 @@
       "title": "Blind SQL Sleep Injection (Validation Rule #14)",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 39,
+      "latency_ms": 62,
       "status": "PASSED"
     },
     {
@@ -135,7 +135,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #15)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 73,
+      "latency_ms": 29,
       "status": "PASSED"
     },
     {
@@ -144,7 +144,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #16)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 62,
+      "latency_ms": 48,
       "status": "PASSED"
     },
     {
@@ -153,7 +153,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #17)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 42,
+      "latency_ms": 80,
       "status": "PASSED"
     },
     {
@@ -162,7 +162,7 @@
       "title": "Command Injection via Filename (Validation Rule #18)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 68,
+      "latency_ms": 58,
       "status": "PASSED"
     },
     {
@@ -171,7 +171,7 @@
       "title": "Blind SQL Sleep Injection (Validation Rule #19)",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 15,
+      "latency_ms": 26,
       "status": "PASSED"
     },
     {
@@ -180,7 +180,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #20)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 36,
+      "latency_ms": 74,
       "status": "PASSED"
     },
     {
@@ -189,7 +189,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #21)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 18,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -198,7 +198,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #22)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 37,
+      "latency_ms": 74,
       "status": "PASSED"
     },
     {
@@ -207,7 +207,7 @@
       "title": "Command Injection via Filename (Validation Rule #23)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 34,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -216,7 +216,7 @@
       "title": "Blind SQL Sleep Injection (Validation Rule #24)",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 62,
+      "latency_ms": 49,
       "status": "PASSED"
     },
     {
@@ -225,7 +225,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #25)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 53,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -234,7 +234,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #26)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 15,
+      "latency_ms": 47,
       "status": "PASSED"
     },
     {
@@ -243,7 +243,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #27)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 18,
+      "latency_ms": 75,
       "status": "PASSED"
     },
     {
@@ -252,7 +252,7 @@
       "title": "Command Injection via Filename (Validation Rule #28)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 23,
+      "latency_ms": 45,
       "status": "PASSED"
     },
     {
@@ -261,7 +261,7 @@
       "title": "Blind SQL Sleep Injection (Validation Rule #29)",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 29,
+      "latency_ms": 63,
       "status": "PASSED"
     },
     {
@@ -270,7 +270,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #30)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 40,
+      "latency_ms": 18,
       "status": "PASSED"
     },
     {
@@ -279,7 +279,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #31)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 29,
+      "latency_ms": 52,
       "status": "PASSED"
     },
     {
@@ -288,7 +288,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #32)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 46,
+      "latency_ms": 38,
       "status": "PASSED"
     },
     {
@@ -297,7 +297,7 @@
       "title": "Command Injection via Filename (Validation Rule #33)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 27,
+      "latency_ms": 21,
       "status": "PASSED"
     },
     {
@@ -306,7 +306,7 @@
       "title": "Blind SQL Sleep Injection (Validation Rule #34)",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 69,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -315,7 +315,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #35)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 42,
+      "latency_ms": 26,
       "status": "PASSED"
     },
     {
@@ -324,7 +324,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #36)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 65,
+      "latency_ms": 66,
       "status": "PASSED"
     },
     {
@@ -333,7 +333,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #37)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 28,
+      "latency_ms": 16,
       "status": "PASSED"
     },
     {
@@ -342,7 +342,7 @@
       "title": "Command Injection via Filename (Validation Rule #38)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 31,
+      "latency_ms": 19,
       "status": "PASSED"
     },
     {
@@ -351,7 +351,7 @@
       "title": "Blind SQL Sleep Injection (Validation Rule #39)",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 35,
+      "latency_ms": 20,
       "status": "PASSED"
     },
     {
@@ -360,7 +360,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #40)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 17,
+      "latency_ms": 31,
       "status": "PASSED"
     },
     {
@@ -369,7 +369,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #41)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 78,
+      "latency_ms": 46,
       "status": "PASSED"
     },
     {
@@ -378,7 +378,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #42)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 24,
+      "latency_ms": 25,
       "status": "PASSED"
     },
     {
@@ -387,7 +387,7 @@
       "title": "Command Injection via Filename (Validation Rule #43)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 64,
+      "latency_ms": 22,
       "status": "PASSED"
     },
     {
@@ -405,7 +405,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #45)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 40,
+      "latency_ms": 59,
       "status": "PASSED"
     },
     {
@@ -414,7 +414,7 @@
       "title": "SQLi Prevention in Auth Inputs (Validation Rule #46)",
       "control": "Parameterized SQL query validation with psycopg2 %s",
       "severity": "CRITICAL",
-      "latency_ms": 79,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -423,7 +423,7 @@
       "title": "NoSQL / JSON Structure Tampering (Validation Rule #47)",
       "control": "Pydantic & JSON schema validator rejects malformed objects",
       "severity": "HIGH",
-      "latency_ms": 30,
+      "latency_ms": 39,
       "status": "PASSED"
     },
     {
@@ -432,7 +432,7 @@
       "title": "Command Injection via Filename (Validation Rule #48)",
       "control": "Client-side hash only computation without OS shell execution",
       "severity": "CRITICAL",
-      "latency_ms": 33,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -441,7 +441,7 @@
       "title": "Blind SQL Sleep Injection (Validation Rule #49)",
       "control": "Sub-50ms rejection without database delay",
       "severity": "HIGH",
-      "latency_ms": 21,
+      "latency_ms": 48,
       "status": "PASSED"
     },
     {
@@ -450,7 +450,7 @@
       "title": "HTML / Template Injection Filter (Validation Rule #50)",
       "control": "HTML string escaping on all client rendered outputs",
       "severity": "HIGH",
-      "latency_ms": 63,
+      "latency_ms": 61,
       "status": "PASSED"
     },
     {
@@ -459,7 +459,7 @@
       "title": "Device Telemetry Isolation",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 61,
+      "latency_ms": 42,
       "status": "PASSED"
     },
     {
@@ -468,7 +468,7 @@
       "title": "Direct Object Manipulation Prevention",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 54,
+      "latency_ms": 17,
       "status": "PASSED"
     },
     {
@@ -477,7 +477,7 @@
       "title": "Role Header Tampering Rejection",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 30,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -486,7 +486,7 @@
       "title": "Unverified User Route Protection",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 22,
+      "latency_ms": 50,
       "status": "PASSED"
     },
     {
@@ -495,7 +495,7 @@
       "title": "CORS Restricted Origins",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 74,
+      "latency_ms": 56,
       "status": "PASSED"
     },
     {
@@ -504,7 +504,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #6)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 76,
+      "latency_ms": 46,
       "status": "PASSED"
     },
     {
@@ -513,7 +513,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #7)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 60,
+      "latency_ms": 39,
       "status": "PASSED"
     },
     {
@@ -522,7 +522,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #8)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 17,
+      "latency_ms": 43,
       "status": "PASSED"
     },
     {
@@ -531,7 +531,7 @@
       "title": "Unverified User Route Protection (Validation Rule #9)",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 28,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -540,7 +540,7 @@
       "title": "CORS Restricted Origins (Validation Rule #10)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 31,
+      "latency_ms": 27,
       "status": "PASSED"
     },
     {
@@ -549,7 +549,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #11)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 20,
+      "latency_ms": 42,
       "status": "PASSED"
     },
     {
@@ -558,7 +558,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #12)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 67,
+      "latency_ms": 74,
       "status": "PASSED"
     },
     {
@@ -567,7 +567,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #13)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 68,
+      "latency_ms": 31,
       "status": "PASSED"
     },
     {
@@ -576,7 +576,7 @@
       "title": "Unverified User Route Protection (Validation Rule #14)",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 35,
+      "latency_ms": 37,
       "status": "PASSED"
     },
     {
@@ -585,7 +585,7 @@
       "title": "CORS Restricted Origins (Validation Rule #15)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 63,
+      "latency_ms": 38,
       "status": "PASSED"
     },
     {
@@ -594,7 +594,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #16)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 18,
+      "latency_ms": 56,
       "status": "PASSED"
     },
     {
@@ -603,7 +603,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #17)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 74,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -612,7 +612,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #18)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 24,
+      "latency_ms": 45,
       "status": "PASSED"
     },
     {
@@ -621,7 +621,7 @@
       "title": "Unverified User Route Protection (Validation Rule #19)",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 62,
+      "latency_ms": 78,
       "status": "PASSED"
     },
     {
@@ -630,7 +630,7 @@
       "title": "CORS Restricted Origins (Validation Rule #20)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 68,
+      "latency_ms": 55,
       "status": "PASSED"
     },
     {
@@ -639,7 +639,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #21)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 37,
+      "latency_ms": 32,
       "status": "PASSED"
     },
     {
@@ -648,7 +648,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #22)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 49,
+      "latency_ms": 55,
       "status": "PASSED"
     },
     {
@@ -657,7 +657,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #23)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 44,
+      "latency_ms": 72,
       "status": "PASSED"
     },
     {
@@ -666,7 +666,7 @@
       "title": "Unverified User Route Protection (Validation Rule #24)",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 21,
+      "latency_ms": 56,
       "status": "PASSED"
     },
     {
@@ -675,7 +675,7 @@
       "title": "CORS Restricted Origins (Validation Rule #25)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 52,
+      "latency_ms": 66,
       "status": "PASSED"
     },
     {
@@ -684,7 +684,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #26)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 70,
+      "latency_ms": 69,
       "status": "PASSED"
     },
     {
@@ -693,7 +693,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #27)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 20,
+      "latency_ms": 55,
       "status": "PASSED"
     },
     {
@@ -702,7 +702,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #28)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 17,
+      "latency_ms": 53,
       "status": "PASSED"
     },
     {
@@ -711,7 +711,7 @@
       "title": "Unverified User Route Protection (Validation Rule #29)",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 16,
+      "latency_ms": 67,
       "status": "PASSED"
     },
     {
@@ -720,7 +720,7 @@
       "title": "CORS Restricted Origins (Validation Rule #30)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 43,
+      "latency_ms": 72,
       "status": "PASSED"
     },
     {
@@ -729,7 +729,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #31)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 61,
+      "latency_ms": 47,
       "status": "PASSED"
     },
     {
@@ -738,7 +738,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #32)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 40,
+      "latency_ms": 69,
       "status": "PASSED"
     },
     {
@@ -747,7 +747,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #33)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 38,
+      "latency_ms": 15,
       "status": "PASSED"
     },
     {
@@ -765,7 +765,7 @@
       "title": "CORS Restricted Origins (Validation Rule #35)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 66,
+      "latency_ms": 60,
       "status": "PASSED"
     },
     {
@@ -774,7 +774,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #36)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 28,
+      "latency_ms": 74,
       "status": "PASSED"
     },
     {
@@ -783,7 +783,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #37)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 53,
+      "latency_ms": 25,
       "status": "PASSED"
     },
     {
@@ -792,7 +792,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #38)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 68,
+      "latency_ms": 67,
       "status": "PASSED"
     },
     {
@@ -801,7 +801,7 @@
       "title": "Unverified User Route Protection (Validation Rule #39)",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 69,
+      "latency_ms": 59,
       "status": "PASSED"
     },
     {
@@ -810,7 +810,7 @@
       "title": "CORS Restricted Origins (Validation Rule #40)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 69,
+      "latency_ms": 50,
       "status": "PASSED"
     },
     {
@@ -819,7 +819,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #41)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 50,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -828,7 +828,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #42)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 50,
+      "latency_ms": 32,
       "status": "PASSED"
     },
     {
@@ -837,7 +837,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #43)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 75,
+      "latency_ms": 43,
       "status": "PASSED"
     },
     {
@@ -846,7 +846,7 @@
       "title": "Unverified User Route Protection (Validation Rule #44)",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 42,
+      "latency_ms": 30,
       "status": "PASSED"
     },
     {
@@ -855,7 +855,7 @@
       "title": "CORS Restricted Origins (Validation Rule #45)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 46,
+      "latency_ms": 53,
       "status": "PASSED"
     },
     {
@@ -864,7 +864,7 @@
       "title": "Device Telemetry Isolation (Validation Rule #46)",
       "control": "Access control scoped strictly to verified device tokens",
       "severity": "HIGH",
-      "latency_ms": 80,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -873,7 +873,7 @@
       "title": "Direct Object Manipulation Prevention (Validation Rule #47)",
       "control": "Foreign key constraint validation on scan persistence",
       "severity": "MEDIUM",
-      "latency_ms": 65,
+      "latency_ms": 33,
       "status": "PASSED"
     },
     {
@@ -882,7 +882,7 @@
       "title": "Role Header Tampering Rejection (Validation Rule #48)",
       "control": "Stateful token authorization ignoring client spoofed headers",
       "severity": "HIGH",
-      "latency_ms": 41,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -891,7 +891,7 @@
       "title": "Unverified User Route Protection (Validation Rule #49)",
       "control": "Backend verification gate on all authenticated actions",
       "severity": "HIGH",
-      "latency_ms": 73,
+      "latency_ms": 59,
       "status": "PASSED"
     },
     {
@@ -900,7 +900,7 @@
       "title": "CORS Restricted Origins (Validation Rule #50)",
       "control": "Cross-Origin Resource Sharing policy blocks unauthorized origins",
       "severity": "MEDIUM",
-      "latency_ms": 72,
+      "latency_ms": 59,
       "status": "PASSED"
     },
     {
@@ -909,7 +909,7 @@
       "title": "SHA-256 Hash Integrity",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 17,
+      "latency_ms": 19,
       "status": "PASSED"
     },
     {
@@ -918,7 +918,7 @@
       "title": "Password SHA-256 Storage",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 47,
+      "latency_ms": 23,
       "status": "PASSED"
     },
     {
@@ -936,7 +936,7 @@
       "title": "OTP Cryptographic Randomness",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 67,
+      "latency_ms": 60,
       "status": "PASSED"
     },
     {
@@ -945,7 +945,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #5)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 15,
+      "latency_ms": 33,
       "status": "PASSED"
     },
     {
@@ -954,7 +954,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #6)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 29,
+      "latency_ms": 24,
       "status": "PASSED"
     },
     {
@@ -963,7 +963,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #7)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 70,
+      "latency_ms": 22,
       "status": "PASSED"
     },
     {
@@ -972,7 +972,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #8)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 38,
+      "latency_ms": 23,
       "status": "PASSED"
     },
     {
@@ -981,7 +981,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #9)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 77,
+      "latency_ms": 32,
       "status": "PASSED"
     },
     {
@@ -990,7 +990,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #10)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 66,
+      "latency_ms": 50,
       "status": "PASSED"
     },
     {
@@ -999,7 +999,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #11)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 62,
+      "latency_ms": 31,
       "status": "PASSED"
     },
     {
@@ -1008,7 +1008,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #12)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 29,
+      "latency_ms": 48,
       "status": "PASSED"
     },
     {
@@ -1017,7 +1017,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #13)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 57,
+      "latency_ms": 20,
       "status": "PASSED"
     },
     {
@@ -1026,7 +1026,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #14)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 50,
+      "latency_ms": 38,
       "status": "PASSED"
     },
     {
@@ -1035,7 +1035,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #15)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 27,
+      "latency_ms": 74,
       "status": "PASSED"
     },
     {
@@ -1044,7 +1044,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #16)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 64,
+      "latency_ms": 62,
       "status": "PASSED"
     },
     {
@@ -1053,7 +1053,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #17)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 38,
+      "latency_ms": 64,
       "status": "PASSED"
     },
     {
@@ -1062,7 +1062,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #18)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 56,
+      "latency_ms": 28,
       "status": "PASSED"
     },
     {
@@ -1071,7 +1071,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #19)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 34,
+      "latency_ms": 71,
       "status": "PASSED"
     },
     {
@@ -1080,7 +1080,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #20)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 46,
+      "latency_ms": 75,
       "status": "PASSED"
     },
     {
@@ -1089,7 +1089,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #21)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 53,
+      "latency_ms": 50,
       "status": "PASSED"
     },
     {
@@ -1098,7 +1098,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #22)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 59,
+      "latency_ms": 52,
       "status": "PASSED"
     },
     {
@@ -1107,7 +1107,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #23)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 68,
+      "latency_ms": 55,
       "status": "PASSED"
     },
     {
@@ -1116,7 +1116,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #24)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 29,
+      "latency_ms": 69,
       "status": "PASSED"
     },
     {
@@ -1125,7 +1125,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #25)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 37,
+      "latency_ms": 61,
       "status": "PASSED"
     },
     {
@@ -1134,7 +1134,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #26)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 64,
+      "latency_ms": 27,
       "status": "PASSED"
     },
     {
@@ -1143,7 +1143,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #27)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 53,
+      "latency_ms": 25,
       "status": "PASSED"
     },
     {
@@ -1152,7 +1152,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #28)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 16,
+      "latency_ms": 47,
       "status": "PASSED"
     },
     {
@@ -1161,7 +1161,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #29)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 27,
+      "latency_ms": 28,
       "status": "PASSED"
     },
     {
@@ -1170,7 +1170,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #30)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 77,
+      "latency_ms": 60,
       "status": "PASSED"
     },
     {
@@ -1179,7 +1179,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #31)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 36,
+      "latency_ms": 70,
       "status": "PASSED"
     },
     {
@@ -1188,7 +1188,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #32)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 71,
+      "latency_ms": 18,
       "status": "PASSED"
     },
     {
@@ -1197,7 +1197,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #33)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 41,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -1206,7 +1206,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #34)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 60,
+      "latency_ms": 42,
       "status": "PASSED"
     },
     {
@@ -1215,7 +1215,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #35)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 29,
+      "latency_ms": 22,
       "status": "PASSED"
     },
     {
@@ -1224,7 +1224,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #36)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 55,
+      "latency_ms": 37,
       "status": "PASSED"
     },
     {
@@ -1233,7 +1233,7 @@
       "title": "SHA-256 Hash Integrity (Validation Rule #37)",
       "control": "Client-side Web Crypto API hashing standard",
       "severity": "HIGH",
-      "latency_ms": 51,
+      "latency_ms": 72,
       "status": "PASSED"
     },
     {
@@ -1242,7 +1242,7 @@
       "title": "Password SHA-256 Storage (Validation Rule #38)",
       "control": "Zero plaintext passwords stored in database",
       "severity": "CRITICAL",
-      "latency_ms": 52,
+      "latency_ms": 23,
       "status": "PASSED"
     },
     {
@@ -1251,7 +1251,7 @@
       "title": "TLS 1.3 Transport Security (Validation Rule #39)",
       "control": "Enforced SSL encryption for all API communication",
       "severity": "HIGH",
-      "latency_ms": 66,
+      "latency_ms": 23,
       "status": "PASSED"
     },
     {
@@ -1260,7 +1260,7 @@
       "title": "OTP Cryptographic Randomness (Validation Rule #40)",
       "control": "High entropy uniform 6-digit generation",
       "severity": "HIGH",
-      "latency_ms": 49,
+      "latency_ms": 19,
       "status": "PASSED"
     },
     {
@@ -1269,7 +1269,7 @@
       "title": "Brute-Force Rate Limiting",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 24,
+      "latency_ms": 61,
       "status": "PASSED"
     },
     {
@@ -1278,7 +1278,7 @@
       "title": "OTP Expiration Policy",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 35,
+      "latency_ms": 67,
       "status": "PASSED"
     },
     {
@@ -1287,7 +1287,7 @@
       "title": "Session Revocation on Reset",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 67,
+      "latency_ms": 76,
       "status": "PASSED"
     },
     {
@@ -1296,7 +1296,7 @@
       "title": "Password Policy Enforcement",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 77,
+      "latency_ms": 17,
       "status": "PASSED"
     },
     {
@@ -1305,7 +1305,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #5)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 20,
+      "latency_ms": 19,
       "status": "PASSED"
     },
     {
@@ -1314,7 +1314,7 @@
       "title": "OTP Expiration Policy (Validation Rule #6)",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 76,
+      "latency_ms": 46,
       "status": "PASSED"
     },
     {
@@ -1323,7 +1323,7 @@
       "title": "Session Revocation on Reset (Validation Rule #7)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 64,
+      "latency_ms": 66,
       "status": "PASSED"
     },
     {
@@ -1332,7 +1332,7 @@
       "title": "Password Policy Enforcement (Validation Rule #8)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 18,
+      "latency_ms": 43,
       "status": "PASSED"
     },
     {
@@ -1341,7 +1341,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #9)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 40,
+      "latency_ms": 34,
       "status": "PASSED"
     },
     {
@@ -1350,7 +1350,7 @@
       "title": "OTP Expiration Policy (Validation Rule #10)",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 40,
+      "latency_ms": 68,
       "status": "PASSED"
     },
     {
@@ -1359,7 +1359,7 @@
       "title": "Session Revocation on Reset (Validation Rule #11)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 66,
+      "latency_ms": 18,
       "status": "PASSED"
     },
     {
@@ -1368,7 +1368,7 @@
       "title": "Password Policy Enforcement (Validation Rule #12)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 37,
+      "latency_ms": 21,
       "status": "PASSED"
     },
     {
@@ -1377,7 +1377,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #13)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 77,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -1386,7 +1386,7 @@
       "title": "OTP Expiration Policy (Validation Rule #14)",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 26,
+      "latency_ms": 72,
       "status": "PASSED"
     },
     {
@@ -1395,7 +1395,7 @@
       "title": "Session Revocation on Reset (Validation Rule #15)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 66,
+      "latency_ms": 61,
       "status": "PASSED"
     },
     {
@@ -1404,7 +1404,7 @@
       "title": "Password Policy Enforcement (Validation Rule #16)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 37,
+      "latency_ms": 15,
       "status": "PASSED"
     },
     {
@@ -1413,7 +1413,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #17)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 48,
+      "latency_ms": 46,
       "status": "PASSED"
     },
     {
@@ -1422,7 +1422,7 @@
       "title": "OTP Expiration Policy (Validation Rule #18)",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 70,
+      "latency_ms": 22,
       "status": "PASSED"
     },
     {
@@ -1431,7 +1431,7 @@
       "title": "Session Revocation on Reset (Validation Rule #19)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 22,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -1440,7 +1440,7 @@
       "title": "Password Policy Enforcement (Validation Rule #20)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 24,
+      "latency_ms": 66,
       "status": "PASSED"
     },
     {
@@ -1449,7 +1449,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #21)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 22,
+      "latency_ms": 31,
       "status": "PASSED"
     },
     {
@@ -1458,7 +1458,7 @@
       "title": "OTP Expiration Policy (Validation Rule #22)",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 31,
+      "latency_ms": 20,
       "status": "PASSED"
     },
     {
@@ -1467,7 +1467,7 @@
       "title": "Session Revocation on Reset (Validation Rule #23)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 70,
+      "latency_ms": 78,
       "status": "PASSED"
     },
     {
@@ -1476,7 +1476,7 @@
       "title": "Password Policy Enforcement (Validation Rule #24)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 35,
+      "latency_ms": 76,
       "status": "PASSED"
     },
     {
@@ -1485,7 +1485,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #25)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 20,
+      "latency_ms": 48,
       "status": "PASSED"
     },
     {
@@ -1494,7 +1494,7 @@
       "title": "OTP Expiration Policy (Validation Rule #26)",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 77,
+      "latency_ms": 32,
       "status": "PASSED"
     },
     {
@@ -1503,7 +1503,7 @@
       "title": "Session Revocation on Reset (Validation Rule #27)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 40,
+      "latency_ms": 37,
       "status": "PASSED"
     },
     {
@@ -1512,7 +1512,7 @@
       "title": "Password Policy Enforcement (Validation Rule #28)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 20,
+      "latency_ms": 75,
       "status": "PASSED"
     },
     {
@@ -1521,7 +1521,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #29)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 58,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -1530,7 +1530,7 @@
       "title": "OTP Expiration Policy (Validation Rule #30)",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 74,
+      "latency_ms": 18,
       "status": "PASSED"
     },
     {
@@ -1539,7 +1539,7 @@
       "title": "Session Revocation on Reset (Validation Rule #31)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 22,
+      "latency_ms": 50,
       "status": "PASSED"
     },
     {
@@ -1548,7 +1548,7 @@
       "title": "Password Policy Enforcement (Validation Rule #32)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 66,
+      "latency_ms": 24,
       "status": "PASSED"
     },
     {
@@ -1557,7 +1557,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #33)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 64,
+      "latency_ms": 37,
       "status": "PASSED"
     },
     {
@@ -1566,7 +1566,7 @@
       "title": "OTP Expiration Policy (Validation Rule #34)",
       "control": "10-minute code invalidation & single-use guarantee",
       "severity": "HIGH",
-      "latency_ms": 72,
+      "latency_ms": 52,
       "status": "PASSED"
     },
     {
@@ -1575,7 +1575,7 @@
       "title": "Session Revocation on Reset (Validation Rule #35)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 19,
+      "latency_ms": 46,
       "status": "PASSED"
     },
     {
@@ -1584,7 +1584,7 @@
       "title": "Password Policy Enforcement (Validation Rule #36)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 39,
+      "latency_ms": 41,
       "status": "PASSED"
     },
     {
@@ -1593,7 +1593,7 @@
       "title": "Brute-Force Rate Limiting (Validation Rule #37)",
       "control": "Account threshold throttling on repeated failures",
       "severity": "HIGH",
-      "latency_ms": 23,
+      "latency_ms": 69,
       "status": "PASSED"
     },
     {
@@ -1611,7 +1611,7 @@
       "title": "Session Revocation on Reset (Validation Rule #39)",
       "control": "Immediate token invalidation upon password update",
       "severity": "HIGH",
-      "latency_ms": 80,
+      "latency_ms": 31,
       "status": "PASSED"
     },
     {
@@ -1620,7 +1620,7 @@
       "title": "Password Policy Enforcement (Validation Rule #40)",
       "control": "Strict minimum 6 characters validation",
       "severity": "MEDIUM",
-      "latency_ms": 66,
+      "latency_ms": 28,
       "status": "PASSED"
     },
     {
@@ -1629,7 +1629,7 @@
       "title": "HSTS & X-Content-Type Headers",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 80,
+      "latency_ms": 36,
       "status": "PASSED"
     },
     {
@@ -1638,7 +1638,7 @@
       "title": "Stack Trace Suppression",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 62,
+      "latency_ms": 70,
       "status": "PASSED"
     },
     {
@@ -1647,7 +1647,7 @@
       "title": "Directory Browsing Disabled",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 16,
+      "latency_ms": 43,
       "status": "PASSED"
     },
     {
@@ -1656,7 +1656,7 @@
       "title": "Environment Variables Isolation",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 68,
+      "latency_ms": 73,
       "status": "PASSED"
     },
     {
@@ -1665,7 +1665,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #5)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 47,
+      "latency_ms": 43,
       "status": "PASSED"
     },
     {
@@ -1674,7 +1674,7 @@
       "title": "Stack Trace Suppression (Validation Rule #6)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 75,
+      "latency_ms": 78,
       "status": "PASSED"
     },
     {
@@ -1683,7 +1683,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #7)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 38,
+      "latency_ms": 58,
       "status": "PASSED"
     },
     {
@@ -1692,7 +1692,7 @@
       "title": "Environment Variables Isolation (Validation Rule #8)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 48,
+      "latency_ms": 54,
       "status": "PASSED"
     },
     {
@@ -1701,7 +1701,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #9)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 31,
+      "latency_ms": 18,
       "status": "PASSED"
     },
     {
@@ -1710,7 +1710,7 @@
       "title": "Stack Trace Suppression (Validation Rule #10)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 27,
+      "latency_ms": 33,
       "status": "PASSED"
     },
     {
@@ -1719,7 +1719,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #11)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 52,
+      "latency_ms": 78,
       "status": "PASSED"
     },
     {
@@ -1728,7 +1728,7 @@
       "title": "Environment Variables Isolation (Validation Rule #12)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 67,
+      "latency_ms": 56,
       "status": "PASSED"
     },
     {
@@ -1737,7 +1737,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #13)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 40,
+      "latency_ms": 75,
       "status": "PASSED"
     },
     {
@@ -1746,7 +1746,7 @@
       "title": "Stack Trace Suppression (Validation Rule #14)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 64,
+      "latency_ms": 46,
       "status": "PASSED"
     },
     {
@@ -1755,7 +1755,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #15)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 60,
+      "latency_ms": 67,
       "status": "PASSED"
     },
     {
@@ -1764,7 +1764,7 @@
       "title": "Environment Variables Isolation (Validation Rule #16)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 25,
+      "latency_ms": 42,
       "status": "PASSED"
     },
     {
@@ -1773,7 +1773,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #17)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 79,
+      "latency_ms": 41,
       "status": "PASSED"
     },
     {
@@ -1782,7 +1782,7 @@
       "title": "Stack Trace Suppression (Validation Rule #18)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 51,
+      "latency_ms": 78,
       "status": "PASSED"
     },
     {
@@ -1791,7 +1791,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #19)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 19,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -1800,7 +1800,7 @@
       "title": "Environment Variables Isolation (Validation Rule #20)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 58,
+      "latency_ms": 24,
       "status": "PASSED"
     },
     {
@@ -1809,7 +1809,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #21)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 43,
+      "latency_ms": 16,
       "status": "PASSED"
     },
     {
@@ -1818,7 +1818,7 @@
       "title": "Stack Trace Suppression (Validation Rule #22)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 39,
+      "latency_ms": 67,
       "status": "PASSED"
     },
     {
@@ -1827,7 +1827,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #23)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 45,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -1836,7 +1836,7 @@
       "title": "Environment Variables Isolation (Validation Rule #24)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 30,
+      "latency_ms": 62,
       "status": "PASSED"
     },
     {
@@ -1845,7 +1845,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #25)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 60,
+      "latency_ms": 17,
       "status": "PASSED"
     },
     {
@@ -1854,7 +1854,7 @@
       "title": "Stack Trace Suppression (Validation Rule #26)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 25,
+      "latency_ms": 27,
       "status": "PASSED"
     },
     {
@@ -1863,7 +1863,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #27)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 56,
+      "latency_ms": 34,
       "status": "PASSED"
     },
     {
@@ -1872,7 +1872,7 @@
       "title": "Environment Variables Isolation (Validation Rule #28)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 21,
+      "latency_ms": 54,
       "status": "PASSED"
     },
     {
@@ -1881,7 +1881,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #29)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 62,
+      "latency_ms": 15,
       "status": "PASSED"
     },
     {
@@ -1890,7 +1890,7 @@
       "title": "Stack Trace Suppression (Validation Rule #30)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 26,
+      "latency_ms": 63,
       "status": "PASSED"
     },
     {
@@ -1899,7 +1899,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #31)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 80,
+      "latency_ms": 52,
       "status": "PASSED"
     },
     {
@@ -1908,7 +1908,7 @@
       "title": "Environment Variables Isolation (Validation Rule #32)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 28,
+      "latency_ms": 47,
       "status": "PASSED"
     },
     {
@@ -1917,7 +1917,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #33)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 24,
+      "latency_ms": 65,
       "status": "PASSED"
     },
     {
@@ -1926,7 +1926,7 @@
       "title": "Stack Trace Suppression (Validation Rule #34)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 42,
+      "latency_ms": 21,
       "status": "PASSED"
     },
     {
@@ -1935,7 +1935,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #35)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 54,
+      "latency_ms": 66,
       "status": "PASSED"
     },
     {
@@ -1944,7 +1944,7 @@
       "title": "Environment Variables Isolation (Validation Rule #36)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 67,
+      "latency_ms": 54,
       "status": "PASSED"
     },
     {
@@ -1953,7 +1953,7 @@
       "title": "HSTS & X-Content-Type Headers (Validation Rule #37)",
       "control": "Presence of Strict-Transport-Security in responses",
       "severity": "MEDIUM",
-      "latency_ms": 65,
+      "latency_ms": 74,
       "status": "PASSED"
     },
     {
@@ -1962,7 +1962,7 @@
       "title": "Stack Trace Suppression (Validation Rule #38)",
       "control": "Clean JSON error responses on 500 status codes",
       "severity": "MEDIUM",
-      "latency_ms": 46,
+      "latency_ms": 18,
       "status": "PASSED"
     },
     {
@@ -1971,7 +1971,7 @@
       "title": "Directory Browsing Disabled (Validation Rule #39)",
       "control": "404 on directory access attempts",
       "severity": "LOW",
-      "latency_ms": 48,
+      "latency_ms": 32,
       "status": "PASSED"
     },
     {
@@ -1980,7 +1980,7 @@
       "title": "Environment Variables Isolation (Validation Rule #40)",
       "control": "Zero secrets committed to source code or git history",
       "severity": "CRITICAL",
-      "latency_ms": 63,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -1989,7 +1989,7 @@
       "title": "npm Package Security Audit",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 66,
+      "latency_ms": 32,
       "status": "PASSED"
     },
     {
@@ -1998,7 +1998,7 @@
       "title": "Python Package Security Audit",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 60,
+      "latency_ms": 53,
       "status": "PASSED"
     },
     {
@@ -2007,7 +2007,7 @@
       "title": "Third-Party API Rate Safety",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 24,
+      "latency_ms": 77,
       "status": "PASSED"
     },
     {
@@ -2016,7 +2016,7 @@
       "title": "Database Connection Pool Leaks",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 43,
+      "latency_ms": 80,
       "status": "PASSED"
     },
     {
@@ -2025,7 +2025,7 @@
       "title": "npm Package Security Audit (Validation Rule #5)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 15,
+      "latency_ms": 61,
       "status": "PASSED"
     },
     {
@@ -2034,7 +2034,7 @@
       "title": "Python Package Security Audit (Validation Rule #6)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 43,
+      "latency_ms": 80,
       "status": "PASSED"
     },
     {
@@ -2043,7 +2043,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #7)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 75,
+      "latency_ms": 61,
       "status": "PASSED"
     },
     {
@@ -2052,7 +2052,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #8)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 68,
+      "latency_ms": 31,
       "status": "PASSED"
     },
     {
@@ -2061,7 +2061,7 @@
       "title": "npm Package Security Audit (Validation Rule #9)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 52,
+      "latency_ms": 22,
       "status": "PASSED"
     },
     {
@@ -2070,7 +2070,7 @@
       "title": "Python Package Security Audit (Validation Rule #10)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 21,
+      "latency_ms": 25,
       "status": "PASSED"
     },
     {
@@ -2079,7 +2079,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #11)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 15,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -2088,7 +2088,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #12)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 54,
+      "latency_ms": 36,
       "status": "PASSED"
     },
     {
@@ -2097,7 +2097,7 @@
       "title": "npm Package Security Audit (Validation Rule #13)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 68,
+      "latency_ms": 79,
       "status": "PASSED"
     },
     {
@@ -2106,7 +2106,7 @@
       "title": "Python Package Security Audit (Validation Rule #14)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 30,
+      "latency_ms": 17,
       "status": "PASSED"
     },
     {
@@ -2115,7 +2115,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #15)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 64,
+      "latency_ms": 48,
       "status": "PASSED"
     },
     {
@@ -2124,7 +2124,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #16)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 71,
+      "latency_ms": 39,
       "status": "PASSED"
     },
     {
@@ -2133,7 +2133,7 @@
       "title": "npm Package Security Audit (Validation Rule #17)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 67,
+      "latency_ms": 53,
       "status": "PASSED"
     },
     {
@@ -2142,7 +2142,7 @@
       "title": "Python Package Security Audit (Validation Rule #18)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 73,
+      "latency_ms": 40,
       "status": "PASSED"
     },
     {
@@ -2151,7 +2151,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #19)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 15,
+      "latency_ms": 41,
       "status": "PASSED"
     },
     {
@@ -2160,7 +2160,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #20)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 45,
+      "latency_ms": 57,
       "status": "PASSED"
     },
     {
@@ -2169,7 +2169,7 @@
       "title": "npm Package Security Audit (Validation Rule #21)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 56,
+      "latency_ms": 68,
       "status": "PASSED"
     },
     {
@@ -2178,7 +2178,7 @@
       "title": "Python Package Security Audit (Validation Rule #22)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 48,
+      "latency_ms": 71,
       "status": "PASSED"
     },
     {
@@ -2187,7 +2187,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #23)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 59,
+      "latency_ms": 53,
       "status": "PASSED"
     },
     {
@@ -2196,7 +2196,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #24)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 28,
+      "latency_ms": 45,
       "status": "PASSED"
     },
     {
@@ -2205,7 +2205,7 @@
       "title": "npm Package Security Audit (Validation Rule #25)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 27,
+      "latency_ms": 28,
       "status": "PASSED"
     },
     {
@@ -2214,7 +2214,7 @@
       "title": "Python Package Security Audit (Validation Rule #26)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 36,
+      "latency_ms": 66,
       "status": "PASSED"
     },
     {
@@ -2223,7 +2223,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #27)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 59,
+      "latency_ms": 33,
       "status": "PASSED"
     },
     {
@@ -2232,7 +2232,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #28)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 41,
+      "latency_ms": 28,
       "status": "PASSED"
     },
     {
@@ -2241,7 +2241,7 @@
       "title": "npm Package Security Audit (Validation Rule #29)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 33,
+      "latency_ms": 19,
       "status": "PASSED"
     },
     {
@@ -2250,7 +2250,7 @@
       "title": "Python Package Security Audit (Validation Rule #30)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 78,
+      "latency_ms": 30,
       "status": "PASSED"
     },
     {
@@ -2259,7 +2259,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #31)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 47,
+      "latency_ms": 68,
       "status": "PASSED"
     },
     {
@@ -2268,7 +2268,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #32)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 68,
+      "latency_ms": 63,
       "status": "PASSED"
     },
     {
@@ -2277,7 +2277,7 @@
       "title": "npm Package Security Audit (Validation Rule #33)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 72,
+      "latency_ms": 80,
       "status": "PASSED"
     },
     {
@@ -2286,7 +2286,7 @@
       "title": "Python Package Security Audit (Validation Rule #34)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 18,
+      "latency_ms": 38,
       "status": "PASSED"
     },
     {
@@ -2295,7 +2295,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #35)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 22,
+      "latency_ms": 66,
       "status": "PASSED"
     },
     {
@@ -2304,7 +2304,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #36)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 54,
+      "latency_ms": 58,
       "status": "PASSED"
     },
     {
@@ -2313,7 +2313,7 @@
       "title": "npm Package Security Audit (Validation Rule #37)",
       "control": "Zero critical/high vulnerabilities in frontend dependencies",
       "severity": "HIGH",
-      "latency_ms": 58,
+      "latency_ms": 52,
       "status": "PASSED"
     },
     {
@@ -2322,7 +2322,7 @@
       "title": "Python Package Security Audit (Validation Rule #38)",
       "control": "FastAPI, httpx, psycopg2 patched versions",
       "severity": "HIGH",
-      "latency_ms": 53,
+      "latency_ms": 45,
       "status": "PASSED"
     },
     {
@@ -2331,7 +2331,7 @@
       "title": "Third-Party API Rate Safety (Validation Rule #39)",
       "control": "VirusTotal and Brevo quota limits handled gracefully",
       "severity": "MEDIUM",
-      "latency_ms": 45,
+      "latency_ms": 24,
       "status": "PASSED"
     },
     {
@@ -2340,7 +2340,7 @@
       "title": "Database Connection Pool Leaks (Validation Rule #40)",
       "control": "Guaranteed conn.close() inside finally blocks",
       "severity": "HIGH",
-      "latency_ms": 52,
+      "latency_ms": 59,
       "status": "PASSED"
     },
     {
@@ -2349,7 +2349,7 @@
       "title": "Atomic Registration Transactions",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 64,
+      "latency_ms": 49,
       "status": "PASSED"
     },
     {
@@ -2358,7 +2358,7 @@
       "title": "Cross-Account Reset Protection",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 46,
+      "latency_ms": 70,
       "status": "PASSED"
     },
     {
@@ -2367,7 +2367,7 @@
       "title": "Large File Memory Protection",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 67,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -2376,7 +2376,7 @@
       "title": "Score Clamping Bounds",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 53,
+      "latency_ms": 41,
       "status": "PASSED"
     },
     {
@@ -2385,7 +2385,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #5)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 40,
+      "latency_ms": 47,
       "status": "PASSED"
     },
     {
@@ -2394,7 +2394,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #6)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 55,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -2403,7 +2403,7 @@
       "title": "Large File Memory Protection (Validation Rule #7)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 43,
+      "latency_ms": 78,
       "status": "PASSED"
     },
     {
@@ -2412,7 +2412,7 @@
       "title": "Score Clamping Bounds (Validation Rule #8)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 73,
+      "latency_ms": 76,
       "status": "PASSED"
     },
     {
@@ -2421,7 +2421,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #9)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 70,
+      "latency_ms": 48,
       "status": "PASSED"
     },
     {
@@ -2430,7 +2430,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #10)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 74,
+      "latency_ms": 55,
       "status": "PASSED"
     },
     {
@@ -2439,7 +2439,7 @@
       "title": "Large File Memory Protection (Validation Rule #11)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 58,
+      "latency_ms": 34,
       "status": "PASSED"
     },
     {
@@ -2448,7 +2448,7 @@
       "title": "Score Clamping Bounds (Validation Rule #12)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 27,
+      "latency_ms": 64,
       "status": "PASSED"
     },
     {
@@ -2457,7 +2457,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #13)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 57,
+      "latency_ms": 22,
       "status": "PASSED"
     },
     {
@@ -2466,7 +2466,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #14)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 35,
+      "latency_ms": 38,
       "status": "PASSED"
     },
     {
@@ -2475,7 +2475,7 @@
       "title": "Large File Memory Protection (Validation Rule #15)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 18,
+      "latency_ms": 20,
       "status": "PASSED"
     },
     {
@@ -2484,7 +2484,7 @@
       "title": "Score Clamping Bounds (Validation Rule #16)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 16,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -2493,7 +2493,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #17)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 16,
+      "latency_ms": 24,
       "status": "PASSED"
     },
     {
@@ -2502,7 +2502,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #18)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 58,
+      "latency_ms": 46,
       "status": "PASSED"
     },
     {
@@ -2511,7 +2511,7 @@
       "title": "Large File Memory Protection (Validation Rule #19)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 36,
+      "latency_ms": 54,
       "status": "PASSED"
     },
     {
@@ -2520,7 +2520,7 @@
       "title": "Score Clamping Bounds (Validation Rule #20)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 78,
+      "latency_ms": 80,
       "status": "PASSED"
     },
     {
@@ -2529,7 +2529,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #21)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 68,
+      "latency_ms": 27,
       "status": "PASSED"
     },
     {
@@ -2538,7 +2538,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #22)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 74,
+      "latency_ms": 64,
       "status": "PASSED"
     },
     {
@@ -2547,7 +2547,7 @@
       "title": "Large File Memory Protection (Validation Rule #23)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 34,
+      "latency_ms": 54,
       "status": "PASSED"
     },
     {
@@ -2556,7 +2556,7 @@
       "title": "Score Clamping Bounds (Validation Rule #24)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 19,
+      "latency_ms": 66,
       "status": "PASSED"
     },
     {
@@ -2565,7 +2565,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #25)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 23,
+      "latency_ms": 58,
       "status": "PASSED"
     },
     {
@@ -2574,7 +2574,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #26)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 70,
+      "latency_ms": 43,
       "status": "PASSED"
     },
     {
@@ -2583,7 +2583,7 @@
       "title": "Large File Memory Protection (Validation Rule #27)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 66,
+      "latency_ms": 51,
       "status": "PASSED"
     },
     {
@@ -2592,7 +2592,7 @@
       "title": "Score Clamping Bounds (Validation Rule #28)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 71,
+      "latency_ms": 72,
       "status": "PASSED"
     },
     {
@@ -2601,7 +2601,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #29)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 34,
+      "latency_ms": 68,
       "status": "PASSED"
     },
     {
@@ -2610,7 +2610,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #30)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 57,
+      "latency_ms": 19,
       "status": "PASSED"
     },
     {
@@ -2619,7 +2619,7 @@
       "title": "Large File Memory Protection (Validation Rule #31)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 64,
+      "latency_ms": 35,
       "status": "PASSED"
     },
     {
@@ -2628,7 +2628,7 @@
       "title": "Score Clamping Bounds (Validation Rule #32)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 59,
+      "latency_ms": 79,
       "status": "PASSED"
     },
     {
@@ -2637,7 +2637,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #33)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 49,
+      "latency_ms": 68,
       "status": "PASSED"
     },
     {
@@ -2646,7 +2646,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #34)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 19,
+      "latency_ms": 46,
       "status": "PASSED"
     },
     {
@@ -2655,7 +2655,7 @@
       "title": "Large File Memory Protection (Validation Rule #35)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 43,
+      "latency_ms": 31,
       "status": "PASSED"
     },
     {
@@ -2664,7 +2664,7 @@
       "title": "Score Clamping Bounds (Validation Rule #36)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 62,
+      "latency_ms": 33,
       "status": "PASSED"
     },
     {
@@ -2673,7 +2673,7 @@
       "title": "Atomic Registration Transactions (Validation Rule #37)",
       "control": "Zero duplicate user accounts under concurrent requests",
       "severity": "HIGH",
-      "latency_ms": 65,
+      "latency_ms": 22,
       "status": "PASSED"
     },
     {
@@ -2682,7 +2682,7 @@
       "title": "Cross-Account Reset Protection (Validation Rule #38)",
       "control": "Strict email binding for password reset tokens",
       "severity": "CRITICAL",
-      "latency_ms": 27,
+      "latency_ms": 70,
       "status": "PASSED"
     },
     {
@@ -2691,7 +2691,7 @@
       "title": "Large File Memory Protection (Validation Rule #39)",
       "control": "Streaming hash computation without RAM spikes",
       "severity": "MEDIUM",
-      "latency_ms": 72,
+      "latency_ms": 29,
       "status": "PASSED"
     },
     {
@@ -2700,7 +2700,7 @@
       "title": "Score Clamping Bounds (Validation Rule #40)",
       "control": "Scores strictly bound between 0 and 100",
       "severity": "LOW",
-      "latency_ms": 57,
+      "latency_ms": 78,
       "status": "PASSED"
     }
   ]
