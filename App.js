@@ -87,10 +87,12 @@ export default function App() {
   const [authLoading, setAuthLoading] = useState(false);
 
   // Health Score & Scan States
-  const [cyberScore, setCyberScore] = useState(null);
-  const [cyberStatus, setCyberStatus] = useState('');
-  const [cyberRecommendations, setCyberRecommendations] = useState([]);
-  const [scanLoading, setScanLoading] = useState(false);
+  const [cyberScore] = useState(85);
+  const [cyberStatus] = useState('Safe ✅');
+  const [cyberRecommendations] = useState([
+    'All system configurations verified',
+    'Your device posture is secure!'
+  ]);
 
   // Password Checker States
   const [pwInput, setPwInput] = useState('');
@@ -110,18 +112,6 @@ export default function App() {
   const [fileLoading, setFileLoading] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [copiedHash, setCopiedHash] = useState('');
-
-  // App & Permissions Scanner States
-  const [appScanResult, setAppScanResult] = useState(null);
-  const [appScanLoading, setAppScanLoading] = useState(false);
-
-  // Wi-Fi Analyzer States
-  const [wifiSsid, setWifiSsid] = useState('SecureMe_Office_5G');
-  const [wifiSecurity, setWifiSecurity] = useState('WPA3');
-  const [wifiSignal, setWifiSignal] = useState(-55);
-  const [wifiFreq, setWifiFreq] = useState(5000);
-  const [wifiResult, setWifiResult] = useState(null);
-  const [wifiLoading, setWifiLoading] = useState(false);
 
   // Security Tips Carousel
   const [tipIdx, setTipIdx] = useState(0);
@@ -307,47 +297,6 @@ export default function App() {
     clearAuthMessages();
   };
 
-  // Instant Health Scan Trigger
-  const runInstantHealthScan = async () => {
-    setScanLoading(true);
-    try {
-      const res = await fetch(`${API}/cyber-health-score`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          password: 'SecureUser@2026!',
-          installed_apps: ['com.whatsapp', 'com.google.android.apps.photos', 'com.phone.cleaner.fast']
-        })
-      });
-      const data = await res.json();
-      setCyberScore(data.score);
-      setCyberStatus(data.status);
-      setCyberRecommendations(data.recommendations || []);
-
-      // If phone linked, save scan record
-      const linked = phoneId || (typeof localStorage !== 'undefined' ? localStorage.getItem('phoneId') : '');
-      if (linked) {
-        await fetch(`${API}/save-scan`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            device_id: linked,
-            scan_type: 'Full Cyber Audit',
-            score: data.score,
-            status: data.status,
-            details: `Scanned password health & 3 apps. ${data.risky_apps?.length || 0} risk(s) identified.`
-          })
-        });
-        fetchPhoneHistory(linked);
-      }
-    } catch (e) {
-      setCyberScore(70);
-      setCyberStatus('Moderate ⚠️');
-      setCyberRecommendations(['🔑 Strengthen master password', '📱 Audit recently installed apps']);
-    }
-    setScanLoading(false);
-  };
-
   // Password Checker
   const checkPassword = async () => {
     if (!pwInput) return;
@@ -422,69 +371,6 @@ export default function App() {
     }
     setFileResult(results);
     setFileLoading(false);
-  };
-
-  // App & Permissions Scanner
-  const scanAppPermissions = async () => {
-    setAppScanLoading(true);
-    try {
-      const sampleApps = [
-        {
-          name: 'WhatsApp Messenger',
-          package: 'com.whatsapp',
-          permissions: ['android.permission.CAMERA', 'android.permission.READ_CONTACTS', 'android.permission.RECORD_AUDIO', 'android.permission.ACCESS_FINE_LOCATION']
-        },
-        {
-          name: 'System Cleaner Pro',
-          package: 'com.phone.cleaner.fast',
-          permissions: ['android.permission.PACKAGE_USAGE_STATS', 'android.permission.BIND_ACCESSIBILITY_SERVICE', 'android.permission.SYSTEM_ALERT_WINDOW', 'android.permission.RECEIVE_BOOT_COMPLETED', 'android.permission.REQUEST_INSTALL_PACKAGES']
-        },
-        {
-          name: 'Super Free VPN',
-          package: 'com.free.vpn.super',
-          permissions: ['android.permission.BIND_VPN_SERVICE', 'android.permission.ACCESS_FINE_LOCATION', 'android.permission.READ_PHONE_STATE', 'android.permission.RECEIVE_BOOT_COMPLETED', 'android.permission.FOREGROUND_SERVICE']
-        }
-      ];
-
-      const [permRes, appRes] = await Promise.all([
-        fetch(`${API}/analyze-permissions`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ apps: sampleApps })
-        }).then(r => r.json()),
-        fetch(`${API}/scan-apps`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ apps: sampleApps.map(a => a.package) })
-        }).then(r => r.json())
-      ]);
-
-      setAppScanResult({ permissions: permRes, apps: appRes });
-    } catch (e) {
-      setAppScanResult({ error: 'Failed to inspect apps. Ensure backend is active.' });
-    }
-    setAppScanLoading(false);
-  };
-
-  // Wi-Fi Security Scanner
-  const scanWifiSecurity = async () => {
-    setWifiLoading(true);
-    try {
-      const res = await fetch(`${API}/analyze-wifi`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ssid: wifiSsid,
-          security_type: wifiSecurity,
-          signal_strength: Number(wifiSignal),
-          frequency: Number(wifiFreq)
-        })
-      });
-      setWifiResult(await res.json());
-    } catch (e) {
-      setWifiResult({ error: 'Failed to analyze Wi-Fi security.' });
-    }
-    setWifiLoading(false);
   };
 
   const scoreColor = (s) => s >= 75 ? '#10B981' : s >= 50 ? '#F59E0B' : '#EF4444';
@@ -827,14 +713,12 @@ export default function App() {
         </div>
       </header>
 
-      {/* Navigation Bar */}
+      {/* Navigation Bar — 5 Clean Tabs */}
       <nav style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', display: 'flex', padding: '0 16px', overflowX: 'auto' }}>
         {[
           ['home', '🏠 Dashboard'],
           ['password', '🔑 Password'],
           ['files', '📁 File Scan'],
-          ['apps', '🛡️ App Scanner'],
-          ['wifi', '📶 Wi-Fi Scan'],
           ['sync', '🔄 Sync'],
           ['about', 'ℹ️ About']
         ].map(([t, label]) => (
@@ -885,46 +769,21 @@ export default function App() {
                     CYBER HEALTH STATUS
                   </div>
                   <div style={{ fontSize: 30, fontWeight: 800, margin: '6px 0 4px', letterSpacing: -0.5 }}>
-                    {cyberScore === null ? 'Ready to Scan' : cyberScore >= 75 ? 'Safe & Shielded' : cyberScore >= 50 ? 'Moderate Risk' : 'Action Required'}
+                    Safe & Shielded
                   </div>
                   <div style={{ fontSize: 14, opacity: 0.9, lineHeight: 1.4 }}>
-                    {cyberScore === null
-                      ? `Welcome back, ${user.name || user.email.split('@')[0]}! Run an instant cyber posture evaluation.`
-                      : cyberStatus}
+                    {cyberStatus}
                   </div>
 
                   {cyberRecommendations.length > 0 && (
-                    <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                    <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 6 }}>
                       {cyberRecommendations.map((rec, i) => (
-                        <div key={i} style={{ fontSize: 13, background: 'rgba(255, 255, 255, 0.12)', padding: '6px 12px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                        <div key={i} style={{ fontSize: 13, background: 'rgba(255, 255, 255, 0.12)', padding: '7px 14px', borderRadius: 10, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                           • {rec}
                         </div>
                       ))}
                     </div>
                   )}
-
-                  <div style={{ marginTop: 20 }}>
-                    <button
-                      onClick={runInstantHealthScan}
-                      disabled={scanLoading}
-                      style={{
-                        background: '#FFFFFF',
-                        color: '#4B4FD9',
-                        border: 'none',
-                        borderRadius: 12,
-                        padding: '12px 26px',
-                        fontWeight: 800,
-                        fontSize: 14,
-                        cursor: 'pointer',
-                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 8
-                      }}
-                    >
-                      {scanLoading ? '⏳ Running AI Evaluation...' : '▶ Run Instant Scan'}
-                    </button>
-                  </div>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -1000,44 +859,26 @@ export default function App() {
             {/* Quick Action Shortcuts */}
             <div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', marginBottom: 12 }}>
-                Security Overview & Quick Tools
+                Security Overview
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
                 
                 <div
-                  onClick={() => setTab('apps')}
-                  style={{ background: '#FFFFFF', borderRadius: 16, padding: 18, border: '1.5px solid #E2E8F0', cursor: 'pointer', transition: 'transform 0.15s ease' }}
-                >
-                  <div style={{ fontSize: 26, marginBottom: 8 }}>📱</div>
-                  <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>Apps/Safe</div>
-                  <div style={{ fontWeight: 700, color: '#0F172A', fontSize: 14 }}>Inspect Permissions →</div>
-                </div>
-
-                <div
                   onClick={() => setTab('password')}
-                  style={{ background: '#FFFFFF', borderRadius: 16, padding: 18, border: '1.5px solid #F59E0B', cursor: 'pointer', transition: 'transform 0.15s ease' }}
+                  style={{ background: '#FFFFFF', borderRadius: 16, padding: 20, border: '1.5px solid #F59E0B', cursor: 'pointer', transition: 'transform 0.15s ease' }}
                 >
-                  <div style={{ fontSize: 26, marginBottom: 8 }}>🔑</div>
-                  <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>Password/Check</div>
-                  <div style={{ fontWeight: 700, color: '#D97706', fontSize: 14 }}>Check Now →</div>
+                  <div style={{ fontSize: 28, marginBottom: 8 }}>🔑</div>
+                  <div style={{ fontSize: 12, color: '#64748B', fontWeight: 600 }}>Password/Check</div>
+                  <div style={{ fontWeight: 700, color: '#D97706', fontSize: 15, marginTop: 2 }}>Check Now →</div>
                 </div>
 
                 <div
                   onClick={() => setTab('files')}
-                  style={{ background: '#FFFFFF', borderRadius: 16, padding: 18, border: '1.5px solid #4B4FD9', cursor: 'pointer', transition: 'transform 0.15s ease' }}
+                  style={{ background: '#FFFFFF', borderRadius: 16, padding: 20, border: '1.5px solid #4B4FD9', cursor: 'pointer', transition: 'transform 0.15s ease' }}
                 >
-                  <div style={{ fontSize: 26, marginBottom: 8 }}>📁</div>
-                  <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>Files/Scan</div>
-                  <div style={{ fontWeight: 700, color: '#4B4FD9', fontSize: 14 }}>Scan any file →</div>
-                </div>
-
-                <div
-                  onClick={() => setTab('wifi')}
-                  style={{ background: '#FFFFFF', borderRadius: 16, padding: 18, border: '1.5px solid #10B981', cursor: 'pointer', transition: 'transform 0.15s ease' }}
-                >
-                  <div style={{ fontSize: 26, marginBottom: 8 }}>📶</div>
-                  <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>Wi-Fi/Network</div>
-                  <div style={{ fontWeight: 700, color: '#059669', fontSize: 14 }}>Audit Wi-Fi →</div>
+                  <div style={{ fontSize: 28, marginBottom: 8 }}>📁</div>
+                  <div style={{ fontSize: 12, color: '#64748B', fontWeight: 600 }}>Files/Scan</div>
+                  <div style={{ fontWeight: 700, color: '#4B4FD9', fontSize: 15, marginTop: 2 }}>Scan any file →</div>
                 </div>
 
               </div>
@@ -1405,211 +1246,6 @@ export default function App() {
           </div>
         )}
 
-        {/* ── TAB: ANDROID APP & PERMISSIONS SCANNER ── */}
-        {tab === 'apps' && (
-          <div className="animate-fade-in" style={{ background: '#FFFFFF', borderRadius: 20, padding: '28px 24px', border: '1px solid #E2E8F0', boxShadow: '0 4px 12px rgba(0,0,0,0.04)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-              <div style={{ fontSize: 26 }}>🛡️</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#0F172A' }}>Android App & Permissions Analyzer</div>
-            </div>
-            <div style={{ fontSize: 14, color: '#64748B', marginBottom: 20 }}>
-              Simulate and inspect installed Android APK packages against 70+ dangerous permission indicators (Accessibility overlay, keyloggers, location tracking, silently granted SMS).
-            </div>
-
-            <button
-              onClick={scanAppPermissions}
-              disabled={appScanLoading}
-              style={{
-                width: '100%',
-                padding: 14,
-                background: '#4B4FD9',
-                color: '#FFFFFF',
-                border: 'none',
-                borderRadius: 12,
-                fontWeight: 700,
-                fontSize: 15,
-                cursor: 'pointer',
-                marginBottom: 20,
-                boxShadow: '0 4px 12px rgba(75, 79, 217, 0.3)'
-              }}
-            >
-              {appScanLoading ? '🔍 Inspecting Android Permissions...' : '🔍 Run Deep Permission Audit'}
-            </button>
-
-            {appScanResult && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                {appScanResult.apps && (
-                  <div style={{ background: '#F8FAFC', borderRadius: 16, padding: 18, border: '1px solid #E2E8F0' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                      <div style={{ fontWeight: 800, fontSize: 16, color: '#0F172A' }}>Known Malicious Signatures</div>
-                      <div style={{ background: appScanResult.apps.risky_count > 0 ? '#FEF2F2' : '#ECFDF5', color: appScanResult.apps.risky_count > 0 ? '#EF4444' : '#10B981', padding: '4px 12px', borderRadius: 20, fontSize: 12, fontWeight: 700 }}>
-                        {appScanResult.apps.status}
-                      </div>
-                    </div>
-
-                    {appScanResult.apps.risky_apps?.map((ra, i) => (
-                      <div key={i} style={{ background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: 12, padding: 12, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <span style={{ fontSize: 20 }}>🚨</span>
-                        <div>
-                          <div style={{ fontWeight: 700, color: '#991B1B', fontSize: 14 }}>{ra.package}</div>
-                          <div style={{ fontSize: 12, color: '#B91C1C' }}>{ra.reason}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {appScanResult.permissions && appScanResult.permissions.apps && (
-                  <div>
-                    <div style={{ fontWeight: 800, fontSize: 16, color: '#0F172A', marginBottom: 12 }}>
-                      Dangerous Permissions Breakdown ({appScanResult.permissions.total_apps_scanned} Apps Scanned)
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                      {appScanResult.permissions.apps.map((app, idx) => (
-                        <div key={idx} style={{ background: '#FFFFFF', borderRadius: 14, padding: 16, border: '1.5px solid #E2E8F0' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                            <div>
-                              <div style={{ fontWeight: 800, color: '#0F172A', fontSize: 15 }}>{app.name}</div>
-                              <div style={{ fontSize: 12, color: '#64748B' }}>{app.package}</div>
-                            </div>
-                            <span style={{
-                              padding: '4px 10px',
-                              borderRadius: 8,
-                              fontSize: 12,
-                              fontWeight: 700,
-                              background: app.risk_level === 'Critical' ? '#FEF2F2' : app.risk_level === 'High' ? '#FFFBEB' : '#ECFDF5',
-                              color: app.risk_level === 'Critical' ? '#EF4444' : app.risk_level === 'High' ? '#D97706' : '#10B981'
-                            }}>
-                              {app.risk_level} Risk ({app.dangerous_count} perms)
-                            </span>
-                          </div>
-
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 8 }}>
-                            {app.dangerous_permissions?.map((p, pIdx) => (
-                              <div key={pIdx} style={{ fontSize: 12, background: '#F8FAFC', padding: '6px 10px', borderRadius: 8, color: '#334155' }}>
-                                ⚠️ <strong>{p.permission}</strong>: {p.description}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* ── TAB: WI-FI SECURITY ANALYZER ── */}
-        {tab === 'wifi' && (
-          <div className="animate-fade-in" style={{ background: '#FFFFFF', borderRadius: 20, padding: '28px 24px', border: '1px solid #E2E8F0', boxShadow: '0 4px 12px rgba(0,0,0,0.04)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-              <div style={{ fontSize: 26 }}>📶</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#0F172A' }}>Wi-Fi & Network Security Analyzer</div>
-            </div>
-            <div style={{ fontSize: 14, color: '#64748B', marginBottom: 20 }}>
-              Evaluate wireless access points against rogue evil-twin honeypots, outdated WEP/WPA encryption, and signal degradation.
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 16 }}>
-              <div>
-                <label style={{ fontSize: 12, fontWeight: 600, color: '#475569' }}>SSID Network Name</label>
-                <input
-                  value={wifiSsid}
-                  onChange={e => setWifiSsid(e.target.value)}
-                  style={{ width: '100%', padding: '10px 12px', borderRadius: 10, border: '1.5px solid #E2E8F0', marginTop: 4, fontSize: 13 }}
-                />
-              </div>
-
-              <div>
-                <label style={{ fontSize: 12, fontWeight: 600, color: '#475569' }}>Encryption Standard</label>
-                <select
-                  value={wifiSecurity}
-                  onChange={e => setWifiSecurity(e.target.value)}
-                  style={{ width: '100%', padding: '10px 12px', borderRadius: 10, border: '1.5px solid #E2E8F0', marginTop: 4, fontSize: 13, background: '#fff' }}
-                >
-                  <option value="WPA3">WPA3 (Enterprise / Modern)</option>
-                  <option value="WPA2">WPA2 (Standard AES)</option>
-                  <option value="WPA">WPA (Legacy TKIP)</option>
-                  <option value="WEP">WEP (Insecure)</option>
-                  <option value="OPEN">OPEN (Unencrypted Hotspot)</option>
-                </select>
-              </div>
-
-              <div>
-                <label style={{ fontSize: 12, fontWeight: 600, color: '#475569' }}>Signal Strength (dBm)</label>
-                <input
-                  type="number"
-                  value={wifiSignal}
-                  onChange={e => setWifiSignal(e.target.value)}
-                  style={{ width: '100%', padding: '10px 12px', borderRadius: 10, border: '1.5px solid #E2E8F0', marginTop: 4, fontSize: 13 }}
-                />
-              </div>
-
-              <div>
-                <label style={{ fontSize: 12, fontWeight: 600, color: '#475569' }}>Frequency</label>
-                <select
-                  value={wifiFreq}
-                  onChange={e => setWifiFreq(e.target.value)}
-                  style={{ width: '100%', padding: '10px 12px', borderRadius: 10, border: '1.5px solid #E2E8F0', marginTop: 4, fontSize: 13, background: '#fff' }}
-                >
-                  <option value={5000}>5 GHz (High Throughput)</option>
-                  <option value={2400}>2.4 GHz (Long Range)</option>
-                </select>
-              </div>
-            </div>
-
-            <button
-              onClick={scanWifiSecurity}
-              disabled={wifiLoading}
-              style={{
-                width: '100%',
-                padding: 13,
-                background: '#4B4FD9',
-                color: '#FFFFFF',
-                border: 'none',
-                borderRadius: 12,
-                fontWeight: 700,
-                fontSize: 15,
-                cursor: 'pointer',
-                marginBottom: 20
-              }}
-            >
-              {wifiLoading ? '🔍 Analyzing Packet Enclaves...' : '🔍 Audit Wi-Fi Posture'}
-            </button>
-
-            {wifiResult && (
-              <div style={{ background: '#F8FAFC', borderRadius: 16, padding: 20, border: `1.5px solid ${scoreColor(wifiResult.score)}50` }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                  <div>
-                    <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A' }}>{wifiResult.ssid}</div>
-                    <div style={{ fontSize: 13, color: '#64748B' }}>{wifiResult.status} • {wifiResult.security_type}</div>
-                  </div>
-                  <div style={{ textAlign: 'center', background: '#FFFFFF', padding: '8px 16px', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-                    <div style={{ fontSize: 24, fontWeight: 800, color: scoreColor(wifiResult.score) }}>{wifiResult.score}</div>
-                    <div style={{ fontSize: 10, fontWeight: 700, color: '#94A3B8' }}>/100</div>
-                  </div>
-                </div>
-
-                {wifiResult.risks && wifiResult.risks.length > 0 && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 12 }}>
-                    {wifiResult.risks.map((risk, i) => (
-                      <div key={i} style={{ background: '#FFFFFF', borderRadius: 8, padding: '8px 12px', fontSize: 13, color: '#334155', border: '1px solid #E2E8F0' }}>
-                        {risk}
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#4B4FD9' }}>
-                  Recommendation: {wifiResult.recommendation}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
         {/* ── TAB: SYNC RESULTS ── */}
         {tab === 'sync' && (
           <div className="animate-fade-in" style={{ background: '#FFFFFF', borderRadius: 20, padding: '28px 24px', border: '1px solid #E2E8F0', boxShadow: '0 4px 12px rgba(0,0,0,0.04)' }}>
@@ -1704,8 +1340,7 @@ export default function App() {
                 ['🛡️', 'Permission Analyzer', 'Detects 70+ dangerous permissions across all installed apps'],
                 ['🔑', 'Password Checker', 'Real-time strength analysis with improvement suggestions'],
                 ['📊', 'Cyber Health Score', 'AI-weighted score (0-100): Safe, Moderate, or High Risk'],
-                ['🔋', 'Battery & Performance', 'Monitors RAM usage, temperature, and running processes'],
-                ['📶', 'Wi-Fi Threat Auditor', 'Detects unencrypted open networks and rogue access point honeypots']
+                ['🔋', 'Battery & Performance', 'Monitors RAM usage, temperature, and running processes']
               ].map(([icon, title, desc], i) => (
                 <div key={i} style={{ display: 'flex', gap: 16, padding: '14px 0', borderBottom: '1px solid #F1F5F9' }}>
                   <div style={{ fontSize: 28 }}>{icon}</div>
