@@ -5,6 +5,34 @@ const API = typeof window !== 'undefined' && (window.location.hostname === 'loca
   ? 'http://localhost:8000'
   : 'https://secureme-backend-h0kx.onrender.com';
 
+// Color helper for scores
+const scoreColor = (s) => (s === null || s === undefined) ? '#94A3B8' : s >= 75 ? '#10B981' : s >= 50 ? '#F59E0B' : '#EF4444';
+
+// Dual-endpoint resilient fetcher (automatically fails over between local and cloud backend)
+async function apiFetch(endpoint, options = {}) {
+  const primary = API;
+  const secondary = API.includes('localhost')
+    ? 'https://secureme-backend-h0kx.onrender.com'
+    : 'http://localhost:8000';
+
+  try {
+    const res = await fetch(`${primary}${endpoint}`, options);
+    if (res.ok) return res;
+    // Fall back to secondary if primary gave a 404/5xx error
+    try {
+      const resSec = await fetch(`${secondary}${endpoint}`, options);
+      if (resSec.ok) return resSec;
+    } catch (_) {}
+    return res;
+  } catch (err) {
+    try {
+      return await fetch(`${secondary}${endpoint}`, options);
+    } catch {
+      throw err;
+    }
+  }
+}
+
 // ── Circular Gauge Component ─────────────────────────────────────────────────
 function ScoreGauge({ score, size = 110, strokeWidth = 8, label = 'SCORE' }) {
   const radius = (size - strokeWidth) / 2;
@@ -86,13 +114,33 @@ export default function App() {
   const [authSuccess, setAuthSuccess] = useState('');
   const [authLoading, setAuthLoading] = useState(false);
 
-  // Health Score & Scan States
-  const [cyberScore] = useState(85);
-  const [cyberStatus] = useState('Safe ✅');
-  const [cyberRecommendations] = useState([
-    'All system configurations verified',
-    'Your device posture is secure!'
-  ]);
+  // Health Score & Mobile Synced States
+  const [cyberScore, setCyberScore] = useState(null);
+  const [cyberStatus, setCyberStatus] = useState('Syncing from mobile app...');
+  const [cyberRecommendations, setCyberRecommendations] = useState([]);
+  const [syncedDevice, setSyncedDevice] = useState(() => {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        const u = localStorage.getItem('secureme_user');
+        const parsed = u ? JSON.parse(u) : null;
+        const savedEmail = parsed?.email;
+        return (
+          (savedEmail && localStorage.getItem(`secureme_device_${savedEmail}`)) ||
+          localStorage.getItem('synced_device') ||
+          localStorage.getItem('phoneId') ||
+          parsed?.device_id ||
+          ''
+        );
+      }
+      return '';
+    } catch {
+      return '';
+    }
+  });
+
+
+  const [lastSyncTime, setLastSyncTime] = useState(null);
+  const [isAutoSyncing, setIsAutoSyncing] = useState(false);
 
   // Password Checker States
   const [pwInput, setPwInput] = useState('');
@@ -102,7 +150,6 @@ export default function App() {
 
   // Sync & Device States
   const [deviceId, setDeviceId] = useState('');
-  const [syncData, setSyncData] = useState(null);
   const [syncLoading, setSyncLoading] = useState(false);
   const [phoneHistory, setPhoneHistory] = useState([]);
   const [phoneId, setPhoneId] = useState('');
@@ -114,6 +161,12 @@ export default function App() {
   const [copiedHash, setCopiedHash] = useState('');
 
   // Security Tips Carousel
+  const effectiveScore = cyberScore !== null
+    ? cyberScore
+    : (phoneHistory.length > 0 && typeof phoneHistory[0]?.score === 'number'
+      ? phoneHistory[0].score
+      : null);
+
   const [tipIdx, setTipIdx] = useState(0);
   const tips = [
     { icon: '🔑', title: 'Use Strong Passwords', desc: 'Mix uppercase, numbers, and symbols. Never reuse passwords across portals.' },
@@ -123,20 +176,135 @@ export default function App() {
     { icon: '📶', title: 'Beware of Rogue Wi-Fi Networks', desc: 'Avoid unencrypted open hotspots or use VPN protection on public connections.' },
   ];
 
-  useEffect(() => {
-    if (typeof localStorage !== 'undefined') {
-      const savedPhoneId = localStorage.getItem('phoneId');
-      if (savedPhoneId) {
-        setPhoneId(savedPhoneId);
-        fetchPhoneHistory(savedPhoneId);
+  const syncFromMobileAccount = async (targetEmail, hintDeviceId) => {
+    if (!targetEmail || typeof fetch !== 'function') return;
+    setIsAutoSyncing(true);
+    try {
+      let scans = [];
+      let devId = hintDeviceId || syncedDevice || phoneId || '';
+      if (!devId && typeof localStorage !== 'undefined') {
+        devId = localStorage.getItem(`secureme_device_${targetEmail}`) || localStorage.getItem('synced_device') || '';
       }
+      let scoreVal = null;
+      let statusVal = 'Optimal';
+      let recs = [];
+
+      // 1. Try /sync-user/{email}
+      try {
+        const res = await apiFetch(`/sync-user/${encodeURIComponent(targetEmail)}`);
+        if (res && res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.scans) && data.scans.length > 0) {
+            scans = data.scans;
+          }
+          if (data && data.device_id) devId = data.device_id;
+          if (data && typeof data.cyber_score === 'number') scoreVal = data.cyber_score;
+          if (data && data.cyber_status) statusVal = data.cyber_status;
+          if (data && Array.isArray(data.recommendations) && data.recommendations.length > 0) recs = data.recommendations;
+        }
+      } catch (_) {}
+
+      // 2. Try /get-scans/{targetEmail} directly
+      try {
+        const res = await apiFetch(`/get-scans/${encodeURIComponent(targetEmail)}`);
+        if (res && res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.scans) && data.scans.length > 0) {
+            const existingIds = new Set(scans.map(s => s.id));
+            for (const s of data.scans) {
+              if (!existingIds.has(s.id)) {
+                scans.push(s);
+                existingIds.add(s.id);
+              }
+            }
+          }
+        }
+      } catch (_) {}
+
+      // 3. If devId is known, also fetch /get-scans/{devId} to merge all records
+      if (devId) {
+        try {
+          const res = await apiFetch(`/get-scans/${encodeURIComponent(devId)}`);
+          if (res && res.ok) {
+            const data = await res.json();
+            if (data && Array.isArray(data.scans) && data.scans.length > 0) {
+              const existingIds = new Set(scans.map(s => s.id));
+              for (const s of data.scans) {
+                if (!existingIds.has(s.id)) {
+                  scans.push(s);
+                  existingIds.add(s.id);
+                }
+              }
+            }
+          }
+        } catch (_) {}
+      }
+
+      // If scans retrieved, sort and compute mobile score & link device
+      if (scans.length > 0) {
+        scans.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+        setPhoneHistory(scans);
+
+        if (!devId) {
+          const found = scans.find(s => s.device_id && s.device_id !== 'unknown');
+          if (found) devId = found.device_id;
+        }
+
+        const systemScan = scans.find(s => s.scan_type === 'Full System Scan');
+        if (systemScan && typeof systemScan.score === 'number') {
+          scoreVal = systemScan.score;
+          statusVal = systemScan.status || (scoreVal >= 80 ? 'Optimal' : scoreVal >= 60 ? 'Moderate' : 'At Risk');
+          try {
+            const parsed = typeof systemScan.details === 'string' ? JSON.parse(systemScan.details) : systemScan.details;
+            if (parsed && Array.isArray(parsed.recommendations)) recs = parsed.recommendations;
+          } catch (_) {}
+        } else if (scoreVal === null) {
+          const validScores = scans.map(s => s.score).filter(s => typeof s === 'number');
+          if (validScores.length > 0) {
+            scoreVal = validScores[0];
+            statusVal = scoreVal >= 80 ? 'Optimal' : scoreVal >= 60 ? 'Moderate' : 'At Risk';
+          }
+        }
+      }
+
+      if (devId) {
+        setSyncedDevice(devId);
+        setPhoneId(devId);
+        setDeviceId(devId);
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('synced_device', devId);
+          localStorage.setItem('phoneId', devId);
+          localStorage.setItem(`secureme_device_${targetEmail}`, devId);
+        }
+        // Permanently link device to email on backend
+        try {
+          apiFetch('/link-device', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: targetEmail, device_id: devId })
+          }).catch(() => {});
+        } catch (_) {}
+      }
+
+      if (scoreVal !== null) setCyberScore(scoreVal);
+      setCyberStatus(statusVal);
+      if (recs.length > 0) setCyberRecommendations(recs);
+      setLastSyncTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+    } catch (e) {
+    } finally {
+      setIsAutoSyncing(false);
+    }
+  };
+
+  useEffect(() => {
+    if (user && user.email) {
+      syncFromMobileAccount(user.email, syncedDevice || phoneId);
       const interval = setInterval(() => {
-        const id = localStorage.getItem('phoneId');
-        if (id) fetchPhoneHistory(id);
-      }, 30000);
+        syncFromMobileAccount(user.email, syncedDevice || phoneId);
+      }, 15000);
       return () => clearInterval(interval);
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const clearAuthMessages = () => {
     setAuthError('');
@@ -147,7 +315,7 @@ export default function App() {
     setAuthLoading(true);
     clearAuthMessages();
     try {
-      const res = await fetch(`${API}/login`, {
+      const res = await apiFetch('/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -161,10 +329,23 @@ export default function App() {
           setAuthError(data.error);
         }
       } else {
+        let resolvedDev = data.device_id || '';
         if (typeof localStorage !== 'undefined') {
           localStorage.setItem('secureme_user', JSON.stringify(data));
+          if (!resolvedDev) {
+            resolvedDev = localStorage.getItem(`secureme_device_${data.email}`) || localStorage.getItem('synced_device') || '';
+          }
+          if (resolvedDev) {
+            localStorage.setItem('synced_device', resolvedDev);
+            localStorage.setItem('phoneId', resolvedDev);
+            localStorage.setItem(`secureme_device_${data.email}`, resolvedDev);
+            setSyncedDevice(resolvedDev);
+            setPhoneId(resolvedDev);
+            setDeviceId(resolvedDev);
+          }
         }
         setUser(data);
+        syncFromMobileAccount(data.email, resolvedDev);
       }
     } catch (e) {
       setAuthError('Connection error. Please check backend.');
@@ -176,7 +357,7 @@ export default function App() {
     setAuthLoading(true);
     clearAuthMessages();
     try {
-      const res = await fetch(`${API}/register`, {
+      const res = await apiFetch('/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })
@@ -200,7 +381,7 @@ export default function App() {
     setAuthLoading(true);
     clearAuthMessages();
     try {
-      const res = await fetch(`${API}/verify-email`, {
+      const res = await apiFetch('/verify-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: otpCode })
@@ -211,8 +392,15 @@ export default function App() {
       } else {
         if (typeof localStorage !== 'undefined') {
           localStorage.setItem('secureme_user', JSON.stringify(data.user));
+          if (data.user?.device_id) {
+            localStorage.setItem('synced_device', data.user.device_id);
+            localStorage.setItem('phoneId', data.user.device_id);
+            setSyncedDevice(data.user.device_id);
+            setPhoneId(data.user.device_id);
+          }
         }
         setUser(data.user);
+        syncFromMobileAccount(data.user.email, data.user?.device_id);
       }
     } catch (e) {
       setAuthError('Verification failed. Please try again.');
@@ -224,7 +412,7 @@ export default function App() {
     setAuthLoading(true);
     clearAuthMessages();
     try {
-      const res = await fetch(`${API}/resend-verification`, {
+      const res = await apiFetch('/resend-verification', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
@@ -242,7 +430,7 @@ export default function App() {
     setAuthLoading(true);
     clearAuthMessages();
     try {
-      const res = await fetch(`${API}/forgot-password`, {
+      const res = await apiFetch('/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
@@ -264,7 +452,7 @@ export default function App() {
     setAuthLoading(true);
     clearAuthMessages();
     try {
-      const res = await fetch(`${API}/reset-password`, {
+      const res = await apiFetch('/reset-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: resetOtp, new_password: newPassword })
@@ -289,10 +477,15 @@ export default function App() {
     if (typeof localStorage !== 'undefined') {
       localStorage.removeItem('secureme_user');
       localStorage.removeItem('phoneId');
+      localStorage.removeItem('synced_device');
     }
     setUser(null);
     setPhoneHistory([]);
     setPhoneId('');
+    setSyncedDevice('');
+    setCyberScore(null);
+    setCyberStatus('Syncing from mobile app...');
+    setLastSyncTime(null);
     setTab('home');
     clearAuthMessages();
   };
@@ -302,7 +495,7 @@ export default function App() {
     if (!pwInput) return;
     setPwLoading(true);
     try {
-      const res = await fetch(`${API}/check-password`, {
+      const res = await apiFetch('/check-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: pwInput })
@@ -329,21 +522,57 @@ export default function App() {
     if (!deviceId) return;
     setSyncLoading(true);
     try {
-      const res = await fetch(`${API}/get-scans/${deviceId}`);
-      setSyncData(await res.json());
+      const res = await apiFetch(`/get-scans/${encodeURIComponent(deviceId)}`);
+      const data = await res.json();
+      if (data && Array.isArray(data.scans) && data.scans.length > 0) {
+        const sortedScans = [...data.scans].sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+        setPhoneHistory(sortedScans);
+        setPhoneId(deviceId);
+        setSyncedDevice(deviceId);
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('synced_device', deviceId);
+          localStorage.setItem('phoneId', deviceId);
+          if (user && user.email) {
+            localStorage.setItem(`secureme_device_${user.email}`, deviceId);
+          }
+        }
+
+        // Calculate score immediately
+        const systemScan = sortedScans.find(s => s.scan_type === 'Full System Scan');
+        let scoreVal = null;
+        let statusVal = 'Optimal';
+        let recs = [];
+        if (systemScan && typeof systemScan.score === 'number') {
+          scoreVal = systemScan.score;
+          statusVal = systemScan.status || (scoreVal >= 80 ? 'Optimal' : scoreVal >= 60 ? 'Moderate' : 'At Risk');
+          try {
+            const parsed = typeof systemScan.details === 'string' ? JSON.parse(systemScan.details) : systemScan.details;
+            if (parsed && Array.isArray(parsed.recommendations)) recs = parsed.recommendations;
+          } catch (_) {}
+        } else if (sortedScans.length > 0) {
+          scoreVal = sortedScans[0].score;
+          statusVal = scoreVal >= 80 ? 'Optimal' : scoreVal >= 60 ? 'Moderate' : 'At Risk';
+        }
+
+        if (scoreVal !== null) setCyberScore(scoreVal);
+        setCyberStatus(statusVal);
+        if (recs.length > 0) setCyberRecommendations(recs);
+        setLastSyncTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+
+        // Automatically link this device to the logged-in user on the backend
+        if (user && user.email) {
+          try {
+            apiFetch('/link-device', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: user.email, device_id: deviceId })
+            }).catch(() => {});
+          } catch (_) {}
+        }
+      }
     } catch (e) {
-      setSyncData({ total: 0, scans: [] });
     }
     setSyncLoading(false);
-  };
-
-  const fetchPhoneHistory = async (id) => {
-    if (!id) return;
-    try {
-      const res = await fetch(`${API}/get-scans/${id}`);
-      const data = await res.json();
-      setPhoneHistory(data.scans || []);
-    } catch (e) {}
   };
 
   // File Scanner
@@ -358,7 +587,7 @@ export default function App() {
         const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
         const hash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        const res = await fetch(`${API}/scan-file`, {
+        const res = await apiFetch('/scan-file', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ file_hash: hash, file_name: file.name })
@@ -373,7 +602,7 @@ export default function App() {
     setFileLoading(false);
   };
 
-  const scoreColor = (s) => s >= 75 ? '#10B981' : s >= 50 ? '#F59E0B' : '#EF4444';
+  // scoreColor defined at top-level
 
   const copyToClipboard = (text) => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -752,60 +981,178 @@ export default function App() {
         {tab === 'home' && (
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             
-            {/* Hero Cyber Health Card */}
+            {/* Live Mobile Sync Status Bar */}
             <div style={{
-              background: 'linear-gradient(135deg, #3730A3 0%, #4B4FD9 50%, #7B5EA7 100%)',
-              borderRadius: 24,
-              padding: '28px 32px',
-              color: '#FFFFFF',
-              boxShadow: '0 12px 30px -5px rgba(75, 79, 217, 0.4)',
+              background: '#FFFFFF',
+              borderRadius: 18,
+              padding: '16px 20px',
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.03)',
               display: 'flex',
-              flexDirection: 'column',
-              gap: 20
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 12
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-                <div style={{ flex: 1, minWidth: 240 }}>
-                  <div style={{ fontSize: 11, letterSpacing: 2, fontWeight: 700, opacity: 0.85, textTransform: 'uppercase' }}>
-                    CYBER HEALTH STATUS
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{
+                  width: 42,
+                  height: 42,
+                  borderRadius: 12,
+                  background: 'linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)',
+                  color: '#4B4FD9',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 20
+                }}>
+                  📱
+                </div>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontSize: 15, fontWeight: 800, color: '#0F172A' }}>Mobile Sync Active</span>
+                    <span style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: '#059669',
+                      background: '#ECFDF5',
+                      border: '1px solid #A7F3D0',
+                      borderRadius: 12,
+                      padding: '2px 8px'
+                    }}>
+                      ● Connected {cyberStatus ? `• ${cyberStatus}` : ''}
+                    </span>
                   </div>
-                  <div style={{ fontSize: 30, fontWeight: 800, margin: '6px 0 4px', letterSpacing: -0.5 }}>
-                    Safe & Shielded
+                  <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>
+                    Account: <strong style={{ color: '#334155' }}>{user.email}</strong>
+                    {syncedDevice && <span> • Device: <code style={{ color: '#4B4FD9', fontWeight: 600 }}>{syncedDevice}</code></span>}
+                    {lastSyncTime && <span> • Synced: {lastSyncTime}</span>}
                   </div>
-                  <div style={{ fontSize: 14, opacity: 0.9, lineHeight: 1.4 }}>
-                    {cyberStatus}
-                  </div>
-
                   {cyberRecommendations.length > 0 && (
-                    <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                      {cyberRecommendations.map((rec, i) => (
-                        <div key={i} style={{ fontSize: 13, background: 'rgba(255, 255, 255, 0.12)', padding: '7px 14px', borderRadius: 10, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                          • {rec}
-                        </div>
-                      ))}
+                    <div style={{ fontSize: 12, color: '#475569', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+                      <span>🛡️</span> {cyberRecommendations[0]}
                     </div>
                   )}
                 </div>
+              </div>
 
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                  <ScoreGauge score={cyberScore} size={120} strokeWidth={9} label="HEALTH" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{
+                  textAlign: 'right',
+                  marginRight: 4,
+                  background: '#F8FAFC',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: 12,
+                  padding: '6px 14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10
+                }}>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: 0.5 }}>Mobile Score</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: scoreColor(effectiveScore) }}>
+                      {cyberStatus ? cyberStatus : (effectiveScore >= 75 ? 'Optimal' : effectiveScore >= 50 ? 'Moderate' : 'At Risk')}
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 20, fontWeight: 800, color: scoreColor(effectiveScore), lineHeight: 1 }}>
+                    {effectiveScore !== null ? effectiveScore : '--'}<span style={{ fontSize: 12, color: '#94A3B8', fontWeight: 600 }}>/100</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => syncFromMobileAccount(user.email, syncedDevice || phoneId)}
+                  disabled={isAutoSyncing}
+                  style={{
+                    padding: '8px 14px',
+                    background: isAutoSyncing ? '#EEF2FF' : '#4B4FD9',
+                    color: isAutoSyncing ? '#4B4FD9' : '#FFFFFF',
+                    border: 'none',
+                    borderRadius: 10,
+                    fontWeight: 700,
+                    fontSize: 12,
+                    cursor: isAutoSyncing ? 'wait' : 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
+                  }}
+                >
+                  {isAutoSyncing ? 'Refreshing...' : '🔄 Refresh'}
+                </button>
+              </div>
+            </div>
+
+            {/* Live Mobile Cyber Health Score Card */}
+            <div style={{
+              background: 'linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%)',
+              borderRadius: 20,
+              padding: '24px 28px',
+              color: '#FFFFFF',
+              boxShadow: '0 8px 24px rgba(75, 79, 217, 0.25)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
+                {/* Left: Circular Score Gauge & Info */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+                  <ScoreGauge
+                    score={effectiveScore !== null ? effectiveScore : 0}
+                    size={110}
+                    strokeWidth={9}
+                    label="HEALTH"
+                  />
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: -0.5 }}>Mobile Cyber Health</span>
+                      <span style={{
+                        fontSize: 11,
+                        fontWeight: 700,
+                        padding: '3px 10px',
+                        borderRadius: 20,
+                        background: effectiveScore >= 75 ? 'rgba(16, 185, 129, 0.2)' : effectiveScore >= 50 ? 'rgba(245, 158, 11, 0.2)' : 'rgba(239, 68, 68, 0.25)',
+                        border: `1px solid ${scoreColor(effectiveScore)}`,
+                        color: scoreColor(effectiveScore)
+                      }}>
+                        ● {cyberStatus || (effectiveScore >= 75 ? 'Optimal' : effectiveScore >= 50 ? 'Moderate' : 'At Risk')}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 13, color: '#C7D2FE', marginTop: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <span>📱</span> Connected Device: <strong style={{ color: '#FFFFFF' }}>{syncedDevice || 'Android Client'}</strong>
+                    </div>
+                    <div style={{ fontSize: 12, color: '#A5B4FC', marginTop: 4 }}>
+                      {phoneHistory.length > 0
+                        ? `Live score computed from ${phoneHistory.length} mobile security telemetry audits.`
+                        : `Directly synced with ${user.email}. Run a scan in your SecureMe mobile app to refresh.`}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: Quick Telemetry Metrics */}
+                <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.08)', borderRadius: 14, padding: '12px 18px', border: '1px solid rgba(255,255,255,0.12)', textAlign: 'center', minWidth: 90 }}>
+                    <div style={{ fontSize: 11, color: '#C7D2FE', fontWeight: 600, textTransform: 'uppercase' }}>Audits</div>
+                    <div style={{ fontSize: 22, fontWeight: 800, marginTop: 2 }}>{phoneHistory.length}</div>
+                  </div>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.08)', borderRadius: 14, padding: '12px 18px', border: '1px solid rgba(255,255,255,0.12)', textAlign: 'center', minWidth: 90 }}>
+                    <div style={{ fontSize: 11, color: '#A7F3D0', fontWeight: 600, textTransform: 'uppercase' }}>Safe</div>
+                    <div style={{ fontSize: 22, fontWeight: 800, color: '#34D399', marginTop: 2 }}>
+                      {phoneHistory.filter(s => (s.score || 0) >= 75).length}
+                    </div>
+                  </div>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.08)', borderRadius: 14, padding: '12px 18px', border: '1px solid rgba(255,255,255,0.12)', textAlign: 'center', minWidth: 90 }}>
+                    <div style={{ fontSize: 11, color: '#FECACA', fontWeight: 600, textTransform: 'uppercase' }}>Risks</div>
+                    <div style={{ fontSize: 22, fontWeight: 800, color: '#F87171', marginTop: 2 }}>
+                      {phoneHistory.filter(s => (s.score || 0) < 75).length}
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Quick Metrics Bar */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, borderTop: '1px solid rgba(255, 255, 255, 0.2)', paddingTop: 16 }}>
-                <div style={{ textAlign: 'center', background: 'rgba(255, 255, 255, 0.08)', borderRadius: 12, padding: '10px 4px' }}>
-                  <div style={{ fontSize: 22, fontWeight: 800 }}>{phoneHistory.length}</div>
-                  <div style={{ fontSize: 11, opacity: 0.85, fontWeight: 600 }}>Total Scans</div>
+              {/* Actionable Recommendations from Mobile Audit */}
+              {cyberRecommendations && cyberRecommendations.length > 0 && (
+                <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: '#E0E7FF' }}>
+                  <span style={{ fontSize: 16 }}>⚠️</span>
+                  <span><strong>Mobile Recommendation:</strong> {cyberRecommendations[0]}</span>
                 </div>
-                <div style={{ textAlign: 'center', background: 'rgba(255, 255, 255, 0.08)', borderRadius: 12, padding: '10px 4px' }}>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: '#6EE7B7' }}>{phoneHistory.filter(s => s.score >= 75).length}</div>
-                  <div style={{ fontSize: 11, opacity: 0.85, fontWeight: 600 }}>Safe Scans</div>
-                </div>
-                <div style={{ textAlign: 'center', background: 'rgba(255, 255, 255, 0.08)', borderRadius: 12, padding: '10px 4px' }}>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: '#FCA5A5' }}>{phoneHistory.filter(s => s.score < 75).length}</div>
-                  <div style={{ fontSize: 11, opacity: 0.85, fontWeight: 600 }}>Risks Found</div>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Security Tips Carousel */}
@@ -884,31 +1231,34 @@ export default function App() {
               </div>
             </div>
 
-            {/* Linked Phone Scan History */}
+            {/* Direct Synced Mobile Scan History */}
             <div style={{ background: '#FFFFFF', borderRadius: 18, padding: 22, border: '1px solid #E2E8F0', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
                 <div>
                   <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    📱 Phone Scan History
+                    📱 Synced Mobile Scan History
                   </div>
                   <div style={{ fontSize: 12, color: '#64748B' }}>
-                    {phoneId ? `Device ID: ${phoneId}` : 'Sync scan results directly from your Android phone'}
+                    {syncedDevice ? `Connected Device: ${syncedDevice}` : `Directly synced from SecureMe Mobile App (${user.email})`}
                   </div>
                 </div>
-                {phoneId && (
-                  <button
-                    onClick={() => fetchPhoneHistory(phoneId)}
-                    style={{ padding: '6px 14px', background: '#EEF2FF', color: '#4B4FD9', border: '1px solid #C7D2FE', borderRadius: 8, cursor: 'pointer', fontSize: 13, fontWeight: 700 }}
-                  >
-                    🔄 Refresh
-                  </button>
-                )}
+                <button
+                  onClick={() => syncFromMobileAccount(user.email, syncedDevice || phoneId)}
+                  disabled={isAutoSyncing}
+                  style={{ padding: '6px 14px', background: '#EEF2FF', color: '#4B4FD9', border: '1px solid #C7D2FE', borderRadius: 8, cursor: 'pointer', fontSize: 13, fontWeight: 700 }}
+                >
+                  {isAutoSyncing ? 'Refreshing...' : '🔄 Refresh'}
+                </button>
               </div>
 
               {phoneHistory.length > 0 ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {phoneHistory.map((scan, i) => {
                     const color = scoreColor(scan.score);
+                    const scanIcon = scan.scan_type?.includes('File') ? '📁' :
+                                     scan.scan_type?.includes('Password') ? '🔑' :
+                                     scan.scan_type?.includes('Permission') ? '🛡️' :
+                                     scan.scan_type?.includes('Battery') ? '🔋' : '📱';
                     return (
                       <div
                         key={i}
@@ -923,10 +1273,26 @@ export default function App() {
                           gap: 16
                         }}
                       >
-                        <div>
-                          <div style={{ fontWeight: 800, color: '#0F172A', fontSize: 15 }}>{scan.scan_type}</div>
-                          <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>{scan.created_at?.slice(0, 16).replace('T', ' ')}</div>
-                          <div style={{ fontSize: 13, color: '#334155', marginTop: 4 }}>{scan.details}</div>
+                        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                          <div style={{ fontSize: 24, marginTop: 2 }}>{scanIcon}</div>
+                          <div>
+                            <div style={{ fontWeight: 800, color: '#0F172A', fontSize: 15, display: 'flex', alignItems: 'center', gap: 8 }}>
+                              {scan.scan_type}
+                              {scan.status && (
+                                <span style={{ fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 8, background: `${color}15`, color }}>
+                                  {scan.status}
+                                </span>
+                              )}
+                            </div>
+                            <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>
+                              {scan.created_at?.slice(0, 16).replace('T', ' ')}
+                            </div>
+                            <div style={{ fontSize: 13, color: '#334155', marginTop: 4 }}>
+                              {typeof scan.details === 'string' && scan.details.startsWith('{')
+                                ? 'Audit details synchronized from mobile device'
+                                : scan.details}
+                            </div>
+                          </div>
                         </div>
                         <div style={{ textAlign: 'center', background: '#FFFFFF', padding: '8px 16px', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                           <div style={{ fontSize: 24, fontWeight: 800, color }}>{scan.score}</div>
@@ -937,27 +1303,19 @@ export default function App() {
                   })}
                 </div>
               ) : (
-                <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 18, border: '1px dashed #CBD5E1' }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#334155', marginBottom: 8 }}>Link Device to View Mobile Telemetry</div>
-                  <div style={{ display: 'flex', gap: 8 }}>
-                    <input
-                      value={phoneId}
-                      onChange={e => setPhoneId(e.target.value)}
-                      placeholder="Enter Device ID from SecureMe app → Profile"
-                      style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1.5px solid #E2E8F0', fontSize: 13 }}
-                    />
-                    <button
-                      onClick={() => {
-                        if (typeof localStorage !== 'undefined') {
-                          localStorage.setItem('phoneId', phoneId);
-                        }
-                        fetchPhoneHistory(phoneId);
-                      }}
-                      style={{ padding: '10px 20px', background: '#4B4FD9', color: '#FFFFFF', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', fontSize: 13 }}
-                    >
-                      Link Phone
-                    </button>
+                <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 24, border: '1px dashed #CBD5E1', textAlign: 'center' }}>
+                  <div style={{ fontSize: 32, marginBottom: 8 }}>📲</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: '#1E293B' }}>Mobile Account Connected</div>
+                  <div style={{ fontSize: 13, color: '#64748B', maxWidth: 440, margin: '6px auto 14px' }}>
+                    Your web app is directly connected with <strong>{user.email}</strong>. Run a security scan in the SecureMe Android app to see your scan history and health score appear here automatically.
                   </div>
+                  <button
+                    onClick={() => syncFromMobileAccount(user.email, syncedDevice || phoneId)}
+                    disabled={isAutoSyncing}
+                    style={{ padding: '8px 18px', background: '#4B4FD9', color: '#FFFFFF', border: 'none', borderRadius: 8, fontWeight: 700, fontSize: 13, cursor: 'pointer' }}
+                  >
+                    {isAutoSyncing ? 'Checking...' : '🔄 Check for Scans'}
+                  </button>
                 </div>
               )}
             </div>
@@ -1248,77 +1606,148 @@ export default function App() {
 
         {/* ── TAB: SYNC RESULTS ── */}
         {tab === 'sync' && (
-          <div className="animate-fade-in" style={{ background: '#FFFFFF', borderRadius: 20, padding: '28px 24px', border: '1px solid #E2E8F0', boxShadow: '0 4px 12px rgba(0,0,0,0.04)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-              <div style={{ fontSize: 26 }}>🔄</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#0F172A' }}>Sync Results</div>
-            </div>
-            <div style={{ fontSize: 14, color: '#64748B', marginBottom: 24 }}>
-              Enter your Android Device ID to retrieve and synchronize historical audit logs from your phone.
-            </div>
-
-            <div style={{ marginBottom: 16 }}>
-              <input
-                value={deviceId}
-                onChange={e => setDeviceId(e.target.value)}
-                placeholder="Find in SecureMe app → Profile → Device ID"
-                style={{ width: '100%', padding: '14px 16px', borderRadius: 12, border: '1.5px solid #E2E8F0', fontSize: 14 }}
-              />
-            </div>
-
-            <button
-              onClick={fetchSync}
-              disabled={syncLoading || !deviceId}
-              style={{
-                width: '100%',
-                padding: 14,
-                background: deviceId ? '#4B4FD9' : '#CBD5E1',
-                color: '#FFFFFF',
-                border: 'none',
-                borderRadius: 12,
-                fontWeight: 700,
-                fontSize: 15,
-                cursor: deviceId ? 'pointer' : 'not-allowed',
-                marginBottom: 24
-              }}
-            >
-              {syncLoading ? 'Fetching telemetry...' : '🔄 Fetch My Scans'}
-            </button>
-
-            {syncData && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A' }}>
-                  {syncData.total} scan(s) found
+          <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <div style={{ background: '#FFFFFF', borderRadius: 20, padding: '28px 24px', border: '1px solid #E2E8F0', boxShadow: '0 4px 12px rgba(0,0,0,0.04)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div style={{ fontSize: 26 }}>🔄</div>
+                  <div>
+                    <div style={{ fontSize: 22, fontWeight: 800, color: '#0F172A' }}>Mobile Device Sync</div>
+                    <div style={{ fontSize: 13, color: '#64748B' }}>Direct cloud sync active with your SecureMe mobile account</div>
+                  </div>
                 </div>
-                {(syncData.scans || []).map((scan, i) => (
-                  <div
-                    key={i}
+                <button
+                  onClick={() => syncFromMobileAccount(user.email, syncedDevice || phoneId)}
+                  disabled={isAutoSyncing}
+                  style={{
+                    padding: '10px 18px',
+                    background: isAutoSyncing ? '#EEF2FF' : '#4B4FD9',
+                    color: isAutoSyncing ? '#4B4FD9' : '#FFFFFF',
+                    border: 'none',
+                    borderRadius: 10,
+                    fontWeight: 700,
+                    fontSize: 13,
+                    cursor: isAutoSyncing ? 'wait' : 'pointer'
+                  }}
+                >
+                  {isAutoSyncing ? 'Refreshing...' : '🔄 Fetch Updates'}
+                </button>
+              </div>
+
+              {/* Status Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: 12, marginTop: 20 }}>
+                <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 16, border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: 12, color: '#64748B', fontWeight: 600 }}>SYNCED ACCOUNT</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: '#0F172A', marginTop: 4, wordBreak: 'break-all' }}>{user.email}</div>
+                  <div style={{ fontSize: 11, color: '#10B981', fontWeight: 700, marginTop: 4 }}>● Directly Synced</div>
+                </div>
+
+                <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 16, border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: 12, color: '#64748B', fontWeight: 600 }}>CONNECTED DEVICE</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: '#4B4FD9', marginTop: 4 }}>
+                    {syncedDevice || 'SecureMe Android Client'}
+                  </div>
+                  <div style={{ fontSize: 11, color: '#64748B', marginTop: 4 }}>
+                    {lastSyncTime ? `Last update: ${lastSyncTime}` : 'Live auto-sync'}
+                  </div>
+                </div>
+
+                <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 16, border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: 12, color: '#64748B', fontWeight: 600 }}>TOTAL SCANS SYNCED</div>
+                  <div style={{ fontSize: 24, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                    {phoneHistory.length}
+                  </div>
+                  <div style={{ fontSize: 11, color: '#10B981', fontWeight: 700 }}>
+                    {phoneHistory.filter(s => s.score >= 75).length} Safe • {phoneHistory.filter(s => s.score < 75).length} Risks
+                  </div>
+                </div>
+
+                <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 16, border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: 12, color: '#64748B', fontWeight: 600 }}>MOBILE HEALTH SCORE</div>
+                  <div style={{ fontSize: 24, fontWeight: 800, color: scoreColor(effectiveScore), marginTop: 2 }}>
+                    {effectiveScore !== null ? `${effectiveScore}/100` : '--'}
+                  </div>
+                  <div style={{ fontSize: 11, color: scoreColor(effectiveScore), fontWeight: 700 }}>
+                    ● {cyberStatus || (effectiveScore >= 75 ? 'Optimal' : effectiveScore >= 50 ? 'Moderate' : 'At Risk')}
+                  </div>
+                </div>
+              </div>
+
+              {/* Synced Scans List */}
+              <div style={{ marginTop: 24 }}>
+                <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', marginBottom: 12 }}>
+                  Synchronized Telemetry ({phoneHistory.length} audits)
+                </div>
+
+                {phoneHistory.length > 0 ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {phoneHistory.map((scan, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          border: `1.5px solid ${scoreColor(scan.score)}40`,
+                          borderRadius: 14,
+                          padding: 16,
+                          background: '#F8FAFC',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}
+                      >
+                        <div>
+                          <div style={{ fontWeight: 800, color: '#0F172A', fontSize: 15 }}>{scan.scan_type}</div>
+                          <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>{scan.created_at?.slice(0, 16).replace('T', ' ')}</div>
+                          <div style={{ fontSize: 13, color: '#334155', marginTop: 4 }}>
+                            {typeof scan.details === 'string' && scan.details.startsWith('{')
+                              ? `Status: ${scan.status || 'Completed'}`
+                              : scan.details}
+                          </div>
+                        </div>
+                        <div style={{ textAlign: 'center', background: '#FFFFFF', padding: '8px 16px', borderRadius: 12 }}>
+                          <div style={{ fontSize: 24, fontWeight: 800, color: scoreColor(scan.score) }}>{scan.score}</div>
+                          <div style={{ fontSize: 10, fontWeight: 700, color: '#94A3B8' }}>/100</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 20, textAlign: 'center', color: '#64748B', fontSize: 13 }}>
+                    No audit records saved yet for this account. Run a scan on your phone to view results here.
+                  </div>
+                )}
+              </div>
+
+              {/* Manual Device Override Accordion */}
+              <div style={{ marginTop: 24, borderTop: '1px solid #E2E8F0', paddingTop: 20 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#475569', marginBottom: 8 }}>
+                  Manual Device ID Override (Optional)
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <input
+                    value={deviceId}
+                    onChange={e => setDeviceId(e.target.value)}
+                    placeholder="Find in SecureMe app → Profile → Device ID"
+                    style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1.5px solid #E2E8F0', fontSize: 13 }}
+                  />
+                  <button
+                    onClick={fetchSync}
+                    disabled={syncLoading || !deviceId}
                     style={{
-                      border: `1.5px solid ${scoreColor(scan.score)}40`,
-                      borderRadius: 14,
-                      padding: 16,
-                      background: '#F8FAFC',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center'
+                      padding: '10px 18px',
+                      background: deviceId ? '#4B4FD9' : '#CBD5E1',
+                      color: '#FFFFFF',
+                      border: 'none',
+                      borderRadius: 10,
+                      fontWeight: 700,
+                      fontSize: 13,
+                      cursor: deviceId ? 'pointer' : 'not-allowed'
                     }}
                   >
-                    <div>
-                      <div style={{ fontWeight: 800, color: '#0F172A', fontSize: 15 }}>{scan.scan_type}</div>
-                      <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>{scan.created_at?.slice(0, 16).replace('T', ' ')}</div>
-                      <div style={{ fontSize: 13, color: '#334155', marginTop: 4 }}>{scan.details}</div>
-                    </div>
-                    <div style={{ textAlign: 'center', background: '#FFFFFF', padding: '8px 16px', borderRadius: 12 }}>
-                      <div style={{ fontSize: 24, fontWeight: 800, color: scoreColor(scan.score) }}>{scan.score}</div>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: '#94A3B8' }}>/100</div>
-                    </div>
-                  </div>
-                ))}
+                    {syncLoading ? 'Fetching...' : 'Query Device'}
+                  </button>
+                </div>
               </div>
-            )}
 
-            <div style={{ background: '#EEF2FF', borderRadius: 12, padding: 14, fontSize: 13, color: '#4B4FD9', marginTop: 16 }}>
-              💡 Find your Device ID: Open SecureMe app → Profile tab
             </div>
           </div>
         )}
@@ -1352,12 +1781,7 @@ export default function App() {
               ))}
             </div>
 
-            <div style={{ marginTop: 24, padding: 20, background: 'linear-gradient(135deg, #4B4FD9 0%, #7B5EA7 100%)', borderRadius: 16, color: '#FFFFFF', textAlign: 'center', boxShadow: '0 8px 20px rgba(75, 79, 217, 0.3)' }}>
-              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>SecureMe Architecture Stack</div>
-              <div style={{ fontSize: 13, opacity: 0.9 }}>
-                Kotlin + Jetpack Compose • React Native • FastAPI • PostgreSQL • VirusTotal API • Brevo • SHA-256 Web Crypto
-              </div>
-            </div>
+
           </div>
         )}
 
