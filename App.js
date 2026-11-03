@@ -86,6 +86,639 @@ function ScoreGauge({ score, size = 110, strokeWidth = 8, label = 'SCORE' }) {
   );
 }
 
+
+// ── Shared Audit Details & Telemetry Components ──
+function parseScanDetails(scan) {
+  if (!scan || !scan.details) return null;
+  if (typeof scan.details === 'object') return scan.details;
+  if (typeof scan.details === 'string') {
+    try {
+      return JSON.parse(scan.details);
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
+function AuditDetailCard({ scan, isExpanded, onToggle }) {
+  const details = parseScanDetails(scan);
+  const color = scoreColor(scan.score);
+  const scanType = scan.scan_type || 'Security Audit';
+  const isHardware = scanType.toLowerCase().includes('hardware') || scanType.toLowerCase().includes('battery');
+  const isSystem = scanType.toLowerCase().includes('system') || scanType.toLowerCase().includes('cyber');
+  const isFile = scanType.toLowerCase().includes('file');
+  const isPermission = scanType.toLowerCase().includes('permission');
+  const isPassword = scanType.toLowerCase().includes('password');
+
+  const scanIcon = isHardware ? '🔋' :
+                   isSystem ? '🛡️' :
+                   isFile ? '📁' :
+                   isPermission ? '🔒' :
+                   isPassword ? '🔑' : '📱';
+
+  return (
+    <div
+      style={{
+        background: '#FFFFFF',
+        borderRadius: 16,
+        padding: '18px 20px',
+        border: `1.5px solid ${color}35`,
+        boxShadow: isExpanded ? '0 8px 24px rgba(75, 79, 217, 0.08)' : '0 2px 6px rgba(0,0,0,0.03)',
+        transition: 'all 0.25s ease'
+      }}
+    >
+      {/* Top Header Row */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, flex: 1 }}>
+          <div
+            style={{
+              fontSize: 22,
+              width: 44,
+              height: 44,
+              borderRadius: 12,
+              background: `${color}15`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0
+            }}
+          >
+            {scanIcon}
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <span style={{ fontWeight: 800, color: '#0F172A', fontSize: 16 }}>{scanType}</span>
+              {scan.status && (
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    padding: '2px 8px',
+                    borderRadius: 8,
+                    background: `${color}15`,
+                    color: color
+                  }}
+                >
+                  {scan.status}
+                </span>
+              )}
+              {isHardware && (
+                <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 6, background: '#EEF2FF', color: '#4B4FD9' }}>
+                  Hardware Telemetry
+                </span>
+              )}
+            </div>
+
+            <div style={{ fontSize: 12, color: '#64748B', marginTop: 3, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <span>🕒 {scan.created_at ? scan.created_at.slice(0, 16).replace('T', ' ') : 'Just now'}</span>
+              {scan.device_id && scan.device_id !== 'unknown' && (
+                <span title={`Device: ${scan.device_id}`}>📱 ID: {scan.device_id.slice(0, 10)}...</span>
+              )}
+              {scan.user_email && (
+                <span>✉️ {scan.user_email}</span>
+              )}
+            </div>
+
+            {/* Quick Metrics Pills when collapsed */}
+            {!isExpanded && details && (
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 8 }}>
+                {isHardware && (
+                  <>
+                    {details.battery_level !== undefined && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: '#334155' }}>
+                        🔋 {details.battery_level}% Battery
+                      </span>
+                    )}
+                    {details.temperature !== undefined && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: details.temperature > 38 ? '#EF4444' : '#10B981' }}>
+                        🌡️ {details.temperature}°C
+                      </span>
+                    )}
+                    {details.voltage !== undefined && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: '#334155' }}>
+                        ⚡ {details.voltage}V
+                      </span>
+                    )}
+                    {details.ram_used && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: '#334155' }}>
+                        💾 RAM: {details.ram_used.split('(')[0].trim()}
+                      </span>
+                    )}
+                    {details.health && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#ECFDF5', padding: '3px 8px', borderRadius: 6, color: '#059669' }}>
+                        🩺 {details.health}
+                      </span>
+                    )}
+                  </>
+                )}
+                {isSystem && (
+                  <>
+                    {(details.total_apps !== undefined || details.apps_scanned !== undefined) && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: '#334155' }}>
+                        📱 {details.total_apps || details.apps_scanned} Apps Scanned
+                      </span>
+                    )}
+                    {(details.risky_permissions !== undefined || details.risky_apps_count !== undefined) && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#FEF2F2', padding: '3px 8px', borderRadius: 6, color: '#DC2626' }}>
+                        ⚠️ {details.risky_permissions ?? details.risky_apps_count} Risks
+                      </span>
+                    )}
+                    {details.ram_used && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: '#334155' }}>
+                        💾 {details.ram_used.split('(')[0].trim()}
+                      </span>
+                    )}
+                  </>
+                )}
+                {isFile && (
+                  <>
+                    {details.total_scanned !== undefined && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: '#334155' }}>
+                        📂 {details.total_scanned} Files
+                      </span>
+                    )}
+                    {details.threats_count !== undefined && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: details.threats_count > 0 ? '#FEF2F2' : '#ECFDF5', padding: '3px 8px', borderRadius: 6, color: details.threats_count > 0 ? '#DC2626' : '#059669' }}>
+                        {details.threats_count > 0 ? `🚨 ${details.threats_count} Threats` : '✅ Clean'}
+                      </span>
+                    )}
+                  </>
+                )}
+                {isPermission && (
+                  <>
+                    {details.total_apps !== undefined && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: '#334155' }}>
+                        📱 {details.total_apps} Apps
+                      </span>
+                    )}
+                    {details.risky_apps_count !== undefined && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#FEF2F2', padding: '3px 8px', borderRadius: 6, color: '#DC2626' }}>
+                        ⚠️ {details.risky_apps_count} Risky Apps
+                      </span>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Score & Expand Button */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
+          <div style={{ textAlign: 'center', background: '#F8FAFC', border: '1px solid #E2E8F0', padding: '6px 14px', borderRadius: 12 }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: color }}>{scan.score ?? '--'}</div>
+            <div style={{ fontSize: 9, fontWeight: 700, color: '#94A3B8' }}>SCORE</div>
+          </div>
+          <button
+            onClick={onToggle}
+            style={{
+              background: isExpanded ? '#4B4FD9' : '#EEF2FF',
+              color: isExpanded ? '#FFFFFF' : '#4B4FD9',
+              border: 'none',
+              padding: '5px 12px',
+              borderRadius: 8,
+              fontSize: 12,
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 4
+            }}
+          >
+            {isExpanded ? 'Hide Details ▲' : 'View Details ▼'}
+          </button>
+        </div>
+      </div>
+
+      {/* Expanded Details Section */}
+      {isExpanded && (
+        <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #E2E8F0' }}>
+          {details ? (
+            <div>
+              {/* Detailed Hardware Scan Breakdown */}
+              {isHardware && (
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#1E293B', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    🔋 Complete Hardware & Battery Telemetry
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>BATTERY LEVEL</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: details.battery_level < 20 ? '#EF4444' : '#0F172A', marginTop: 2 }}>
+                        {details.battery_level !== undefined ? `${details.battery_level}%` : 'N/A'}
+                      </div>
+                      <div style={{ width: '100%', height: 6, background: '#E2E8F0', borderRadius: 3, marginTop: 6, overflow: 'hidden' }}>
+                        <div style={{ width: `${Math.min(100, details.battery_level || 0)}%`, height: '100%', background: details.battery_level < 20 ? '#EF4444' : '#10B981' }} />
+                      </div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>TEMPERATURE</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: details.temperature > 40 ? '#EF4444' : details.temperature > 37 ? '#F59E0B' : '#10B981', marginTop: 2 }}>
+                        {details.temperature !== undefined ? `${details.temperature}°C` : 'N/A'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>
+                        {details.temperature > 42 ? '⚠️ High Thermal Alert' : details.temperature > 37 ? '⚡ Slightly Warm' : '✅ Optimal Range'}
+                      </div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>CELL VOLTAGE</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.voltage !== undefined ? `${details.voltage} V` : 'N/A'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Safe range 3.6V - 4.35V</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>BATTERY HEALTH</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: details.health === 'Good' ? '#10B981' : '#F59E0B', marginTop: 2 }}>
+                        {details.health || 'Good'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Internal chemistry status</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>RAM ALLOCATION & LOAD</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.ram_used || 'Active'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Hardware memory profile</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>POWER SOURCE</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.power_source || (details.battery_level ? 'Battery (Discharging)' : 'Internal Power')}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Current charging state</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Detailed Full System Scan Breakdown */}
+              {isSystem && (
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#1E293B', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    🛡️ Full System Security & Device Integrity
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>APPS AUDITED</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.total_apps || details.apps_scanned || 'N/A'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Installed packages</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>RISKY PERMISSIONS</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: (details.risky_permissions || details.risky_apps_count) > 0 ? '#DC2626' : '#10B981', marginTop: 2 }}>
+                        {details.risky_permissions ?? details.risky_apps_count ?? 0}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Dangerous API grants</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>MALWARE THREATS</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: (details.malware_threats || 0) > 0 ? '#DC2626' : '#10B981', marginTop: 2 }}>
+                        {details.malware_threats ?? 0}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Known malicious signatures</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>DEVICE ROOT / JAILBREAK</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: details.is_rooted ? '#DC2626' : '#10B981', marginTop: 2 }}>
+                        {details.is_rooted ? '⚠️ Root Detected' : '✅ Clean / Non-Rooted'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>System integrity status</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>DEVELOPER DEBUGGING (ADB)</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: details.is_adb_enabled ? '#D97706' : '#10B981', marginTop: 2 }}>
+                        {details.is_adb_enabled ? '⚠️ ADB USB Active' : '✅ ADB Disabled'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>External debugger exposure</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>SCREEN LOCK PROTECTION</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: details.is_device_locked ? '#10B981' : '#DC2626', marginTop: 2 }}>
+                        {details.is_device_locked ? '✅ PIN / Biometrics Active' : '⚠️ No Screen Lock'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Physical access security</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Detailed Deep File Scan Breakdown */}
+              {isFile && (
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#1E293B', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    📁 Deep Storage & Binary Audit Results
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 10 }}>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>TOTAL SCANNED</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.total_scanned ?? 'N/A'}
+                      </div>
+                    </div>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>SAFE FILES</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#10B981', marginTop: 2 }}>
+                        {details.safe_count ?? 'All'}
+                      </div>
+                    </div>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>THREATS DETECTED</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: (details.threats_count || 0) > 0 ? '#DC2626' : '#10B981', marginTop: 2 }}>
+                        {details.threats_count ?? 0}
+                      </div>
+                    </div>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>APK PACKAGES</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.apk_count ?? 0}
+                      </div>
+                    </div>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>DOCUMENTS</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.doc_count ?? 0}
+                      </div>
+                    </div>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>MEDIA FILES</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.media_count ?? 0}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Detailed Permission Audit Breakdown */}
+              {isPermission && (
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#1E293B', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    🔒 Application Permission Audit Results
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10, marginBottom: 10 }}>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>TOTAL APPS AUDITED</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>{details.total_apps ?? 'N/A'}</div>
+                    </div>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>HIGH-RISK APPLICATIONS</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: (details.risky_apps_count || 0) > 0 ? '#DC2626' : '#10B981', marginTop: 2 }}>
+                        {details.risky_apps_count ?? 0}
+                      </div>
+                    </div>
+                  </div>
+                  {Array.isArray(details.risky_apps) && details.risky_apps.length > 0 && (
+                    <div style={{ background: '#FEF2F2', borderRadius: 12, padding: 12, border: '1px solid #FCA5A5' }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: '#991B1B', marginBottom: 6 }}>Identified Risky Apps:</div>
+                      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                        {details.risky_apps.map((name, idx) => (
+                          <span key={idx} style={{ background: '#FFFFFF', padding: '3px 8px', borderRadius: 6, fontSize: 11, fontWeight: 600, color: '#DC2626', border: '1px solid #FECACA' }}>
+                            {name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Detailed Password Check Breakdown */}
+              {isPassword && (
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#1E293B', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    🔑 Credential Complexity & Strength
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>STRENGTH LEVEL</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: color, marginTop: 2 }}>{details.strength || scan.status}</div>
+                    </div>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>ENTROPY SCORE</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: color, marginTop: 2 }}>{details.score || scan.score}/100</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Generic fallback for any other custom keys in details */}
+              {!isHardware && !isSystem && !isFile && !isPermission && !isPassword && (
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#1E293B', marginBottom: 10 }}>Telemetry Attributes</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
+                    {Object.entries(details).map(([k, v]) => (
+                      <div key={k} style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                        <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600, textTransform: 'uppercase' }}>{k.replace(/_/g, ' ')}</div>
+                        <div style={{ fontSize: 15, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                          {typeof v === 'object' ? JSON.stringify(v) : String(v)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div style={{ fontSize: 13, color: '#64748B', background: '#F8FAFC', padding: 12, borderRadius: 10 }}>
+              {scan.details || 'No additional raw parameters were logged for this audit.'}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SyncedHistoryManager({
+  phoneHistory,
+  user,
+  syncedDevice,
+  phoneId,
+  isAutoSyncing,
+  syncFromMobileAccount
+}) {
+  const [filter, setFilter] = useState('all');
+  const [expandedId, setExpandedId] = useState(null);
+
+  const totalAudits = phoneHistory.length;
+  const safeAudits = phoneHistory.filter(s => (s.score || 0) >= 75).length;
+  const riskAudits = phoneHistory.filter(s => (s.score || 0) < 75).length;
+  const avgScore = totalAudits > 0
+    ? Math.round(phoneHistory.reduce((acc, s) => acc + (s.score || 0), 0) / totalAudits)
+    : 0;
+
+  const hardwareCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('hardware') || s.scan_type?.toLowerCase().includes('battery')).length;
+  const systemCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('system') || s.scan_type?.toLowerCase().includes('cyber')).length;
+  const fileCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('file')).length;
+  const permCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('permission')).length;
+  const passCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('password')).length;
+
+  const filteredHistory = phoneHistory.filter(scan => {
+    if (filter === 'all') return true;
+    const type = scan.scan_type?.toLowerCase() || '';
+    if (filter === 'hardware') return type.includes('hardware') || type.includes('battery');
+    if (filter === 'system') return type.includes('system') || type.includes('cyber');
+    if (filter === 'files') return type.includes('file');
+    if (filter === 'permissions') return type.includes('permission');
+    if (filter === 'password') return type.includes('password');
+    return true;
+  });
+
+  return (
+    <div style={{ background: '#FFFFFF', borderRadius: 20, padding: 24, border: '1px solid #E2E8F0', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+      {/* Header and Sync Actions */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, flexWrap: 'wrap', gap: 12 }}>
+        <div>
+          <div style={{ fontSize: 18, fontWeight: 800, color: '#0F172A', display: 'flex', alignItems: 'center', gap: 8 }}>
+            📱 Mobile & Web Telemetry Audit History
+          </div>
+          <div style={{ fontSize: 13, color: '#64748B', marginTop: 2 }}>
+            {syncedDevice ? `Synced with hardware device: ${syncedDevice}` : `Real-time sync active for ${user?.email || 'authenticated user'}`}
+          </div>
+        </div>
+        <button
+          onClick={() => syncFromMobileAccount(user?.email, syncedDevice || phoneId)}
+          disabled={isAutoSyncing}
+          style={{
+            padding: '8px 16px',
+            background: '#EEF2FF',
+            color: '#4B4FD9',
+            border: '1px solid #C7D2FE',
+            borderRadius: 10,
+            cursor: isAutoSyncing ? 'not-allowed' : 'pointer',
+            fontSize: 13,
+            fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6
+          }}
+        >
+          {isAutoSyncing ? '🔄 Syncing...' : '🔄 Refresh Audits'}
+        </button>
+      </div>
+
+      {/* 4 Summary Counters */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 20 }}>
+        <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 14, border: '1px solid #E2E8F0' }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>Total Audits Synced</div>
+          <div style={{ fontSize: 26, fontWeight: 800, color: '#4B4FD9', marginTop: 2 }}>{totalAudits}</div>
+          <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>All mobile scan logs</div>
+        </div>
+        <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 14, border: '1px solid #E2E8F0' }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>Safe / Optimal</div>
+          <div style={{ fontSize: 26, fontWeight: 800, color: '#10B981', marginTop: 2 }}>{safeAudits}</div>
+          <div style={{ fontSize: 11, color: '#10B981', marginTop: 2 }}>Passed benchmarks</div>
+        </div>
+        <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 14, border: '1px solid #E2E8F0' }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>Attention / Risks</div>
+          <div style={{ fontSize: 26, fontWeight: 800, color: riskAudits > 0 ? '#EF4444' : '#10B981', marginTop: 2 }}>{riskAudits}</div>
+          <div style={{ fontSize: 11, color: riskAudits > 0 ? '#EF4444' : '#10B981', marginTop: 2 }}>
+            {riskAudits > 0 ? 'Requires attention' : 'No risks detected'}
+          </div>
+        </div>
+        <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 14, border: '1px solid #E2E8F0' }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>Avg Cyber Score</div>
+          <div style={{ fontSize: 26, fontWeight: 800, color: scoreColor(avgScore), marginTop: 2 }}>{avgScore}/100</div>
+          <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Aggregated health</div>
+        </div>
+      </div>
+
+      {/* Filter Chips */}
+      <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 6, marginBottom: 18 }}>
+        {[
+          { key: 'all', label: `All Audits (${totalAudits})` },
+          { key: 'hardware', label: `🔋 Hardware & Battery (${hardwareCount})` },
+          { key: 'system', label: `🛡️ Full System (${systemCount})` },
+          { key: 'files', label: `📁 Deep Files (${fileCount})` },
+          { key: 'permissions', label: `🔒 Permissions (${permCount})` },
+          { key: 'password', label: `🔑 Passwords (${passCount})` }
+        ].map(item => (
+          <button
+            key={item.key}
+            onClick={() => setFilter(item.key)}
+            style={{
+              padding: '6px 14px',
+              borderRadius: 20,
+              fontSize: 12,
+              fontWeight: 700,
+              whiteSpace: 'nowrap',
+              border: filter === item.key ? '1.5px solid #4B4FD9' : '1px solid #E2E8F0',
+              background: filter === item.key ? '#4B4FD9' : '#F8FAFC',
+              color: filter === item.key ? '#FFFFFF' : '#475569',
+              cursor: 'pointer',
+              transition: 'all 0.15s ease'
+            }}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Scan History List */}
+      {filteredHistory.length > 0 ? (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {filteredHistory.map((scan, i) => {
+            const key = scan.id || `${scan.scan_type}-${scan.created_at}-${i}`;
+            return (
+              <AuditDetailCard
+                key={key}
+                scan={scan}
+                isExpanded={expandedId === key}
+                onToggle={() => setExpandedId(expandedId === key ? null : key)}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div style={{ background: '#F8FAFC', borderRadius: 16, padding: 32, border: '1.5px dashed #CBD5E1', textAlign: 'center' }}>
+          <div style={{ fontSize: 36, marginBottom: 10 }}>📱</div>
+          <div style={{ fontSize: 16, fontWeight: 700, color: '#1E293B' }}>
+            {totalAudits === 0 ? 'No Scans Synced Yet' : 'No Audits Match This Filter'}
+          </div>
+          <div style={{ fontSize: 13, color: '#64748B', maxWidth: 440, margin: '6px auto 16px' }}>
+            {totalAudits === 0
+              ? `Your web app is directly connected to ${user?.email || 'your account'}. Run a Hardware Scan or System Scan in the SecureMe mobile app to see all details appear here in real time.`
+              : 'Select another filter above or run a new scan from your mobile device.'}
+          </div>
+          {totalAudits === 0 && (
+            <button
+              onClick={() => syncFromMobileAccount(user?.email, syncedDevice || phoneId)}
+              disabled={isAutoSyncing}
+              style={{
+                padding: '9px 20px',
+                background: '#4B4FD9',
+                color: '#FFFFFF',
+                border: 'none',
+                borderRadius: 10,
+                fontWeight: 700,
+                fontSize: 13,
+                cursor: 'pointer'
+              }}
+            >
+              {isAutoSyncing ? 'Checking...' : '🔄 Check for Mobile Scans'}
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+
 export default function App() {
   const [tab, setTab] = useState('home');
   const [user, setUser] = useState(() => {
@@ -1231,94 +1864,15 @@ export default function App() {
               </div>
             </div>
 
-            {/* Direct Synced Mobile Scan History */}
-            <div style={{ background: '#FFFFFF', borderRadius: 18, padding: 22, border: '1px solid #E2E8F0', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-                <div>
-                  <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    📱 Synced Mobile Scan History
-                  </div>
-                  <div style={{ fontSize: 12, color: '#64748B' }}>
-                    {syncedDevice ? `Connected Device: ${syncedDevice}` : `Directly synced from SecureMe Mobile App (${user.email})`}
-                  </div>
-                </div>
-                <button
-                  onClick={() => syncFromMobileAccount(user.email, syncedDevice || phoneId)}
-                  disabled={isAutoSyncing}
-                  style={{ padding: '6px 14px', background: '#EEF2FF', color: '#4B4FD9', border: '1px solid #C7D2FE', borderRadius: 8, cursor: 'pointer', fontSize: 13, fontWeight: 700 }}
-                >
-                  {isAutoSyncing ? 'Refreshing...' : '🔄 Refresh'}
-                </button>
-              </div>
-
-              {phoneHistory.length > 0 ? (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  {phoneHistory.map((scan, i) => {
-                    const color = scoreColor(scan.score);
-                    const scanIcon = scan.scan_type?.includes('File') ? '📁' :
-                                     scan.scan_type?.includes('Password') ? '🔑' :
-                                     scan.scan_type?.includes('Permission') ? '🛡️' :
-                                     scan.scan_type?.includes('Battery') ? '🔋' : '📱';
-                    return (
-                      <div
-                        key={i}
-                        style={{
-                          background: '#F8FAFC',
-                          borderRadius: 14,
-                          padding: 16,
-                          border: `1.5px solid ${color}40`,
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          gap: 16
-                        }}
-                      >
-                        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                          <div style={{ fontSize: 24, marginTop: 2 }}>{scanIcon}</div>
-                          <div>
-                            <div style={{ fontWeight: 800, color: '#0F172A', fontSize: 15, display: 'flex', alignItems: 'center', gap: 8 }}>
-                              {scan.scan_type}
-                              {scan.status && (
-                                <span style={{ fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 8, background: `${color}15`, color }}>
-                                  {scan.status}
-                                </span>
-                              )}
-                            </div>
-                            <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>
-                              {scan.created_at?.slice(0, 16).replace('T', ' ')}
-                            </div>
-                            <div style={{ fontSize: 13, color: '#334155', marginTop: 4 }}>
-                              {typeof scan.details === 'string' && scan.details.startsWith('{')
-                                ? 'Audit details synchronized from mobile device'
-                                : scan.details}
-                            </div>
-                          </div>
-                        </div>
-                        <div style={{ textAlign: 'center', background: '#FFFFFF', padding: '8px 16px', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-                          <div style={{ fontSize: 24, fontWeight: 800, color }}>{scan.score}</div>
-                          <div style={{ fontSize: 10, fontWeight: 700, color: '#94A3B8' }}>/100</div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                <div style={{ background: '#F8FAFC', borderRadius: 14, padding: 24, border: '1px dashed #CBD5E1', textAlign: 'center' }}>
-                  <div style={{ fontSize: 32, marginBottom: 8 }}>📲</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: '#1E293B' }}>Mobile Account Connected</div>
-                  <div style={{ fontSize: 13, color: '#64748B', maxWidth: 440, margin: '6px auto 14px' }}>
-                    Your web app is directly connected with <strong>{user.email}</strong>. Run a security scan in the SecureMe Android app to see your scan history and health score appear here automatically.
-                  </div>
-                  <button
-                    onClick={() => syncFromMobileAccount(user.email, syncedDevice || phoneId)}
-                    disabled={isAutoSyncing}
-                    style={{ padding: '8px 18px', background: '#4B4FD9', color: '#FFFFFF', border: 'none', borderRadius: 8, fontWeight: 700, fontSize: 13, cursor: 'pointer' }}
-                  >
-                    {isAutoSyncing ? 'Checking...' : '🔄 Check for Scans'}
-                  </button>
-                </div>
-              )}
-            </div>
+            {/* Direct Synced Mobile Scan History with Full Details & Filter */}
+            <SyncedHistoryManager
+              phoneHistory={phoneHistory}
+              user={user}
+              syncedDevice={syncedDevice}
+              phoneId={phoneId}
+              isAutoSyncing={isAutoSyncing}
+              syncFromMobileAccount={syncFromMobileAccount}
+            />
 
           </div>
         )}
@@ -1675,46 +2229,14 @@ export default function App() {
 
               {/* Synced Scans List */}
               <div style={{ marginTop: 24 }}>
-                <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', marginBottom: 12 }}>
-                  Synchronized Telemetry ({phoneHistory.length} audits)
-                </div>
-
-                {phoneHistory.length > 0 ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                    {phoneHistory.map((scan, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          border: `1.5px solid ${scoreColor(scan.score)}40`,
-                          borderRadius: 14,
-                          padding: 16,
-                          background: '#F8FAFC',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}
-                      >
-                        <div>
-                          <div style={{ fontWeight: 800, color: '#0F172A', fontSize: 15 }}>{scan.scan_type}</div>
-                          <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>{scan.created_at?.slice(0, 16).replace('T', ' ')}</div>
-                          <div style={{ fontSize: 13, color: '#334155', marginTop: 4 }}>
-                            {typeof scan.details === 'string' && scan.details.startsWith('{')
-                              ? `Status: ${scan.status || 'Completed'}`
-                              : scan.details}
-                          </div>
-                        </div>
-                        <div style={{ textAlign: 'center', background: '#FFFFFF', padding: '8px 16px', borderRadius: 12 }}>
-                          <div style={{ fontSize: 24, fontWeight: 800, color: scoreColor(scan.score) }}>{scan.score}</div>
-                          <div style={{ fontSize: 10, fontWeight: 700, color: '#94A3B8' }}>/100</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 20, textAlign: 'center', color: '#64748B', fontSize: 13 }}>
-                    No audit records saved yet for this account. Run a scan on your phone to view results here.
-                  </div>
-                )}
+                <SyncedHistoryManager
+                  phoneHistory={phoneHistory}
+                  user={user}
+                  syncedDevice={syncedDevice}
+                  phoneId={phoneId}
+                  isAutoSyncing={isAutoSyncing}
+                  syncFromMobileAccount={syncFromMobileAccount}
+                />
               </div>
 
               {/* Manual Device Override Accordion */}
