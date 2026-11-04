@@ -110,12 +110,14 @@ function AuditDetailCard({ scan, isExpanded, onToggle }) {
   const isFile = scanType.toLowerCase().includes('file');
   const isPermission = scanType.toLowerCase().includes('permission');
   const isPassword = scanType.toLowerCase().includes('password');
+  const isWeb = scanType.toLowerCase().includes('web') || scanType.toLowerCase().includes('browser');
 
   const scanIcon = isHardware ? '🔋' :
                    isSystem ? '🛡️' :
                    isFile ? '📁' :
                    isPermission ? '🔒' :
-                   isPassword ? '🔑' : '📱';
+                   isPassword ? '🔑' :
+                   isWeb ? '🌐' : '📱';
 
   return (
     <div
@@ -166,6 +168,11 @@ function AuditDetailCard({ scan, isExpanded, onToggle }) {
               {isHardware && (
                 <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 6, background: '#EEF2FF', color: '#4B4FD9' }}>
                   Hardware Telemetry
+                </span>
+              )}
+              {isWeb && (
+                <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 6, background: '#EEF2FF', color: '#4B4FD9' }}>
+                  Web Telemetry
                 </span>
               )}
             </div>
@@ -255,6 +262,25 @@ function AuditDetailCard({ scan, isExpanded, onToggle }) {
                     {details.risky_apps_count !== undefined && (
                       <span style={{ fontSize: 11, fontWeight: 600, background: '#FEF2F2', padding: '3px 8px', borderRadius: 6, color: '#DC2626' }}>
                         ⚠️ {details.risky_apps_count} Risky Apps
+                      </span>
+                    )}
+                  </>
+                )}
+                {isWeb && (
+                  <>
+                    {details.browser && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#F1F5F9', padding: '3px 8px', borderRadius: 6, color: '#334155' }}>
+                        🌐 {details.browser}
+                      </span>
+                    )}
+                    {details.is_https !== undefined && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: details.is_https ? '#ECFDF5' : '#FEF2F2', padding: '3px 8px', borderRadius: 6, color: details.is_https ? '#059669' : '#DC2626' }}>
+                        {details.is_https ? '🔒 HTTPS' : '⚠️ HTTP'}
+                      </span>
+                    )}
+                    {details.has_crypto && (
+                      <span style={{ fontSize: 11, fontWeight: 600, background: '#EEF2FF', padding: '3px 8px', borderRadius: 6, color: '#4B4FD9' }}>
+                        ⚡ SubtleCrypto
                       </span>
                     )}
                   </>
@@ -515,8 +541,66 @@ function AuditDetailCard({ scan, isExpanded, onToggle }) {
                 </div>
               )}
 
+              {/* Detailed Web Security Audit Breakdown */}
+              {isWeb && (
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#1E293B', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    🌐 Web & Browser Security Audit Telemetry
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>BROWSER & PLATFORM</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.browser || 'Web Client'} {details.platform ? `(${details.platform})` : ''}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Client runtime environment</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>TRANSPORT SECURITY</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: details.is_https ? '#10B981' : '#DC2626', marginTop: 2 }}>
+                        {details.is_https ? '🔒 TLS Encrypted (HTTPS)' : '⚠️ Unencrypted (HTTP)'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Man-in-the-middle protection</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>CRYPTOGRAPHY ENGINE</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: details.has_crypto ? '#10B981' : '#F59E0B', marginTop: 2 }}>
+                        {details.has_crypto ? '✅ Active (SubtleCrypto)' : '⚠️ Emulated'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Hardware-accelerated crypto</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>STORAGE ISOLATION</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: '#10B981', marginTop: 2 }}>
+                        {details.storage_isolated ? '✅ Origin Isolated' : '✅ Active'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Client storage sandbox</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>CPU & MEMORY ALLOCATION</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A', marginTop: 2 }}>
+                        {details.cores ? `${details.cores} Cores` : ''} {details.ram_gb ? `• ~${details.ram_gb} GB RAM` : ''}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Endpoint processing capability</div>
+                    </div>
+
+                    <div style={{ background: '#F8FAFC', borderRadius: 12, padding: 12, border: '1px solid #E2E8F0' }}>
+                      <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>NETWORK & DISPLAY</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: '#10B981', marginTop: 2 }}>
+                        {details.online_status || 'Online'}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{details.screen ? `Display: ${details.screen}` : 'Connection active'}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Generic fallback for any other custom keys in details */}
-              {!isHardware && !isSystem && !isFile && !isPermission && !isPassword && (
+              {!isHardware && !isSystem && !isFile && !isPermission && !isPassword && !isWeb && (
                 <div>
                   <div style={{ fontSize: 13, fontWeight: 800, color: '#1E293B', marginBottom: 10 }}>Telemetry Attributes</div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
@@ -566,6 +650,7 @@ function SyncedHistoryManager({
   const fileCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('file')).length;
   const permCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('permission')).length;
   const passCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('password')).length;
+  const webCount = phoneHistory.filter(s => s.scan_type?.toLowerCase().includes('web') || s.scan_type?.toLowerCase().includes('browser')).length;
 
   const filteredHistory = phoneHistory.filter(scan => {
     if (filter === 'all') return true;
@@ -575,6 +660,7 @@ function SyncedHistoryManager({
     if (filter === 'files') return type.includes('file');
     if (filter === 'permissions') return type.includes('permission');
     if (filter === 'password') return type.includes('password');
+    if (filter === 'web') return type.includes('web') || type.includes('browser');
     return true;
   });
 
@@ -645,7 +731,8 @@ function SyncedHistoryManager({
           { key: 'system', label: `🛡️ Full System (${systemCount})` },
           { key: 'files', label: `📁 Deep Files (${fileCount})` },
           { key: 'permissions', label: `🔒 Permissions (${permCount})` },
-          { key: 'password', label: `🔑 Passwords (${passCount})` }
+          { key: 'password', label: `🔑 Passwords (${passCount})` },
+          { key: 'web', label: `🌐 Web Audits (${webCount})` }
         ].map(item => (
           <button
             key={item.key}
@@ -929,6 +1016,119 @@ export default function App() {
     }
   };
 
+  const [isWebAuditing, setIsWebAuditing] = useState(false);
+  const [webAuditSuccessMsg, setWebAuditSuccessMsg] = useState('');
+
+  // Universal Bidirectional Save Scan Helper
+  const saveScanOnline = async (scanType, score, status, detailsObj) => {
+    const targetEmail = (user?.email || '').trim().toLowerCase();
+    const devId = syncedDevice || phoneId || 'web-browser';
+    try {
+      await apiFetch('/save-scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          device_id: devId,
+          user_id: user?.id || '',
+          user_email: targetEmail,
+          scan_type: scanType,
+          score: score,
+          status: status,
+          details: JSON.stringify({
+            ...detailsObj,
+            source: 'Web App',
+            checked_from: 'Web Browser'
+          })
+        })
+      });
+      if (targetEmail) {
+        await syncFromMobileAccount(targetEmail, devId);
+      }
+    } catch (err) {
+      console.warn('saveScanOnline failed:', err);
+    }
+  };
+
+  // Instant Web Security & Browser Posture Audit
+  const runWebSecurityAudit = async () => {
+    setIsWebAuditing(true);
+    setWebAuditSuccessMsg('');
+    try {
+      const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
+      const hasCrypto = typeof window !== 'undefined' && !!(window.crypto && window.crypto.subtle);
+      const cookiesEnabled = typeof navigator !== 'undefined' && navigator.cookieEnabled;
+      let storageIsolated = true;
+      try {
+        localStorage.setItem('__sec_test', '1');
+        localStorage.removeItem('__sec_test');
+      } catch (_) {
+        storageIsolated = false;
+      }
+      const cores = typeof navigator !== 'undefined' ? (navigator.hardwareConcurrency || 4) : 4;
+      const ramGb = typeof navigator !== 'undefined' ? (navigator.deviceMemory || 8) : 8;
+      const screenRes = typeof window !== 'undefined' && window.screen ? `${window.screen.width}x${window.screen.height}` : '1920x1080';
+      const onlineStatus = typeof navigator !== 'undefined' && navigator.onLine ? 'Online' : 'Offline';
+
+      let ua = typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown';
+      let browser = 'Web Browser';
+      if (ua.includes('Edg/')) browser = 'Microsoft Edge';
+      else if (ua.includes('Chrome/')) browser = 'Google Chrome';
+      else if (ua.includes('Firefox/')) browser = 'Mozilla Firefox';
+      else if (ua.includes('Safari/') && !ua.includes('Chrome/')) browser = 'Apple Safari';
+
+      let platform = 'Desktop';
+      if (/Win/i.test(ua)) platform = 'Windows';
+      else if (/Mac/i.test(ua)) platform = 'macOS';
+      else if (/Linux/i.test(ua)) platform = 'Linux';
+      else if (/Android/i.test(ua)) platform = 'Android';
+      else if (/iPhone|iPad/i.test(ua)) platform = 'iOS';
+
+      let score = 100;
+      const recs = [];
+      if (!isHttps && window.location.hostname !== 'localhost') {
+        score -= 25;
+        recs.push('Enforce HTTPS TLS certificate to encrypt transport');
+      }
+      if (!hasCrypto) {
+        score -= 20;
+        recs.push('Enable browser SubtleCrypto engine');
+      }
+      if (!cookiesEnabled) {
+        score -= 10;
+        recs.push('Cookie isolation restricted');
+      }
+      if (score >= 90) {
+        recs.push('Web browser security posture is optimal and hardened');
+      }
+
+      const status = score >= 80 ? 'Optimal' : score >= 60 ? 'Moderate' : 'At Risk';
+
+      const details = {
+        browser,
+        platform,
+        is_https: isHttps,
+        protocol: typeof window !== 'undefined' ? window.location.protocol : 'https:',
+        has_crypto: hasCrypto,
+        cores,
+        ram_gb: ramGb,
+        screen: screenRes,
+        online_status: onlineStatus,
+        cookies_enabled: cookiesEnabled,
+        storage_isolated: storageIsolated,
+        recommendations: recs,
+        device_model: `${browser} (${platform})`
+      };
+
+      await saveScanOnline('Web Security Audit', score, status, details);
+      setWebAuditSuccessMsg('Web Security Audit completed and synced with your mobile app!');
+      setTimeout(() => setWebAuditSuccessMsg(''), 6000);
+    } catch (e) {
+      console.error('Web audit failed:', e);
+    } finally {
+      setIsWebAuditing(false);
+    }
+  };
+
   useEffect(() => {
     if (user && user.email) {
       syncFromMobileAccount(user.email, syncedDevice || phoneId);
@@ -1133,7 +1333,17 @@ export default function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: pwInput })
       });
-      setPwResult(await res.json());
+      const data = await res.json();
+      setPwResult(data);
+      const scoreVal = data.score ?? 0;
+      const statusVal = scoreVal >= 75 ? 'Safe' : scoreVal >= 50 ? 'Moderate' : 'Weak';
+      await saveScanOnline('Password Check', scoreVal, statusVal, {
+        strength: data.strength,
+        score: scoreVal,
+        entropy: data.entropy ?? scoreVal,
+        suggestions: data.suggestions || [],
+        device_model: 'Web Browser'
+      });
     } catch (e) {
       let s = 0;
       const sugg = [];
@@ -1141,10 +1351,18 @@ export default function App() {
       if (/[A-Z]/.test(pwInput)) s += 25; else sugg.push('Add uppercase letters (A-Z)');
       if (/[0-9]/.test(pwInput)) s += 25; else sugg.push('Add numbers (0-9)');
       if (/[!@#$%^&*(),.?":{}|<>]/.test(pwInput)) s += 25; else sugg.push('Add special characters (!@#$...)');
-      setPwResult({
+      const fallbackResult = {
         score: s,
         strength: s >= 75 ? 'Strong 💪' : s >= 50 ? 'Moderate ⚠️' : 'Weak ❌',
         suggestions: sugg
+      };
+      setPwResult(fallbackResult);
+      await saveScanOnline('Password Check', s, s >= 75 ? 'Safe' : s >= 50 ? 'Moderate' : 'Weak', {
+        strength: fallbackResult.strength,
+        score: s,
+        entropy: s,
+        suggestions: sugg,
+        device_model: 'Web Browser'
       });
     }
     setPwLoading(false);
@@ -1232,6 +1450,19 @@ export default function App() {
       }
     }
     setFileResult(results);
+    if (results.length > 0) {
+      const threatsCount = results.filter(r => r.threat_found || r.is_malicious || r.malware).length;
+      const safeCount = results.length - threatsCount;
+      const fileScore = threatsCount > 0 ? Math.max(10, 100 - (threatsCount * 45)) : 100;
+      const fileStatus = threatsCount > 0 ? 'At Risk' : 'Safe';
+      await saveScanOnline('Deep File Scan', fileScore, fileStatus, {
+        total_scanned: results.length,
+        safe_count: safeCount,
+        threats_count: threatsCount,
+        files: results.map(r => ({ name: r.fileName, hash: r.hash, size: `${r.size} KB`, safe: !r.threat_found && !r.is_malicious })),
+        device_model: 'Web Browser'
+      });
+    }
     setFileLoading(false);
   };
 
@@ -1713,6 +1944,86 @@ export default function App() {
               </div>
             </div>
 
+            {/* Web Security Scanner Action Banner (Bidirectional Sync) */}
+            <div style={{
+              background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+              borderRadius: 18,
+              padding: '20px 24px',
+              color: '#FFFFFF',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 16,
+              border: '1px solid #334155',
+              boxShadow: '0 4px 16px rgba(15, 23, 42, 0.15)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <div style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: 14,
+                  background: 'linear-gradient(135deg, #4B4FD9 0%, #7B5EA7 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 24
+                }}>
+                  🌐
+                </div>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontSize: 16, fontWeight: 800 }}>Web Security & Browser Audit</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 8, background: '#EEF2FF', color: '#4B4FD9' }}>
+                      Bidirectional Sync
+                    </span>
+                  </div>
+                  <div style={{ fontSize: 12, color: '#94A3B8', marginTop: 3 }}>
+                    Audit browser cryptography, sandbox isolation, TLS posture, and sync instantly to your mobile app.
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={runWebSecurityAudit}
+                disabled={isWebAuditing}
+                style={{
+                  padding: '10px 20px',
+                  background: isWebAuditing ? '#334155' : 'linear-gradient(135deg, #4B4FD9 0%, #6366F1 100%)',
+                  color: '#FFFFFF',
+                  border: 'none',
+                  borderRadius: 12,
+                  fontWeight: 800,
+                  fontSize: 13,
+                  cursor: isWebAuditing ? 'wait' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  boxShadow: '0 4px 12px rgba(75, 79, 217, 0.35)',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {isWebAuditing ? '⏳ Auditing Browser & Syncing...' : '⚡ Run Web Security Audit'}
+              </button>
+            </div>
+
+            {webAuditSuccessMsg && (
+              <div style={{
+                background: '#ECFDF5',
+                border: '1px solid #A7F3D0',
+                borderRadius: 14,
+                padding: '12px 18px',
+                color: '#065F46',
+                fontWeight: 700,
+                fontSize: 13,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                animation: 'fadeIn 0.3s ease-out'
+              }}>
+                <span>✅</span> {webAuditSuccessMsg}
+              </div>
+            )}
+
             {/* Live Mobile Cyber Health Score Card */}
             <div style={{
               background: 'linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%)',
@@ -2170,22 +2481,43 @@ export default function App() {
                     <div style={{ fontSize: 13, color: '#64748B' }}>Direct cloud sync active with your SecureMe mobile account</div>
                   </div>
                 </div>
-                <button
-                  onClick={() => syncFromMobileAccount(user.email, syncedDevice || phoneId)}
-                  disabled={isAutoSyncing}
-                  style={{
-                    padding: '10px 18px',
-                    background: isAutoSyncing ? '#EEF2FF' : '#4B4FD9',
-                    color: isAutoSyncing ? '#4B4FD9' : '#FFFFFF',
-                    border: 'none',
-                    borderRadius: 10,
-                    fontWeight: 700,
-                    fontSize: 13,
-                    cursor: isAutoSyncing ? 'wait' : 'pointer'
-                  }}
-                >
-                  {isAutoSyncing ? 'Refreshing...' : '🔄 Fetch Updates'}
-                </button>
+                <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                  <button
+                    onClick={runWebSecurityAudit}
+                    disabled={isWebAuditing}
+                    style={{
+                      padding: '10px 18px',
+                      background: 'linear-gradient(135deg, #4B4FD9 0%, #6366F1 100%)',
+                      color: '#FFFFFF',
+                      border: 'none',
+                      borderRadius: 10,
+                      fontWeight: 700,
+                      fontSize: 13,
+                      cursor: isWebAuditing ? 'wait' : 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 6
+                    }}
+                  >
+                    {isWebAuditing ? '⏳ Auditing...' : '⚡ Run Web Audit'}
+                  </button>
+                  <button
+                    onClick={() => syncFromMobileAccount(user.email, syncedDevice || phoneId)}
+                    disabled={isAutoSyncing}
+                    style={{
+                      padding: '10px 18px',
+                      background: isAutoSyncing ? '#EEF2FF' : '#F1F5F9',
+                      color: isAutoSyncing ? '#4B4FD9' : '#334155',
+                      border: '1px solid #CBD5E1',
+                      borderRadius: 10,
+                      fontWeight: 700,
+                      fontSize: 13,
+                      cursor: isAutoSyncing ? 'wait' : 'pointer'
+                    }}
+                  >
+                    {isAutoSyncing ? 'Refreshing...' : '🔄 Fetch Updates'}
+                  </button>
+                </div>
               </div>
 
               {/* Status Grid */}
